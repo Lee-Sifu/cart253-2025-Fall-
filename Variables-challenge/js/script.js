@@ -15,8 +15,8 @@ let mrFurious = {
     size: 100,
     // Colour
     fill: {
-        r: 255,
-        g: 225,
+        r: 0,
+        g: 0,
         b: 225
     }
 };
