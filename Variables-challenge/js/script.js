@@ -1,8 +1,8 @@
 /**
  * Mr. Furious
- * Pippin Barr
+ * Jason Lee
  *
- * A guy who becomes visibly furious!
+ * Mr. Furious is a red circle that has blue sky background that slowly turns to black.
  */
 
 "use strict";
@@ -20,6 +20,7 @@ let mrFurious = {
         b: 0,
     }
 };
+// sky background variables
 let skyChange = 0;
 let skyFill = {
     r: 0,
@@ -39,7 +40,7 @@ function setup() {
  * Draw (and update) Mr. Furious
  */
 function draw() {
-
+    // sky background
     skyChange = skyChange + 0.1;
     background(skyFill.r, skyFill.g, skyFill.b, skyChange);
     skyFill.r = skyFill.r - 0.5;
