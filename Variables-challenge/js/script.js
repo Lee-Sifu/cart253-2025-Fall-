@@ -21,6 +21,7 @@ let mrFurious = {
     }
 };
 let skyChange = 0;
+
 /**
  * Create the canvas
  */
@@ -36,6 +37,7 @@ function draw() {
 
     skyChange = skyChange + 1;
     background(skyChange);
+
 
 
     // Draw Mr. Furious as a coloured circle
