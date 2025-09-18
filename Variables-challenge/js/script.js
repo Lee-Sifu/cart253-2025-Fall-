@@ -21,6 +21,7 @@ let mrFurious = {
     }
 };
 let skyChange = 0;
+let skyFill = 0;
 
 /**
  * Create the canvas
@@ -36,7 +37,7 @@ function draw() {
     // background(160, 180, 200);
 
     skyChange = skyChange + 0.5;
-    background(mrFurious.fill.r, mrFurious.fill.g, skyChange);
+    background(skyFill.r, skyFill.g, skyChange);
 
 
 
