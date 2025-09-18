@@ -20,7 +20,7 @@ let mrFurious = {
         b: 225
     }
 };
-
+let skyChange = 0.2;
 /**
  * Create the canvas
  */
