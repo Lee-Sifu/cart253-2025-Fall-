@@ -34,7 +34,7 @@ function setup() {
 function draw() {
     // background(160, 180, 200);
 
-    skyChange = skyChange + 0.2;
+    skyChange = skyChange + 1;
     background(skyChange);
 
 
