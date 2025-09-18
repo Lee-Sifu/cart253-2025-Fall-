@@ -16,15 +16,15 @@ let mrFurious = {
     // Colour
     fill: {
         r: 255,
-        g: 255,
-        b: 255,
+        g: 0,
+        b: 0,
     }
 };
-let skyChange = 0;
+let skyChange = 23;
 let skyFill = {
-    r: 0,
+    r: 245,
     g: 0,
-    b: 0
+    b: 255,
 };
 
 
@@ -42,7 +42,7 @@ function draw() {
     // background(160, 180, 200);
 
     skyChange = skyChange + 0.5;
-    background(skyFill.r, skyFill.g, skyChange);
+    background(skyFill.r, skyFill.g, skyFill.b, skyChange);
 
 
 
