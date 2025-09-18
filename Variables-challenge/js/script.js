@@ -36,7 +36,7 @@ function draw() {
     // background(160, 180, 200);
 
     skyChange = skyChange + 1;
-    background(skyChange);
+    background(mrFurious.fill.r, mrFurious.fill.g, skyChange);
 
 
 
