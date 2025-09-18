@@ -32,7 +32,15 @@ function setup() {
  * Draw (and update) Mr. Furious
  */
 function draw() {
-    background(160, 180, 200);
+    // background(160, 180, 200);
+
+    skyChange = skyChange + 0.2;
+    if (skyChange > 255) {
+        skyChange = 0;
+
+    } else {
+        background(160, 180, skyChange);
+    }
 
     // Draw Mr. Furious as a coloured circle
     push();
