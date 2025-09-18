@@ -15,13 +15,18 @@ let mrFurious = {
     size: 100,
     // Colour
     fill: {
-        r: 10,
-        g: 10,
-        b: 10,
+        r: 255,
+        g: 255,
+        b: 255,
     }
 };
 let skyChange = 0;
-let skyFill = 0;
+let skyFill = {
+    r: 0,
+    g: 0,
+    b: 0
+};
+
 
 /**
  * Create the canvas
