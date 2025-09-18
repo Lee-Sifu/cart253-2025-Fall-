@@ -42,9 +42,9 @@ function draw() {
 
     skyChange = skyChange + 0.1;
     background(skyFill.r, skyFill.g, skyFill.b, skyChange);
-    skyFill.r = skyFill.r * 0.5;
-    skyFill.g = skyFill.g * 0.5;
-    skyFill.b = skyFill.b * 0.5;
+    skyFill.r = skyFill.r - 0.5;
+    skyFill.g = skyFill.g - 0.5;
+    skyFill.b = skyFill.b - 0.5;
 
     // Update Mr. Furious's size
 
