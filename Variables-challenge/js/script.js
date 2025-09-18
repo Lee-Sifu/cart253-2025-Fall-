@@ -23,7 +23,7 @@ let mrFurious = {
 let skyChange = 0;
 let skyFill = {
     r: 0,
-    g: 0,
+    g: 100,
     b: 255,
 };
 
@@ -39,13 +39,12 @@ function setup() {
  * Draw (and update) Mr. Furious
  */
 function draw() {
-    // background(160, 180, 200);
 
     skyChange = skyChange + 0.1;
     background(skyFill.r, skyFill.g, skyFill.b, skyChange);
-    skyFill.r = skyFill.r + 0.3;
-    skyFill.g = skyFill.g + 0.3;
-    skyFill.b = skyFill.b + 0.3;
+    skyFill.r = skyFill.r * 0.5;
+    skyFill.g = skyFill.g * 0.5;
+    skyFill.b = skyFill.b * 0.5;
 
     // Update Mr. Furious's size
 
