@@ -15,9 +15,9 @@ let mrFurious = {
     size: 100,
     // Colour
     fill: {
-        r: 0,
+        r: 10,
         g: 0,
-        b: 225
+        b: 10,
     }
 };
 let skyChange = 0;
@@ -35,7 +35,7 @@ function setup() {
 function draw() {
     // background(160, 180, 200);
 
-    skyChange = skyChange + 1;
+    skyChange = skyChange + 0.5;
     background(mrFurious.fill.r, mrFurious.fill.g, skyChange);
 
 
