@@ -10,8 +10,17 @@
 "use strict";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ * Variables for self-portrait animation
 */
+let time =0;
+let breathingPhase =0;
+let blinkTimer =0;
+let isBlinking  = false;
+
+/** Variables for eyes movement */
+let eyeFollowX = 0;
+let eyeFollowY = 0;
+
 function setup() {
     createCanvas(800, 800);
     background(220, 200, 150); 
