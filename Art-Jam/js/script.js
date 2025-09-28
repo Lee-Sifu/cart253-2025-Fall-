@@ -40,4 +40,6 @@ function draw() {
             strokeWeight(3);
             fill(35, 40, 85);
             ellipse(0, 0, faceSize, faceSize * 1.1);
+
+            translate(width/2, height/2);
 }
