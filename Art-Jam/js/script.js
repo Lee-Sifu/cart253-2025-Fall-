@@ -21,6 +21,9 @@ let isBlinking  = false;
 let eyeFollowX = 0;
 let eyeFollowY = 0;
 
+/**Mood Variable for face expression*/
+let moodTimer = 0;
+
 function setup() {
     createCanvas(800, 800);
     background(220, 200, 150); 
@@ -33,6 +36,9 @@ function setup() {
 function draw() {
     let bgHue = (220 + sin(time * 0.01) * 20) % 360;
         background(bgHue, 200, 150);
+        time++;
+        breathingPhase = sin(time * 0.05) * 0.3; // Breathing animation
+        moodTimer++;
 
 
     let faceSize = 200 + breathingPhase * 10;
@@ -41,6 +47,6 @@ function draw() {
             strokeWeight(3);
             fill(35, 40, 85);
             ellipse(0, 0, faceSize, faceSize * 1.1);
-
+ 
             
 }
