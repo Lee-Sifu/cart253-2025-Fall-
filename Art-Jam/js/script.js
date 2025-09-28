@@ -33,4 +33,11 @@ function setup() {
 function draw() {
     let bgHue = (220 + sin(time * 0.01) * 20) % 360;
         background(bgHue, 200, 150);
+
+
+    let faceSize = 200 + breathingPhase * 5;
+            stroke(30, 70, 20);
+            strokeWeight(3);
+            fill(35, 40, 85);
+            ellipse(0, 0, faceSize, faceSize * 1.1);
 }
