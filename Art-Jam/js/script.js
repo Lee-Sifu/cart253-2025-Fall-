@@ -27,6 +27,7 @@ let moodTimer = 0;
 function setup() {
     createCanvas(800, 800);
     background(220, 200, 150); 
+    colorMode(HSB, 360, 100, 100); 
 }
 
 
@@ -53,6 +54,7 @@ function draw() {
             drawMouth();
             drawHair();
             drawNose();
+            
 }
 
 function drawEyes() {
