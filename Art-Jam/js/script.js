@@ -28,8 +28,9 @@ function setup() {
 
 
 /**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
+ * Create a dynamic background that changes color over time
 */
 function draw() {
-
+    let bgHue = (220 + sin(time * 0.01) * 20) % 360;
+        background(bgHue, 200, 150);
 }
