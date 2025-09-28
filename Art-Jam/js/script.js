@@ -52,7 +52,7 @@ function draw() {
             ellipse(0, 0, faceSize, faceSize * 1.1);
 
     /* Custom Functions for face */
-           // drawEyes();
+            drawEyes();
            // drawMouth();
            // drawHair();
            // drawNose();
