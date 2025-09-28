@@ -54,3 +54,11 @@ function draw() {
             drawHair();
             drawNose();
 }
+
+function drawEyes() {
+         fill(0, 0, 100);
+         stroke(0, 0, 0);
+         strokeWeight(2);
+         ellipse(-20, -10, 50, 10);
+         ellipse(-20, -10, 50, 10);
+}
