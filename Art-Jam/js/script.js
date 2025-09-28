@@ -1,9 +1,10 @@
 /**
- * Title of Project
- * Author Name
+ * Self-Portrait Project
+ * By Jason Lee
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * This is a description of my self-portrait project.
+ * It is supposed to be a fun and creative representation of myself.
+ * This will showcase some proceduralism in my self-portrait.
  */
 
 "use strict";
