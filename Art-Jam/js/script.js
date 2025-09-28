@@ -43,7 +43,8 @@ function draw() {
         moodTimer++;
 
 
-    let faceSize = 200 + breathingPhase * 10;
+    let faceSize = 200 + breathingPhase * 20;
+        push();
             translate(width/2, height/2); 
             stroke(30, 70, 20);
             strokeWeight(3);
@@ -55,7 +56,7 @@ function draw() {
             drawMouth();
             drawHair();
             drawNose();
-            resetMatrix();
+        pop();
     
 }
 
