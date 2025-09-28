@@ -27,7 +27,7 @@ let moodTimer = 0;
 function setup() {
     createCanvas(800, 800);
     background(220, 200, 150); 
-    colorMode(HSB, 360, 100, 100); 
+    colorMode(HSB, 360, 100, 100, 100); 
 }
 
 
@@ -35,6 +35,7 @@ function setup() {
  * Create a dynamic background that changes color over time
 */
 function draw() {
+    
     let bgHue = (220 + sin(time * 0.01) * 20) % 360;
         background(bgHue, 200, 150);
         time++;
@@ -54,7 +55,8 @@ function draw() {
             drawMouth();
             drawHair();
             drawNose();
-            
+            resetMatrix();
+    
 }
 
 function drawEyes() {
