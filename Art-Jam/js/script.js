@@ -59,6 +59,6 @@ function drawEyes() {
          fill(0, 0, 100);
          stroke(0, 0, 0);
          strokeWeight(2);
-         ellipse(-40, -10, 50, 10);
-         ellipse(-40, -10, 50, 10);
+         ellipse(-40, -30, 60, 40);
+         ellipse(40, -30, 60, 40);
 }
