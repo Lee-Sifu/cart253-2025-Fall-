@@ -36,10 +36,11 @@ function draw() {
 
 
     let faceSize = 200 + breathingPhase * 10;
+            translate(width/2, height/2); 
             stroke(30, 70, 20);
             strokeWeight(3);
             fill(35, 40, 85);
             ellipse(0, 0, faceSize, faceSize * 1.1);
 
-            translate(width/2, height/2);
+            
 }
