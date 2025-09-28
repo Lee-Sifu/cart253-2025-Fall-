@@ -35,7 +35,7 @@ function draw() {
         background(bgHue, 200, 150);
 
 
-    let faceSize = 200 + breathingPhase * 5;
+    let faceSize = 200 + breathingPhase * 10;
             stroke(30, 70, 20);
             strokeWeight(3);
             fill(35, 40, 85);
