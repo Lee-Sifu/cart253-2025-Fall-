@@ -47,6 +47,10 @@ function draw() {
             strokeWeight(3);
             fill(35, 40, 85);
             ellipse(0, 0, faceSize, faceSize * 1.1);
- 
-            
+
+    /* Custom Functions for face */
+            drawEyes();
+            drawMouth();
+            drawHair();
+            drawNose();
 }
