@@ -23,7 +23,8 @@ let eyeFollowY = 0;
 
 /**Mood Variable for face expression*/
 let moodTimer = 0;
-
+let currentMood = 'neutral';
+ // Possible values: "happy", "sad", "neutral"
 function setup() {
     createCanvas(800, 800);
     background(220, 200, 150); 
@@ -42,6 +43,13 @@ function draw() {
         breathingPhase = sin(time * 0.05) * 0.3; // Breathing animation
         moodTimer++;
 
+    if (mouseX < width/2) {
+                currentMood = 'sad';
+            } else if (mouseX > 2*width/2) {
+                currentMood = 'happy';
+            } else {
+                currentMood = 'neutral';
+            }
 
     let faceSize = 200 + breathingPhase * 20;
         push();
@@ -67,8 +75,29 @@ function drawEyes() {
          strokeWeight(2);
          ellipse(-40, -30, 60, 40);
          ellipse(40, -30, 60, 40);
+
+         
+        
 }
 
 function drawMouth() {
-    
-}
+            stroke(350, 70, 40);
+            strokeWeight(3);
+            noFill();
+            
+            // Mouth changes based on mood (conditional)
+            if (currentMood === 'sad') {
+                // Sad mouth
+                arc(0, 50, 40, 20, radians(20), radians(160));
+           } else if (currentMood === 'happy') {
+                // Happy mouth
+                arc(0, 45, 50, 30, 0, PI);
+                // Add smile lines
+                strokeWeight(1);
+                line(-10, 35, -30, 30);
+               line(10, 35, 30, 30);
+            } else {
+                // Neutral mouth
+                line(-10, 50, 15, 50);
+            }
+        }
