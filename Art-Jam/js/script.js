@@ -45,7 +45,7 @@ function draw() {
 
     if (mouseX < width/2) {
                 currentMood = 'sad';
-            } else if (mouseX > 2*width/2) {
+            } else if (mouseX > 2*width/3) {
                 currentMood = 'happy';
             } else {
                 currentMood = 'neutral';
