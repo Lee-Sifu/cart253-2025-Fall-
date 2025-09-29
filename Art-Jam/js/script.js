@@ -44,7 +44,7 @@ function draw() {
 
 
     let faceSize = 200 + breathingPhase * 20;
-       // push();
+        push();
             translate(width/2, height/2); 
             stroke(30, 70, 20);
             strokeWeight(3);
@@ -53,10 +53,11 @@ function draw() {
 
     /* Custom Functions for face */
             drawEyes();
-           // drawMouth();
+
+            drawMouth();
            // drawHair();
            // drawNose();
-       // pop();
+        pop();
     
 }
 
@@ -66,4 +67,8 @@ function drawEyes() {
          strokeWeight(2);
          ellipse(-40, -30, 60, 40);
          ellipse(40, -30, 60, 40);
+}
+
+function drawMouth() {
+    
 }
