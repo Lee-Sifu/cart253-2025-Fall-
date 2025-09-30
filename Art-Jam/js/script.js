@@ -51,6 +51,10 @@ function draw() {
                 currentMood = 'neutral';
             }
 
+            // Eye following mouse
+            eyeFollowX = lerp(eyeFollowX, mouseX, 0.5);
+            eyeFollowY = lerp(eyeFollowY, mouseY, 0.5);
+
     let faceSize = 200 + breathingPhase * 20;
         push();
             translate(width/2, height/2); 
@@ -75,6 +79,7 @@ function drawEyes() {
          strokeWeight(2);
          ellipse(-40, -30, 60, 40);
          ellipse(40, -30, 60, 40);
+
     // Eye pupils
         fill(220,80,20);
         noStroke();
@@ -84,9 +89,9 @@ function drawEyes() {
 }
 
 function drawMouth() {
-            stroke(350, 70, 40);
-            strokeWeight(3);
-            noFill();
+         stroke(350, 70, 40);
+         strokeWeight(3);
+         noFill();
             
             // Mouth changes based on mood (conditional)
             if (currentMood === 'sad') {
