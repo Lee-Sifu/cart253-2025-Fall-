@@ -88,7 +88,7 @@ function drawMouth() {
             // Mouth changes based on mood (conditional)
             if (currentMood === 'sad') {
                 // Sad mouth
-                arc(0, 50, 40, 20, radians(20), radians(160));
+                arc(0, 50, 40, 20, radians(200), radians(260));
            } else if (currentMood === 'happy') {
                 // Happy mouth
                 arc(0, 45, 50, 30, 0, PI);
