@@ -105,8 +105,8 @@ function drawEyes() {
     // Eye pupils
         fill(220,80,20);
         noStroke();
-        ellipse(-40 * eyeOffsetX,-30 * eyeOffsetY, 25, 25);
-        ellipse(40 * eyeOffsetX,-30 * eyeOffsetY, 25, 25);
+        ellipse(-40 + eyeOffsetX,-30 + eyeOffsetY, 25, 25);
+        ellipse(40 + eyeOffsetX,-30 + eyeOffsetY, 25, 25);
  }      
         else {
                 // Closed blinking eyes 
