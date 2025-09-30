@@ -75,8 +75,11 @@ function drawEyes() {
          strokeWeight(2);
          ellipse(-40, -30, 60, 40);
          ellipse(40, -30, 60, 40);
-
-         
+    // Eye pupils
+        fill(220,80,100);
+        noStroke();
+        ellipse(-40,-30, 25, 25);
+        ellipse(40,-30, 25, 25);
         
 }
 
@@ -95,7 +98,7 @@ function drawMouth() {
                 // Add smile lines
                 strokeWeight(1);
                 line(-10, 35, -30, 30);
-               line(10, 35, 30, 30);
+                line(10, 35, 30, 30);
             } else {
                 // Neutral mouth
                 line(-10, 50, 15, 50);
