@@ -55,6 +55,17 @@ function draw() {
             eyeFollowX = lerp(eyeFollowX, mouseX, 0.5);
             eyeFollowY = lerp(eyeFollowY, mouseY, 0.5);
 
+             if (time % 180 == 0) { 
+                isBlinking = true;
+                blinkTimer = 0;
+            }
+            if (isBlinking) {
+                blinkTimer++;
+                if (blinkTimer > 15) { 
+                    isBlinking = false;
+                }
+            }
+
     let faceSize = 200 + breathingPhase * 20;
         push();
             translate(width/2, height/2); 
@@ -80,11 +91,30 @@ function drawEyes() {
          ellipse(-40, -30, 60, 40);
          ellipse(40, -30, 60, 40);
 
+         // conditional for blinking
+         if (!isBlinking) {
+                // Eye pupils follow mouse with constrain
+                let eyeOffsetX = map(eyeFollowX, 0, width, -15, 15);
+                let eyeOffsetY = map(eyeFollowY, 0, height, -10, 10);
+                
+                // Constrain eye movement
+                eyeOffsetX = constrain(eyeOffsetX, -15, 15);
+                eyeOffsetY = constrain(eyeOffsetY, -10, 10);
+                
+
     // Eye pupils
         fill(220,80,20);
         noStroke();
-        ellipse(-40,-30, 25, 25);
-        ellipse(40,-30, 25, 25);
+        ellipse(-40 * eyeOffsetX,-30 * eyeOffsetY, 25, 25);
+        ellipse(40 * eyeOffsetX,-30 * eyeOffsetY, 25, 25);
+ }      
+        else {
+                // Closed blinking eyes 
+                stroke(0, 0, 0);
+                strokeWeight(3);
+                line(-65, -30, -15, -30);
+                line(15, -30, 65, -30);
+            }
         
 }
 
