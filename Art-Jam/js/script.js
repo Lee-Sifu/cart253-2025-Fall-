@@ -79,7 +79,7 @@ function draw() {
 
             drawMouth();
            // drawHair();
-           // drawNose();
+            drawNose();
         pop();
     
 }
@@ -102,40 +102,46 @@ function drawEyes() {
                 eyeOffsetY = constrain(eyeOffsetY, -10, 10);
                 
 
-    // Eye pupils
+        // Eye pupils
         fill(220,80,20);
         noStroke();
         ellipse(-40 + eyeOffsetX,-30 + eyeOffsetY, 25, 25);
         ellipse(40 + eyeOffsetX,-30 + eyeOffsetY, 25, 25);
  }      
         else {
-                // Closed blinking eyes 
-                stroke(0, 0, 0);
-                strokeWeight(3);
-                line(-65, -30, -15, -30);
-                line(15, -30, 65, -30);
+            // Closed blinking eyes 
+            stroke(0, 0, 0);
+            strokeWeight(3);
+            line(-65, -30, -15, -30);
+            line(15, -30, 65, -30);
             }
         
 }
 
 function drawMouth() {
-         stroke(350, 70, 40);
-         strokeWeight(3);
-         noFill();
+           stroke(350, 70, 40);
+           strokeWeight(3);
+           noFill();
             
             // Mouth changes based on mood (conditional)
             if (currentMood === 'sad') {
-                // Sad mouth
-                arc(0, 50, 40, 20, radians(200), radians(260));
+            // Sad mouth
+            arc(0, 50, 40, 20, radians(200), radians(260));
            } else if (currentMood === 'happy') {
-                // Happy mouth
-                arc(0, 45, 50, 30, 0, PI);
-                // Add smile lines
-                strokeWeight(1);
-                line(-10, 35, -30, 30);
-                line(10, 35, 30, 30);
+            // Happy mouth
+            arc(0, 45, 50, 30, 0, PI);
+            // Add smile lines
+            strokeWeight(1);
+            line(-10, 35, -30, 30);
+            line(10, 35, 30, 30);
             } else {
-                // Neutral mouth
-                line(-10, 50, 15, 50);
+            // Neutral mouth
+            line(-10, 50, 15, 50);
             }
         }
+function drawNose() {
+            fill(30, 70, 20);
+            stroke(20, 80, 30);
+            strokeWeight(2);
+            triangle(0, -10, -10, 10, 10, 10);
+}
