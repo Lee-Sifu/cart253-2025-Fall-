@@ -146,7 +146,7 @@ function drawNose() {
 }
 function drawHair() {
     stroke(30, 70, 20);
-    strokeWeight(4);
+    strokeWeight(2);
     noFill();
     for (let angle = 180; angle < 360; angle += 15) {
                 let rad = radians(angle);
