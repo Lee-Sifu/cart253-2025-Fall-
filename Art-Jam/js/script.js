@@ -148,14 +148,15 @@ function drawHair() {
     stroke(30, 70, 20);
     strokeWeight(4);
     noFill();
-    for (let angle = 180; angle < 100; angle += 15) {
+    for (let angle = 180; angle < 360; angle += 15) {
                 let rad = radians(angle);
                 let hairLength = 120 + noise(angle * 0.1, time * 0.01) * 80;
                 let hairWave = sin(time * 0.02 + angle * 0.1) * 20;
                 
                 let x1 = cos(rad) * 100;
                 let y1 = sin(rad) * 110;
-                let x2 = cos(rad) * (100 + hairLength) + hairWave;
-                let y2 = sin(rad) * (110 + hairLength) + hairWave;
+                let x2 = cos(rad) * hairLength + hairWave;
+                let y2 = sin(rad) * hairLength + hairWave;
+                line(x1, y1, x2, y2);
     }
 }
