@@ -32,6 +32,7 @@ function draw() {
     score += 0.05;
   }
   displayUI();
+
 }
 
 /**
@@ -47,6 +48,7 @@ function displayUI() {
     pop();
   }
   displayScore();
+  lose();
 }
 
 /**
