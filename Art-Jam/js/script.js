@@ -50,8 +50,8 @@ function draw() {
         fill(0, 0, 100);
         noStroke();
         textAlign(CENTER, TOP);
-        textSize(20);
-        text("Move the mouse left, center, or right to change my mood!", width/2, height - 30);
+        textSize(25);
+        text("Move the mouse left, center, or right to change my mood!", width/2, 20);
 
     if (mouseX < width/2) {
                 currentMood = 'sad';
