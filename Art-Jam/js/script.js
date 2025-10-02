@@ -53,6 +53,7 @@ function draw() {
         textSize(25);
         text("Move the mouse left, center, or right to change my mood!", width/2, 20);
 
+    // Change mood based on mouseX position
     if (mouseX < width/2) {
                 currentMood = 'sad';
             } else if (mouseX > 2*width/3) {
@@ -136,7 +137,8 @@ function drawMouth() {
             if (currentMood === 'sad') {
             // Sad mouth
             arc(0, 50, 40, 20, radians(200), radians(260));
-           } else if (currentMood === 'happy') {
+           } else if (currentMood === 'happy') 
+            {
             // Happy mouth
             arc(0, 45, 50, 30, 0, PI);
             // Add smile lines
@@ -158,6 +160,8 @@ function drawHair() {
     stroke(30, 70, 20);
     strokeWeight(2);
     noFill();
+    
+    // Hair strands with noise for movement
     for (let angle = 180; angle < 360; angle += 0.1) {
                 let rad = radians(angle);
                 let hairLength = 120 + noise(angle * 0.1, time * 0.01) * 50;
