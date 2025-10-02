@@ -28,7 +28,7 @@ let currentMood = 'neutral';
 function setup() {
     createCanvas(800, 800);
     background(220, 200, 150); 
-    colorMode(HSB, 360, 100, 100); 
+    colorMode(HSB, 360, 100, 100, 100); 
 }
 
 
@@ -66,8 +66,16 @@ function draw() {
                 }
             }
 
-
     let faceSize = 200 + breathingPhase * 20;
+
+     // Display current mood and instructions
+            fill(0, 0, 0);
+            textAlign(LEFT);
+            textSize(16);
+            text("Current Mood: " + currentMood, 20, 30);
+            text("Move mouse to change mood and eye direction", 20, 50);
+            text("Left: Melancholy, Center: Calm, Right: Energetic", 20, 70);
+      
             translate(width/2, height/2); 
             stroke(30, 70, 20);
             strokeWeight(3);
