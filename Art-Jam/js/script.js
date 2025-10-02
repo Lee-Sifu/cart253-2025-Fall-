@@ -67,7 +67,15 @@ function draw() {
             }
 
     let faceSize = 200 + breathingPhase * 20;
-        push();
+
+     // Display current mood and instructions
+            fill(0, 0, 0);
+            textAlign(LEFT);
+            textSize(16);
+            text("Current Mood: " + currentMood, 20, 30);
+            text("Move mouse to change mood and eye direction", 20, 50);
+            text("Left: Melancholy, Center: Calm, Right: Energetic", 20, 70);
+      
             translate(width/2, height/2); 
             stroke(30, 70, 20);
             strokeWeight(3);
@@ -78,9 +86,7 @@ function draw() {
             drawEyes();
             drawMouth();
             drawHair();
-            drawNose();
-        pop();
-    
+            drawNose();    
 }
 
 function drawEyes() {
