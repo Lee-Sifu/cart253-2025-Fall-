@@ -3,8 +3,11 @@
  * By Jason Lee
  * 
  * This is a description of my self-portrait project.
- * It is supposed to be a fun and creative representation of myself.
- * This will showcase some proceduralism in my self-portrait.
+ * It is supposed to be a fun and creative version of myself.
+ * This will showcase some proceduralism in my self-portrait. 
+ * Such as a dynamic background, breathing animation, and hair movement.
+ * Mouse interaction will also be implemented to make the eyes follow the mouse
+ * and change the facial expression based on mouse position.
  */
 
 "use strict";
@@ -43,6 +46,13 @@ function draw() {
         breathingPhase = sin(time * 0.06) * 0.2; // Breathing animation
         moodTimer++;
 
+        // Text instructions
+        fill(0, 0, 100);
+        noStroke();
+        textAlign(LEFT);
+        textSize(16);
+        text("Move the mouse left, center, or right to change my mood!", width/2, height - 30);
+
     if (mouseX < width/2) {
                 currentMood = 'sad';
             } else if (mouseX > 2*width/3) {
@@ -65,7 +75,7 @@ function draw() {
                     isBlinking = false;
                 }
             }
-
+    // Face size changes with breathing
     let faceSize = 200 + breathingPhase * 20;
         push();
             translate(width/2, height/2); 
