@@ -62,3 +62,12 @@ function displayScore() {
   text(floor(score), width/2, height/2);
   pop();
 }
+
+function lose() {
+  if (keyPressed) {
+    gameOver = true;
+  }
+  else {
+    gameOver = false;
+  }
+}
