@@ -49,8 +49,8 @@ function draw() {
         // Text instructions
         fill(0, 0, 100);
         noStroke();
-        textAlign(LEFT);
-        textSize(16);
+        textAlign(CENTER, LEFT);
+        textSize(20);
         text("Move the mouse left, center, or right to change my mood!", width/2, height - 30);
 
     if (mouseX < width/2) {
