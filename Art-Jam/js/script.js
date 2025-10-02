@@ -148,7 +148,7 @@ function drawHair() {
     stroke(30, 70, 20);
     strokeWeight(2);
     noFill();
-    for (let angle = 180; angle < 360; angle += 15) {
+    for (let angle = 180; angle < 360; angle += 5) {
                 let rad = radians(angle);
                 let hairLength = 120 + noise(angle * 0.1, time * 0.01) * 80;
                 let hairWave = sin(time * 0.02 + angle * 0.1) * 20;
