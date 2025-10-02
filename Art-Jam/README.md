@@ -6,8 +6,9 @@ By Jason Lee
 
 ## Description
 
-This Project showcases a self-portrait in p5.js. I wanted to do something procedural-like and did research on youtube videos that showcases sine and cosine that fits what I was looking for. 
-One of the main things I tried to do was when the mouse moves, the portrait face showcases some emotion depending where you put your mouse. This would give the user some interaction with the canvas and made a changing background to give some procedural feeling.
+This Project showcases a self-portrait in p5.js. I wanted to do something procedural-like and did research on youtube videos as well as used the P5 reference site that showcases sine, cosine and lerp that fits what I was looking for. 
+One of the main things I tried to do was when the mouse moves, the portrait face showcases some emotion depending where you put your mouse. This would give the user some interaction with the canvas and made a changing background to give some procedural/interactive feeling.
+
 
 ## Screenshot(s)
 
