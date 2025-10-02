@@ -27,7 +27,7 @@ let currentMood = 'neutral';
  // Possible values: "happy", "sad", "neutral"
 function setup() {
     createCanvas(800, 800);
-    background(220, 200, 150); 
+    background(220, 20, 100); 
     colorMode(HSB, 360, 100, 100, 100); 
 }
 
@@ -38,9 +38,9 @@ function setup() {
 function draw() {
     
     let bgHue = (220 + sin(time * 0.01) * 20) % 360;
-        background(bgHue, 200, 150);
+        background(bgHue, 20, 150);
         time++;
-        breathingPhase = sin(time * 0.05) * 0.3; // Breathing animation
+        breathingPhase = sin(time * 0.05) * 0.2; // Breathing animation
         moodTimer++;
 
     if (mouseX < width/2) {
@@ -130,9 +130,9 @@ function drawMouth() {
             // Happy mouth
             arc(0, 45, 50, 30, 0, PI);
             // Add smile lines
-            strokeWeight(1);
-            line(-10, 35, -30, 30);
-            line(10, 35, 30, 30);
+            //strokeWeight(1);
+           // line(-10, 35, -30, 30);
+           // line(10, 35, 30, 30);
             } else {
             // Neutral mouth
             line(-10, 50, 15, 50);
