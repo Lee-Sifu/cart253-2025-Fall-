@@ -37,10 +37,10 @@ function setup() {
 */
 function draw() {
     
-    let bgHue = (220 + sin(time * 0.01) * 20) % 360;
+    let bgHue = (220 + sin(time * 0.01) * 50) % 360;
         background(bgHue, 20, 150);
         time++;
-        breathingPhase = sin(time * 0.05) * 0.2; // Breathing animation
+        breathingPhase = sin(time * 0.06) * 0.2; // Breathing animation
         moodTimer++;
 
     if (mouseX < width/2) {
