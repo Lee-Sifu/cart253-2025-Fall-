@@ -28,7 +28,7 @@ let currentMood = 'neutral';
 function setup() {
     createCanvas(800, 800);
     background(220, 200, 150); 
-    colorMode(HSB, 360, 100, 100); 
+    colorMode(HSB, 360, 100, 100, 100); 
 }
 
 
@@ -66,8 +66,8 @@ function draw() {
                 }
             }
 
-
     let faceSize = 200 + breathingPhase * 20;
+        push();
             translate(width/2, height/2); 
             stroke(30, 70, 20);
             strokeWeight(3);
@@ -78,7 +78,9 @@ function draw() {
             drawEyes();
             drawMouth();
             drawHair();
-            drawNose();    
+            drawNose();
+        pop();
+    
 }
 
 function drawEyes() {
