@@ -49,7 +49,7 @@ function draw() {
         // Text instructions
         fill(0, 0, 100);
         noStroke();
-        textAlign(CENTER, TOP);
+        textAlign(CENTER);
         textSize(25);
         text("Move the mouse left, center, or right to change my mood!", width/2, 20);
 
