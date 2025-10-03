@@ -72,7 +72,7 @@ function draw() {
             }
     // Face size changes with breathing
     let faceSize = 200 + breathingPhase * 10;
-       push();
+       //push();
             translate(width/2, height/2); 
             stroke(30, 70, 20);
             strokeWeight(3);
@@ -85,7 +85,7 @@ function draw() {
             drawMouth();
             drawHair();
             drawNose();
-         pop();
+         //pop();
 
         // Text instructions
         fill(0, 0, 100);
