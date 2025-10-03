@@ -141,11 +141,11 @@ function drawBody() {
             endShape(CLOSE);
 
             // Add hands
-            fill(30, 70, 20);
+            fill(35, 40, 80);
             stroke(20, 80, 30);
             strokeWeight(2);
-            ellipse(-85, 320 + leftArmWave, 30, 20);
-            ellipse(85, 320 + rightArmWave, 30, 20);
+            ellipse(-95, 320 + leftArmWave, 30, 20);
+            ellipse(95, 320 + rightArmWave, 30, 20);
 }
 
 function drawEyes() {
