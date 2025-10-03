@@ -95,7 +95,7 @@ function draw() {
     
 }
 function drawBody() {
-            fill(30, 70, 20);
+            fill(35, 40, 80);
             stroke(20, 80, 30);
             strokeWeight(2);
 
