@@ -100,7 +100,7 @@ function drawBody() {
             strokeWeight(2);
 
             // Neck
-            let neckWidth = 60 + breathingPhase * 5;
+            let neckWidth = 40 + breathingPhase * 3;
             rect(-neckWidth/2, 100, neckWidth, 60);
             // Draw shoulders and torso
             fill(200, 60, 50);  // Shirt color (blue)
