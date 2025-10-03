@@ -217,16 +217,17 @@ function drawNose() {
             endShape(CLOSE);
 }   
 function drawHair() {
-    stroke(30, 70, 20);
-    strokeWeight(2);
-    noFill();
+         stroke(30, 70, 20);
+         strokeWeight(2);
+         noFill();
 
     // Hair strands with noise for movement
     for (let angle = 180; angle < 360; angle += 0.1) {
                 let rad = radians(angle);
                 let hairLength = 120 + noise(angle * 0.1, time * 0.01) * 50;
                 let hairWave = sin(time * 0.02 + angle * 0.1) * 20;
-                
+
+                // Calculate hair strand end position
                 let x1 = cos(rad) * 100;
                 let y1 = sin(rad) * 110;
                 let x2 = cos(rad) * hairLength + hairWave;
