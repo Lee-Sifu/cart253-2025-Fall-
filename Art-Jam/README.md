@@ -2,7 +2,7 @@ Procedural-Lee
 
 By Jason Lee
 
-[View this project online](URL_FOR_THE_RUNNING_PROJECT)
+[View this project online](https://lee-sifu.github.io/cart253-2025-Fall-/Art-Jam/)
 
 ## Description
 
