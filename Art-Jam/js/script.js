@@ -114,6 +114,21 @@ function drawBody() {
             vertex(80, 350);    // Right bottom
             vertex(-80, 350);   // Left bottom
             endShape(CLOSE);
+
+            // Draw arms
+            fill(200, 60, 50);
+            stroke(200, 80, 30);
+            strokeWeight(2);
+
+            // left arm
+             let leftArmWave = sin(time * 0.03) * 5;
+            beginShape();
+            vertex(-60, 160); 
+            vertex(-90, 200 + leftArmWave);
+            vertex(-95, 300 + leftArmWave);
+            vertex(-80, 310 + leftArmWave);
+            vertex(-55, 240);
+            endShape(CLOSE);
 }
 
 function drawEyes() {
