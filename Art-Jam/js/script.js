@@ -123,9 +123,9 @@ function drawEyes() {
             stroke(0, 0, 0);
             strokeWeight(3);
             line(-65, -30, -15, -30);
-            line(15, -30, 65, -30);
+            line(15, -30, 65, -30); 
             }
-        
+         
 }
 
 function drawMouth() {
@@ -154,13 +154,18 @@ function drawNose() {
             fill(30, 70, 20);
             stroke(20, 80, 30);
             strokeWeight(2);
-            triangle(0, -10, -10, 10, 10, 10);
-}
+            beginShape();
+            vertex(0, -10);
+            vertex(-5, 10);
+            vertex(5, 10);
+            vertex(0, -10);
+            endShape(CLOSE);
+}   
 function drawHair() {
     stroke(30, 70, 20);
     strokeWeight(2);
     noFill();
-    
+
     // Hair strands with noise for movement
     for (let angle = 180; angle < 360; angle += 0.1) {
                 let rad = radians(angle);
