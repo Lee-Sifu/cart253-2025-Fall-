@@ -77,7 +77,7 @@ function draw() {
                 }
             }
     // Face size changes with breathing
-    let faceSize = 200 + breathingPhase * 20;
+    let faceSize = 200 + breathingPhase * 10;
         push();
             translate(width/2, height/2); 
             stroke(30, 70, 20);
@@ -95,13 +95,14 @@ function draw() {
     
 }
 function drawBody() {
-            fill(35, 40, 80);
+            // Draw neck
+            fill(35, 40, 85);
             stroke(30, 50, 60);
             strokeWeight(2);
 
             // Neck
-            let neckWidth = 40 + breathingPhase * 3;
-            rect(-neckWidth/2, 100, neckWidth, 60);
+            let neckWidth = 40 + breathingPhase * 5;
+            rect(-neckWidth/2, 110, neckWidth, 50);
             // Draw shoulders and torso
             fill(200, 60, 50);  // Shirt color (blue)
             stroke(200, 80, 30);
