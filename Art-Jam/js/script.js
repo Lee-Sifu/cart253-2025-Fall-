@@ -98,6 +98,22 @@ function drawBody() {
             fill(30, 70, 20);
             stroke(20, 80, 30);
             strokeWeight(2);
+
+            // Neck
+            let neckWidth = 60 + breathingPhase * 5;
+            rect(-neckWidth/2, 100, neckWidth, 60);
+            // Draw shoulders and torso
+            fill(200, 60, 50);  // Shirt color (blue)
+            stroke(200, 80, 30);
+            strokeWeight(2);
+
+            // Torso - trapezoid shape
+            beginShape();
+            vertex(-60, 160);   // Left shoulder
+            vertex(60, 160);    // Right shoulder
+            vertex(80, 350);    // Right bottom
+            vertex(-80, 350);   // Left bottom
+            endShape(CLOSE);
 }
 
 function drawEyes() {
