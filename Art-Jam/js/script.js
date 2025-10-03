@@ -47,13 +47,6 @@ function draw() {
         breathingPhase = sin(time * 0.06) * 0.2; // Breathing animation
         moodTimer++;
 
-        // Text instructions
-        fill(0, 0, 100);
-        noStroke();
-        textAlign(CENTER);
-        textSize(25);
-        text("Move the mouse left, center, or right to change my mood!", width/2, 20);
-
     // Change mood based on mouseX position
     if (mouseX < width/2) {
                 currentMood = 'sad';
@@ -79,7 +72,7 @@ function draw() {
             }
     // Face size changes with breathing
     let faceSize = 200 + breathingPhase * 10;
-        push();
+       push();
             translate(width/2, height/2); 
             stroke(30, 70, 20);
             strokeWeight(3);
@@ -92,8 +85,15 @@ function draw() {
             drawMouth();
             drawHair();
             drawNose();
-        pop();
-    
+         pop();
+
+        // Text instructions
+        fill(0, 0, 100);
+        noStroke();
+        textAlign(CENTER, TOP);
+        textSize(25);
+        text("Move the mouse left, center, or right to change my mood!", width/2, 50);
+       
 }
 function drawBody() {
             // Draw neck
