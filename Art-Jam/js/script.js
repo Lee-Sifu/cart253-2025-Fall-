@@ -96,7 +96,7 @@ function draw() {
 }
 function drawBody() {
             fill(35, 40, 80);
-            stroke(20, 80, 30);
+            stroke(30, 50, 60);
             strokeWeight(2);
 
             // Neck
