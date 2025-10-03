@@ -129,6 +129,16 @@ function drawBody() {
             vertex(-80, 310 + leftArmWave);
             vertex(-55, 240);
             endShape(CLOSE);
+
+            // right arm
+            let rightArmWave = sin(time * 0.03 + PI) * 5;
+            beginShape();
+            vertex(60, 160); 
+            vertex(90, 200 + rightArmWave);
+            vertex(95, 300 + rightArmWave);
+            vertex(80, 310 + rightArmWave);
+            vertex(55, 240);
+            endShape(CLOSE);
 }
 
 function drawEyes() {
