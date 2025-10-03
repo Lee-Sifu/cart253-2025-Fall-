@@ -15,9 +15,9 @@
 /**
  * Variables for self-portrait animation
 */
-let time =0;
-let breathingPhase =0;
-let blinkTimer =0;
+let time = 0;
+let breathingPhase = 0;
+let blinkTimer = 0;
 let isBlinking  = false;
 
 /** Variables for eyes movement */
@@ -27,6 +27,7 @@ let eyeFollowY = 0;
 /**Mood Variable for face expression*/
 let moodTimer = 0;
 let currentMood = 'neutral';
+
  // Possible values: "happy", "sad", "neutral"
 function setup() {
     createCanvas(800, 800);
