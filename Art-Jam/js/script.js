@@ -197,9 +197,9 @@ function drawMouth() {
             // Happy mouth
             arc(0, 45, 50, 30, 0, PI);
             // Add smile lines
-            strokeWeight(1);
-            arc(-30, 30, 20, 25, radians(20), radians(100));   // Left curve
-            arc(30, 30, 20, 25, radians(80), radians(100));    // Right curve
+            strokeWeight(4);
+            arc(-30, 35, 20, 25, radians(20), radians(100));   // Left curve
+            arc(30, 35, 20, 25, radians(80), radians(160));    // Right curve
             } else {
             // Neutral mouth
             line(-10, 50, 15, 50);
