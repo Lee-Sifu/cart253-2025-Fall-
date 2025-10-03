@@ -15,7 +15,7 @@ For user interaction, I tried to make the mouse moves so that the portrait face 
 
 This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
 
-> ![Image of a clown face](./assets/images/clown.png)
+> ![Image of my self portrait](./assets/images/Happy face.png) (./assets/images/Sad Face.png)
 
 ## Attribution
 
