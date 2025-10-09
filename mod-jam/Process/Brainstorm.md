@@ -15,3 +15,6 @@ Give frog a facial expression (If frog looses it shows a sad face or if frog win
 Add sound to frog (frog will have tongue sound when eating flies)
 Add sound to flies (good flies and bad flies will both have a distinct sound)
 Add different types of sounds to frog (ex. fly give frog different appetizer sound at random)
+Give frog different obstacles (After each level, flies radomly spawn at different angles plus added blocks to contrain the frog's tongue shot)
+Frog gives different comments to you (If frog wins, it will tell you "Good job!" or if frog looses it will say "Better luck next time")
+Each level difficulty increases (Early levels are easy, have more time limit. Later on you receive less good flies and lower time limit)
