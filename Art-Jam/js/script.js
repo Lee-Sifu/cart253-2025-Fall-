@@ -88,7 +88,7 @@ function draw() {
          pop();
 
         // Text instructions
-        fill(0, 0, 100);
+        fill(0, 0, 0);
         noStroke();
         textAlign(CENTER, TOP);
         textSize(25);
