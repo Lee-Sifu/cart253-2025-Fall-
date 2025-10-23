@@ -66,5 +66,22 @@ function drawFrog() {
     fill(frog.color);
     ellipse(frog.x, frog.y, frog.size);
 }
+function moveFly() {
 
+}
 
+function drawFly() {
+
+}
+
+function checkEat() {
+
+}
+
+function resetFly() {
+
+}
+
+function displayScore() {
+
+}
