@@ -62,14 +62,16 @@ function drawFrog() {
 }
 
 function moveFly() {
-fly.y += fly.speed;
-if (fly.y > height) {
+fly.x += fly.speed;
+if (fly.x > width) {
     resetFly();
 }
-}
+    }
+
 function drawFly() {
 fill(fly.color);
 ellipse(fly.x, fly.y, fly.size);
+
 }
 
 function checkEat() {
