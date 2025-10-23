@@ -1,9 +1,8 @@
 /**
  * Bouncy Ball Ball Bonanza
- * Pippin Barr
+ * Jason Lee, Liam St-Georges, Haolei Ma
  * 
- * The starting point for a ball-bouncing experience of
- * epic proportions!
+ * Here is our quick paddle ball game with two balls!
  */
 
 "use strict";
@@ -79,11 +78,10 @@ ball.y += ball.velocity.y;
 
 ball2.x += ball2.velocity.x;
 ball2.y += ball2.velocity.y;
-
 }
 
 /**
- * Bounces the provided ball off the provided paddle
+ * Bounces the provided ball off the provided paddle with some if and else statements.
  */
 function handleBounce(ball, paddle) {
     if (checkOverlap(ball, paddle)) {
