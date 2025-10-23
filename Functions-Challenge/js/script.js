@@ -19,6 +19,17 @@ const ball = {
         y: 10
     }
 };
+//Second ball
+ const ball2 = {
+    x: 200,
+    y: 50,
+    width: 10,
+    height: 10,
+    velocity: {
+        x: 0,
+        y: 8
+    }
+};
 
 // Our paddle
 const paddle = {
