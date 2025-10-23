@@ -25,7 +25,7 @@ let eyeFollowX = 0;
 let eyeFollowY = 0;
 
 /**Mood Variable for face expression*/
-let moodTimer = 0;
+
 let currentMood = 'neutral';
 
  // Possible values: "happy", "sad", "neutral"
@@ -41,11 +41,11 @@ function setup() {
 */
 function draw() {
     
-    let bgHue = (220 + sin(time * 0.01) * 50) % 360;
+    let bgHue = (220 + sin(time * 0.01) * 50) % 360; // Dynamic hue based on time
         background(bgHue, 20, 150);
-        time++;
+        time++; // Increment time for animation
         breathingPhase = sin(time * 0.06) * 0.2; // Breathing animation
-        moodTimer++;
+      
 
     // Change mood based on mouseX position
     if (mouseX < width/2) {
@@ -88,13 +88,14 @@ function draw() {
          pop();
 
         // Text instructions
-        fill(0, 0, 100);
+        fill(0, 0, 0);
         noStroke();
         textAlign(CENTER, TOP);
         textSize(25);
         text("Move the mouse left, center, or right to change my mood!", width/2, 60);
        
 }
+            // Body with breathing animation
 function drawBody() {
             // Draw neck
             fill(35, 40, 85);
@@ -149,7 +150,7 @@ function drawBody() {
             ellipse(-95, 320 + leftArmWave, 30, 20);
             ellipse(95, 320 + rightArmWave, 30, 20);
 }
-
+            // Eyes with pupils that follow mouse and blink
 function drawEyes() {
          fill(0, 0, 100);
          stroke(0, 0, 0);
@@ -183,7 +184,7 @@ function drawEyes() {
             }
          
 }
-
+            // Mouth changes based on mood
 function drawMouth() {
            stroke(350, 70, 40);
            strokeWeight(3);
@@ -206,6 +207,7 @@ function drawMouth() {
             line(-10, 50, 15, 50);
             }
         }
+         // Simple nose
 function drawNose() {
             fill(30, 70, 20);
             stroke(20, 80, 30);
@@ -217,6 +219,7 @@ function drawNose() {
             vertex(0, -10);
             endShape(CLOSE);
 }   
+    // Hair with noise for natural movement
 function drawHair() {
          stroke(30, 70, 20);
          strokeWeight(2);
@@ -234,5 +237,13 @@ function drawHair() {
                 let x2 = cos(rad) * hairLength + hairWave;
                 let y2 = sin(rad) * hairLength + hairWave;
                 line(x1, y1, x2, y2);
+    // In order to introduce a more organic, unpredictable variation, I turned to noise() for the hair movement instead of using random() or even frameCount(). 
+    // The function noise(angle * 0.1, time * 0.01) adds subtle, continuous randomness to the length and motion of each strand,
+    // making it seem as if the hair is swaying naturally in a light breeze, 
+    // rather than moving mechanically or jittering like it would with random values. 
+    // I used sin(time * 0.06) to make the face and neck gently expand and contract, mimicking a calm breathing animation. 
+    // A similar sine-based motion was applied to the arms, but with one wave offset by PI, so they move in opposite directions, creating a relaxed and balanced feel. 
+    // I also used sine functions to smoothly shift the background hue over time and to give the hair strands a gentle ripple, adding to the sense of realism.
+
     }
 }
