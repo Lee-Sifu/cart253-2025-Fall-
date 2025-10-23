@@ -27,7 +27,7 @@ const fly = {
 
 let score = 0;
 function setup() {
-createcanvas(500, 500);
+createCanvas(500, 500);
 }
 
 
@@ -35,5 +35,5 @@ createcanvas(500, 500);
  * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
 */
 function draw() {
-
+    background(200, 225, 255);
 }
