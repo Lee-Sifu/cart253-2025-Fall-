@@ -29,6 +29,8 @@ const fly = {
 let score = 0;
 function setup() {
 createCanvas(500, 500);
+
+resetFly();
 }
 
 
@@ -44,3 +46,25 @@ function draw() {
     checkEat();
     displayScore();
 }
+
+function moveFrog() {
+    if (keyIsDown(LEFT_ARROW)) {
+        frog.x -= 5;
+    }
+    if (keyIsDown(RIGHT_ARROW)) {
+        frog.x += 5;
+    }
+    if (keyIsDown(UP_ARROW)) {
+        frog.y -= 5;
+    }
+    if (keyIsDown(DOWN_ARROW)) {
+        frog.y += 5;
+    }
+}
+
+function drawFrog() {
+    fill(frog.color);
+    ellipse(frog.x, frog.y, frog.size);
+}
+
+
