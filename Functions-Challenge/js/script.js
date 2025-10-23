@@ -27,7 +27,7 @@ const ball = {
     height: 10,
     velocity: {
         x: 0,
-        y: 3
+        y: 5
     }
 };
 
@@ -79,6 +79,7 @@ ball.y += ball.velocity.y;
 
 ball2.x += ball2.velocity.x;
 ball2.y += ball2.velocity.y;
+
 }
 
 /**
@@ -104,7 +105,6 @@ function handleBounce(ball, paddle) {
         ball2.y = 0;
     }
 }
-
 /**
  * Draws the specified paddle on the canvas
  */
