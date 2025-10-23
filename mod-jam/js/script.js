@@ -27,7 +27,7 @@ const fly = {
 
 let score = 0;
 function setup() {
-
+createcanvas(500, 500);
 }
 
 
