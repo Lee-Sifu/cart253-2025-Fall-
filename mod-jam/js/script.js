@@ -70,7 +70,7 @@ if (fly.x > width) {
 
 function drawFly() {
 fill(fly.color);
-ellipse(fly.x, fly.y, fly.size);
+ellipse(fly.x, fly.y, fly.size); 
 
 }
 
@@ -79,7 +79,8 @@ function checkEat() {
 }
 
 function resetFly() {
-
+fly.x = 0;
+fly.y = random(50, 150);
 }
 
 function displayScore() {
