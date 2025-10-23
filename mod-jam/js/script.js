@@ -1,15 +1,15 @@
 /**
  * Title of Project
- * Author Name
+ * Jason Lee
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * This my frog game where you need to eat flies to score points and be alive.
+ * 
  */
 
 "use strict";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ * 
 */
 function setup() {
 
