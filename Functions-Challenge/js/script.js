@@ -27,7 +27,7 @@ const ball = {
     height: 10,
     velocity: {
         x: 0,
-        y: 8
+        y: 3
     }
 };
 
@@ -60,6 +60,7 @@ function draw() {
 
     drawPaddle(paddle);
     drawBall(ball);
+    drawBall(ball2);
 }
 
 /**
@@ -75,6 +76,9 @@ paddle.x = mouseX;
 function moveBall(ball) {
 ball.x += ball.velocity.x;
 ball.y += ball.velocity.y;
+
+ball2.x += ball2.velocity.x;
+ball2.y += ball2.velocity.y;
 }
 
 /**
@@ -105,6 +109,14 @@ function drawBall(ball) {
     noStroke();
     fill("pink");
     rect(ball.x, ball.y, ball.width, ball.height);
+    pop();
+}
+function drawBall2(ball2) {
+    push();
+    rectMode(CENTER);
+    noStroke();
+    fill("purple");
+    rect(ball2.x, ball2.y, ball2.width, ball2.height);
     pop();
 }
 
