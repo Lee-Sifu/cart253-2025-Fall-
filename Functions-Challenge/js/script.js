@@ -91,11 +91,17 @@ function handleBounce(ball, paddle) {
     else if (ball.y < 0 || ball.y > width) {
         ball.velocity.y *= -1;
     }
+    else if (ball.y > height) {
+        ball.y = 0;
+    }
     if (checkOverlap(ball2, paddle)) {
         ball2.velocity.y *= -1;
     }
     else if (ball2.y < 0 || ball2.y > width) {
         ball2.velocity.y *= -1;
+    }
+    else if (ball2.y > height) {
+        ball2.y = 0;
     }
 }
 
@@ -122,14 +128,7 @@ function drawBall(ball) {
     rect(ball.x, ball.y, ball.width, ball.height);
     pop();
 }
-function drawBall2(ball2) {
-    push();
-    rectMode(CENTER);
-    noStroke();
-    fill("purple");
-    rect(ball2.x, ball2.y, ball2.width, ball2.height);
-    pop();
-}
+
 
 /**
  * Returns true if rectA and rectB overlap, and false otherwise
