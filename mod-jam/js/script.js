@@ -66,7 +66,7 @@ fly.y += fly.speed;
 if (fly.y > height) {
     resetFly();
 }
-
+}
 function drawFly() {
 fill(fly.color);
 ellipse(fly.x, fly.y, fly.size);
@@ -84,4 +84,4 @@ function displayScore() {
 
 }
 
-    }
+    
