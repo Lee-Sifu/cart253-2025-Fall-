@@ -13,7 +13,7 @@
 */
 const frog = {
     x: 250,
-    y: 250,
+    y: 500,
     size: 50,
     color: 'green'
 }
