@@ -22,7 +22,8 @@ const fly = {
     x: 100,
     y: 100,
     size: 25,
-    color: 'black'
+    speed: 3,
+    color: 'black'  
 }
 
 let score = 0;
@@ -32,8 +33,14 @@ createCanvas(500, 500);
 
 
 /**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
+ * Here is all my functions in draw
 */
 function draw() {
     background(200, 225, 255);
+    moveFrog();
+    moveFly();
+    drawFrog();
+    drawFly();
+    checkEat();
+    displayScore();
 }
