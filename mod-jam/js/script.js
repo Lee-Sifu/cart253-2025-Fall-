@@ -60,12 +60,16 @@ function drawFrog() {
     fill(frog.color);
     ellipse(frog.x, frog.y, frog.size);
 }
-function moveFly() {
 
+function moveFly() {
+fly.y += fly.speed;
+if (fly.y > height) {
+    resetFly();
 }
 
 function drawFly() {
-
+fill(fly.color);
+ellipse(fly.x, fly.y, fly.size);
 }
 
 function checkEat() {
@@ -79,3 +83,5 @@ function resetFly() {
 function displayScore() {
 
 }
+
+    }
