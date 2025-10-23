@@ -15,7 +15,7 @@ const ball = {
     height: 10,
     velocity: {
         x: 0,
-        y: 2
+        y: 3
     }
 };
 //Second ball
