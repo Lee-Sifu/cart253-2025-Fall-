@@ -88,7 +88,13 @@ function handleBounce(ball, paddle) {
     if (checkOverlap(ball, paddle)) {
         ball.velocity.y *= -1;
     }
+    else if (ball.y < 0 || ball.y > width) {
+        ball.velocity.y *= -1;
+    }
     if (checkOverlap(ball2, paddle)) {
+        ball2.velocity.y *= -1;
+    }
+    else if (ball2.y < 0 || ball2.y > width) {
         ball2.velocity.y *= -1;
     }
 }
