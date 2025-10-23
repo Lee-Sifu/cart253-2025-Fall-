@@ -11,6 +11,21 @@
 /**
  * 
 */
+const frog = {
+    x: 250,
+    y: 250,
+    size: 50,
+    color: 'green'
+}
+
+const fly = {
+    x: 100,
+    y: 100,
+    size: 25,
+    color: 'black'
+}
+
+let score = 0;
 function setup() {
 
 }
