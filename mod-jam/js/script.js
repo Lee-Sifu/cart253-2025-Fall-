@@ -22,7 +22,7 @@ const tongue = {
             x: 250,
             y: 500,
             length: 0,
-            maxLength: 200,
+            maxLength: 420,
             speed: 20,
             state: 'idle', // idle, extending, retracting
             targetX: 0,
