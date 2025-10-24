@@ -55,6 +55,7 @@ function draw() {
     drawFrog();
     drawFly();
     drawTongue();
+    updateTongue();
     checkEat();
     displayScore();
 }
@@ -105,6 +106,17 @@ function drawTongue() {
         strokeWeight(5);
         line(frog.x, frog.y, frog.x + tongue.length, frog.y);
         noStroke();
+    }
+}
+
+function updateTongue() {
+    if (tongue.state === 'extending' || tongue.state === 'retracting') {
+        let angle = atan2(tongue.targetY - frog.y, tongue.targetX - frog.x);
+        tongue.x = frog.x + tongue.length * cos(angle);
+        tongue.y = frog.y + tongue.length * sin(angle);
+    } else {
+        tongue.x = frog.x;
+        tongue.y = frog.y;
     }
 }
 
