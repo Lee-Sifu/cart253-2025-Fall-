@@ -110,21 +110,25 @@ function drawTongue() {
 }
 
 function updateTongue() {
-    if (tongue.state === 'extending' || tongue.state === 'retracting') {
-        
-        tongue.x = frog.x + tongue.length * cos(angle);
-        tongue.y = frog.y + tongue.length * sin(angle);
-    } else {
-        tongue.x = frog.x;
-        tongue.y = frog.y - tongue.length;
+    if (tongue.state === 'extending') {
+        tongue.length += tongue.speed;
+        if (tongue.length >= tongue.maxLength) {
+            tongue.state = 'retracting';
+        }
+    } else if (tongue.state === 'retracting') {
+        tongue.length -= tongue.speed;
+        if (tongue.length <= 0) {
+            tongue.length = 0;
+            tongue.state = 'idle';
+        }
     }
+    tongue.x = frog.x;
+    tongue.y = frog.y - tongue.length;
 }
 
 function mousePressed() {
     if (tongue.state === 'idle') {
         tongue.state = 'extending';
-        tongue.targetX = mouseX;
-        tongue.targetY = mouseY;
     }
 }
 
