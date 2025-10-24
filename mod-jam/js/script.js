@@ -18,6 +18,17 @@ const frog = {
     color: 'green'
 }
 
+const tongue = {
+            x: 250,
+            y: 500,
+            length: 0,
+            maxLength: 200,
+            speed: 20,
+            state: 'idle', // idle, extending, retracting
+            targetX: 0,
+            targetY: 0
+        } 
+
 const fly = {
     x: 100,
     y: 100,
