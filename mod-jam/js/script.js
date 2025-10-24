@@ -25,8 +25,6 @@ const tongue = {
             maxLength: 420,
             speed: 20,
             state: 'idle', // idle, extending, retracting
-            targetX: 0,
-            targetY: 0
         } 
 
 const fly = {
@@ -100,8 +98,8 @@ function updateTongue() {
             tongue.state = 'idle';
         }
     }
-    tongue.x = frog.x;
-    tongue.y = frog.y - tongue.length;
+    tongue.x = frog.x + cos(tongue.angle) * tongue.length;
+    tongue.y = frog.y + sin(tongue.angle) * tongue.length;
 }
 
 function drawTongue() {
@@ -116,6 +114,7 @@ function drawTongue() {
 function mousePressed() {
     if (tongue.state === 'idle') {
         tongue.state = 'extending';
+        tongue.angle = atan2(mouseY - frog.y, mouseX - frog.x);
     }
 }
 
