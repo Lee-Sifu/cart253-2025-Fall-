@@ -54,8 +54,8 @@ function draw() {
     moveFly();
     drawFrog();
     drawFly();
-    drawTongue();
     updateTongue();
+    drawTongue();
     checkEat();
     displayScore();
 }
@@ -87,28 +87,6 @@ ellipse(fly.x, fly.y, fly.size);
 
 }
 
-function drawTongue() {
-    if (tongue.state === 'extending') {
-        tongue.length += tongue.speed;
-        if (tongue.length >= tongue.maxLength) {
-            tongue.state = 'retracting';
-        }
-    } else if (tongue.state === 'retracting') {
-        tongue.length -= tongue.speed;
-        if (tongue.length <= 0) {
-            tongue.length = 0;
-            tongue.state = 'idle';
-        }
-    }
-
-    if (tongue.state !== 'idle') {
-        stroke(255, 0, 0);
-        strokeWeight(5);
-        line(frog.x, frog.y, frog.x + tongue.length, frog.y);
-        noStroke();
-    }
-}
-
 function updateTongue() {
     if (tongue.state === 'extending') {
         tongue.length += tongue.speed;
@@ -124,6 +102,15 @@ function updateTongue() {
     }
     tongue.x = frog.x;
     tongue.y = frog.y - tongue.length;
+}
+
+function drawTongue() {
+    if (tongue.state !== 'idle') {
+        stroke('red');
+        strokeWeight(5);
+        line(frog.x, frog.y, tongue.x, tongue.y);
+        noStroke();
+    }
 }
 
 function mousePressed() {
