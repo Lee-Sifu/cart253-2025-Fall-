@@ -13,8 +13,8 @@ let balls = []; // Will create it with createBall()
 function setup() {
   // Create the canvas
   createCanvas(400, 400);
-  // Create the ball
-  balls = createBall();
+ 
+
 }
 
 /**
@@ -44,9 +44,12 @@ function createBall() {
 function draw() {
   background("#87ceeb");
 
-  moveBall(balls[0]);
-  bounceBall(balls[0]);
-  drawBall(balls[0]);
+  // Loop through all balls
+  for (let ball of balls) {
+    moveBall(ball);
+    bounceBall(ball);
+    drawBall(ball);
+  }
 }
 
 /**
@@ -79,10 +82,15 @@ function bounceBall(ball) {
 /**
  * Draw the ball on the canvas
  */
-function drawBall() {
+function drawBall(ball) {
   push();
   noStroke();
   fill(ball.fill);
   ellipse(ball.x, ball.y, ball.size);
   pop();
+}
+
+// mousePressed to add more balls
+function mousePressed() {
+  balls.push(createBall());
 }
