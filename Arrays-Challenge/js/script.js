@@ -5,7 +5,7 @@
  * A ball that bounces around on the canvas
  */
 
-let ball1 = undefined; // Will create it with createBall()
+let balls = []; // Will create it with createBall()
 
 /**
  * Create the canvas and the ball
