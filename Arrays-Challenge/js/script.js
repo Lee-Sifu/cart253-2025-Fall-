@@ -1,6 +1,6 @@
 /**
- * Boingo
- * Pippin Barr
+ * Ball Bounce game
+ * Haolei, Jason
  *
  * A ball that bounces around on the canvas
  */
