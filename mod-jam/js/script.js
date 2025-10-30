@@ -19,6 +19,15 @@ const frog = {
     
 }
 
+const tongue = {
+            x: 250,
+            y: 500,
+            length: 0,
+            maxLength: 420,
+            speed: 20,
+            state: 'idle', // idle, extending, retracting
+        } 
+
 const fly = {
     x: 100,
     y: 100,
@@ -44,6 +53,8 @@ function draw() {
     moveFly();
     drawFrog();
     drawFly();
+    updateTongue();
+    drawTongue();
     checkEat();
     displayScore();
 }
@@ -73,6 +84,39 @@ function drawFly() {
 fill(fly.color);
 ellipse(fly.x, fly.y, fly.size); 
 
+}
+
+function updateTongue() {
+    if (tongue.state === 'extending') {
+        tongue.length += tongue.speed;
+        if (tongue.length >= tongue.maxLength) {
+            tongue.state = 'retracting';
+        }
+    } else if (tongue.state === 'retracting') {
+        tongue.length -= tongue.speed;
+        if (tongue.length <= 0) {
+            tongue.length = 0;
+            tongue.state = 'idle';
+        }
+    }
+    tongue.x = frog.x + cos(tongue.angle) * tongue.length;
+    tongue.y = frog.y + sin(tongue.angle) * tongue.length;
+}
+
+function drawTongue() {
+    if (tongue.state !== 'idle') {
+        stroke('red');
+        strokeWeight(5);
+        line(frog.x, frog.y, tongue.x, tongue.y);
+        noStroke();
+    }
+}
+
+function mousePressed() {
+    if (tongue.state === 'idle') {
+        tongue.state = 'extending';
+        tongue.angle = atan2(mouseY - frog.y, mouseX - frog.x);
+    }
 }
 
 function checkEat() {
