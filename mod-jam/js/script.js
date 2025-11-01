@@ -176,6 +176,9 @@ function displayGameStatus() {
     if (gameState === 'won') {
         textAlign(CENTER, CENTER);
         text('You Win!', width / 2, height / 2);
+        textSize(24);
+        text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
+        text('Press R to restart', width/2, height/2 + 80);
     } else if (gameState === 'lost') {
         textAlign(CENTER, CENTER);
         text('Game Over', width / 2, height / 2);
