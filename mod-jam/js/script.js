@@ -44,7 +44,7 @@ let gameState = 'playing'; // playing, gameOver, won
 
 function setup() {
 createCanvas(500, 500);
-
+timeRemaining = timeLimit;
 resetFly();
 }
 
@@ -54,14 +54,36 @@ resetFly();
 */
 function draw() {
     background(200, 225, 255);
+    if (gameState === 'playing') {
     moveFrog();
     moveFly();
     drawFrog();
     drawFly();
     updateTongue();
+    updateTimer();
     drawTongue();
     checkEat();
+} else {
+    drawFrog();
+    drawFly();
+}
     displayScore();
+    displayGameStatus();
+}
+
+function updateTimer() { 
+    if (gameState === 'playing') {
+        timeRemaining -= 1/60;
+  
+        if (timeRemaining <= 0) {
+            timeRemaining = 0;
+            gameState = 'lost';
+        }
+        
+        if (score >= targetScore) {
+            gameState = 'won';
+        }
+    }
 }
 
 function moveFrog() {
@@ -143,8 +165,22 @@ function displayScore() {
     fill(0);
     textSize(24);
     textAlign(LEFT, TOP);
-    text('Score: ' + score, 10, 10);
+    text('Score: ' + score + ' / ' + targetScore, 10, 10);
+    text('Time: ' + (timeRemaining) + 10, 40);
+}
 
+function displayGameStatus() {
+    fill(0);
+    textSize(24);
+    textAlign(RIGHT, TOP);
+    text('Time: ' + (timeRemaining), width - 10, 10);
+    if (gameState === 'won') {
+        textAlign(CENTER, CENTER);
+        text('You Win!', width / 2, height / 2);
+    } else if (gameState === 'lost') {
+        textAlign(CENTER, CENTER);
+        text('Game Over', width / 2, height / 2);
+    }
 }
 
     
