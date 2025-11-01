@@ -173,7 +173,6 @@ function displayGameStatus() {
     fill(0);
     textSize(24);
     textAlign(RIGHT, TOP);
-    text('Time: ' + (timeRemaining), width - 10, 10);
     if (gameState === 'won') {
         textAlign(CENTER, CENTER);
         text('You Win!', width / 2, height / 2);
