@@ -22,7 +22,7 @@ const tongue = {
             x: 250,
             y: 500,
             length: 0,
-            maxLength: 420,
+            maxLength: 500,
             speed: 20,
             state: 'idle', // idle, extending, retracting
         } 
@@ -36,6 +36,7 @@ const fly = {
 }
 
 let score = 0;
+
 function setup() {
 createCanvas(500, 500);
 
@@ -119,6 +120,12 @@ function mousePressed() {
 }
 
 function checkEat() {
+    let d = dist(tongue.x, tongue.y, fly.x, fly.y);
+    if (d < fly.size / 2 && tongue.state === 'extending') {
+        score++;
+        tongue.state = 'retracting';
+        resetFly();
+    }
 
 }
 
@@ -128,6 +135,10 @@ fly.y = random(50, 150);
 }
 
 function displayScore() {
+    fill(0);
+    textSize(24);
+    textAlign(LEFT, TOP);
+    text('Score: ' + score, 10, 10);
 
 }
 
