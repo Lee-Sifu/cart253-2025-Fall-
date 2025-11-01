@@ -166,7 +166,7 @@ function displayScore() {
     textSize(24);
     textAlign(LEFT, TOP);
     text('Score: ' + score + ' / ' + targetScore, 10, 10);
-    text('Time: ' + (timeRemaining) + 10, 40);
+    text('Time: ' + Math.ceil(timeRemaining) + 's', 10, 40);
 }
 
 function displayGameStatus() {
@@ -180,6 +180,9 @@ function displayGameStatus() {
     } else if (gameState === 'lost') {
         textAlign(CENTER, CENTER);
         text('Game Over', width / 2, height / 2);
+        textSize(24);
+        text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
+        text('Press R to restart', width/2, height/2 + 80);
     }
 }
 
