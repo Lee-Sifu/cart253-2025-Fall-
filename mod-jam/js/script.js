@@ -16,6 +16,7 @@ const frog = {
     y: 500,
     size: 50,
     color: 'green'
+    
 }
 
 const tongue = {
