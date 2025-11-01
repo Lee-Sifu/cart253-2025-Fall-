@@ -37,6 +37,10 @@ const fly = {
 }
 
 let score = 0;
+let targetScore = 5;
+let timeLimit = 30;
+let timeRemaining;
+let gameState = 'playing'; // playing, gameOver, won
 
 function setup() {
 createCanvas(500, 500);
