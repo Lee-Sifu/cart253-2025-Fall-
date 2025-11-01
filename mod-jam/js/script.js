@@ -87,10 +87,10 @@ function updateTimer() {
 }
 
 function moveFrog() {
-    if (keyIsDown(LEFT_ARROW) || key === 'A' || key === 'a') {
+    if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
         frog.x -= 5;
     }
-    if (keyIsDown(RIGHT_ARROW) || key === 'D' || key === 'd') {
+    if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
         frog.x += 5;
     }
 }
