@@ -183,4 +183,14 @@ function displayGameStatus() {
     }
 }
 
+function keyPressed() {
+    if (key === 'r' || key === 'R') {
+    score = 0;
+    timeRemaining = timeLimit;
+    gameState = 'playing';
+    tongue.state = 'idle';
+    tongue.length = 0;
+    resetFly();
+    }
+}
     
