@@ -250,7 +250,7 @@ function displayGameStatus() {
 }
 
 function keyPressed() {
-    if (key === 'r' || key === 'R') {
+    if ((key === 'r' || key === 'R') && gameState === 'lost') {
     score = 0;
     level = 1;
     targetScore = 5;
