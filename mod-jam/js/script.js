@@ -82,6 +82,8 @@ function nextLevel() {
         score = 0;
         gameState = 'playing';
         resetFly();
+    } else if (score <= targetScore && timeRemaining <= 0) {
+        gameState = 'lost';
     }
 }
 
@@ -178,6 +180,7 @@ function displayScore() {
     fill(0);
     textSize(24);
     textAlign(LEFT, TOP);
+    text('Level: ' + level, 10, 70);
     text('Score: ' + score + ' / ' + targetScore, 10, 10);
     text('Time: ' + Math.ceil(timeRemaining) + 's', 10, 40);
 }
@@ -204,6 +207,9 @@ function displayGameStatus() {
 function keyPressed() {
     if (key === 'r' || key === 'R') {
     score = 0;
+    level = 1;
+    targetScore = 5;
+    timeLimit = 30;
     timeRemaining = timeLimit;
     gameState = 'playing';
     tongue.state = 'idle';
