@@ -63,7 +63,6 @@ function draw() {
     drawFrog();
     drawFly();
     drawObstacles();
-    createObstacles();
     updateTongue();
     updateTimer();
     drawTongue();
