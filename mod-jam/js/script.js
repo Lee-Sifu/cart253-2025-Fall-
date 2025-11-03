@@ -63,6 +63,7 @@ function draw() {
     drawFrog();
     drawFly();
     drawObstacles();
+    checkTongueObstacleCollision(); 
     updateTongue();
     updateTimer();
     drawTongue();
@@ -109,6 +110,20 @@ function drawObstacles() {
    for (let obstacle of obstacles) {
         fill(obstacle.color);
         rect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+    }
+}
+
+function checkTongueObstacleCollision() {
+    for (let obstacle of obstacles) {
+        if (tongue.x > obstacle.x && 
+            tongue.x < obstacle.x + obstacle.width &&
+            tongue.y > obstacle.y && 
+            tongue.y < obstacle.y + obstacle.height) {
+           
+         if (tongue.state === 'extending') {
+             tongue.state = 'retracting';
+            }
+        }
     }
 }
 
