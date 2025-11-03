@@ -44,6 +44,8 @@ let gameState = 'playing'; // playing, gameOver, won
 let level = 1;
 let obstacles = [];
 let numObstacles = 0;
+let loseMessage = '';
+let winMessage = '';
 
 function setup() {
 createCanvas(500, 500);
@@ -134,10 +136,14 @@ function updateTimer() {
         if (timeRemaining <= 0) {
             timeRemaining = 0;
             gameState = 'lost';
+            let looseMessages = ['Git Gud', 'Skill Issue!!!', 'Try Harder!!!', 'Be Better', 'Stormtrooper Aim!!!'];
+            looseMessages = random(looseMessages);
         }
         
         if (score >= targetScore) {
             gameState = 'won';
+            let winMessages = ['Good Job!', 'You deserve a treat', 'GG', 'Better get 100% next time!', 'You Win!'];
+            winMessages = random(winMessages);
         }
     }
 }
@@ -231,13 +237,13 @@ function displayGameStatus() {
     textAlign(RIGHT, TOP);
     if (gameState === 'won') {
         textAlign(CENTER, CENTER);
-        text('You Win!', width / 2, height / 2);
+        text(winMessage, width / 2, height / 2);
         textSize(24);
         text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
         text('Press R to restart', width/2, height/2 + 80);
     } else if (gameState === 'lost') {
         textAlign(CENTER, CENTER);
-        text('Git Gud', width / 2, height / 2);
+        text(looseMessage, width / 2, height / 2);
         textSize(24);
         text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
         text('Press R to restart', width/2, height/2 + 80);
