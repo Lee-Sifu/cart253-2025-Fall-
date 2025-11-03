@@ -137,13 +137,13 @@ function updateTimer() {
             timeRemaining = 0;
             gameState = 'lost';
             let looseMessages = ['Git Gud', 'Skill Issue!!!', 'Try Harder!!!', 'Be Better', 'Stormtrooper Aim!!!'];
-            looseMessages = random(looseMessages);
+            looseMessage = random(looseMessages);
         }
         
         if (score >= targetScore) {
             gameState = 'won';
             let winMessages = ['Good Job!', 'You deserve a treat', 'GG', 'Better get 100% next time!', 'You Win!'];
-            winMessages = random(winMessages);
+            winMessage = random(winMessages);
         }
     }
 }
