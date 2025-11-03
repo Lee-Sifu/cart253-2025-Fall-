@@ -42,6 +42,8 @@ let timeLimit = 15;
 let timeRemaining;
 let gameState = 'playing'; // playing, gameOver, won
 let level = 1;
+let obstacles = [];
+let numObstacles = 0;
 
 function setup() {
 createCanvas(500, 500);
@@ -60,6 +62,8 @@ function draw() {
     moveFly();
     drawFrog();
     drawFly();
+    drawObstacles();
+    createObstacles();
     updateTongue();
     updateTimer();
     drawTongue();
@@ -68,6 +72,7 @@ function draw() {
 } else {
     drawFrog();
     drawFly();
+    drawObstacles();
 }
     displayScore();
     displayGameStatus();
@@ -80,8 +85,31 @@ function nextLevel() {
         timeLimit += 15;
         timeRemaining = timeLimit;
         score = 0;
+        createObstacles();
         gameState = 'playing';
         resetFly();
+    }
+}
+
+function createObstacles() {
+     obstacles = []; 
+    numObstacles = (level - 1) * 2; 
+    
+    for (let i = 0; i < numObstacles; i++) {
+        obstacles.push({
+            x: random(50, width - 50),
+            y: random(100, 400),
+            width: random(40, 80),
+            height: random(40, 80),
+            color: 'blue'
+        });
+    }
+}
+
+function drawObstacles() {
+   for (let obstacle of obstacles) {
+        fill(obstacle.color);
+        rect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
     }
 }
 
@@ -212,6 +240,7 @@ function keyPressed() {
     gameState = 'playing';
     tongue.state = 'idle';
     tongue.length = 0;
+    obstacles = [];
     resetFly();
     }
 }
