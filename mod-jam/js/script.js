@@ -136,8 +136,8 @@ function updateTimer() {
         if (timeRemaining <= 0) {
             timeRemaining = 0;
             gameState = 'lost';
-            let looseMessages = ['Git Gud', 'Skill Issue!!!', 'Try Harder!!!', 'Be Better', 'Stormtrooper Aim!!!'];
-            looseMessage = random(looseMessages);
+            let loseMessages = ['Git Gud', 'Skill Issue!!!', 'Try Harder!!!', 'Be Better', 'Stormtrooper Aim!!!'];
+            loseMessage = random(loseMessages);
         }
         
         if (score >= targetScore) {
@@ -243,7 +243,7 @@ function displayGameStatus() {
         text('Press R to restart', width/2, height/2 + 80);
     } else if (gameState === 'lost') {
         textAlign(CENTER, CENTER);
-        text(looseMessage, width / 2, height / 2);
+        text(loseMessage, width / 2, height / 2);
         textSize(24);
         text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
         text('Press R to restart', width/2, height/2 + 80);
