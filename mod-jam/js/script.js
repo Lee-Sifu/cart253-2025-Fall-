@@ -239,7 +239,7 @@ function displayGameStatus() {
         text(winMessage, width / 2, height / 2);
         textSize(24);
         text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
-        text('Press Spacebar to continue', width/2, height/2, + 80);
+        text('Press Spacebar to continue', width/2, height/2 + 80);
     } else if (gameState === 'lost') {
         textAlign(CENTER, CENTER);
         text(loseMessage, width / 2, height / 2);
@@ -261,10 +261,9 @@ function keyPressed() {
     tongue.length = 0;
     obstacles = [];
     resetFly();
-
+    }
      if (key === ' ' && gameState === 'won') {
         nextLevel();
-    }
     }
 }
     
