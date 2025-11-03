@@ -38,7 +38,7 @@ const fly = {
 
 let score = 0;
 let targetScore = 5;
-let timeLimit = 30;
+let timeLimit = 15;
 let timeRemaining;
 let gameState = 'playing'; // playing, gameOver, won
 let level = 1;
@@ -82,8 +82,6 @@ function nextLevel() {
         score = 0;
         gameState = 'playing';
         resetFly();
-    } else if (score <= targetScore && timeRemaining <= 0) {
-        gameState = 'lost';
     }
 }
 
@@ -209,7 +207,7 @@ function keyPressed() {
     score = 0;
     level = 1;
     targetScore = 5;
-    timeLimit = 30;
+    timeLimit = 15;
     timeRemaining = timeLimit;
     gameState = 'playing';
     tongue.state = 'idle';
