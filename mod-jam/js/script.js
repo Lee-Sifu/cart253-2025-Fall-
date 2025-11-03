@@ -41,6 +41,7 @@ let targetScore = 5;
 let timeLimit = 30;
 let timeRemaining;
 let gameState = 'playing'; // playing, gameOver, won
+let level = 1;
 
 function setup() {
 createCanvas(500, 500);
@@ -63,12 +64,25 @@ function draw() {
     updateTimer();
     drawTongue();
     checkEat();
+    nextLevel();
 } else {
     drawFrog();
     drawFly();
 }
     displayScore();
     displayGameStatus();
+}
+
+function nextLevel() {
+    if (score >= targetScore && gameState === 'won') {
+        level++;
+        targetScore += 5;
+        timeLimit += 15;
+        timeRemaining = timeLimit;
+        score = 0;
+        gameState = 'playing';
+        resetFly();
+    }
 }
 
 function updateTimer() { 
@@ -110,7 +124,6 @@ if (fly.x > width) {
 function drawFly() {
 fill(fly.color);
 ellipse(fly.x, fly.y, fly.size); 
-
 }
 
 function updateTongue() {
