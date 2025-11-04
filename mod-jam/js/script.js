@@ -257,7 +257,7 @@ fly.y = random(50, 150);
 }
 
 function resetFly2() {
-if (random() < 0.9) {
+if (random() < 0.7) {
         fly2Active = true;
         fly2.x = 0;
         fly2.y = random(200, 300);
