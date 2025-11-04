@@ -147,13 +147,13 @@ function updateTimer() {
         if (timeRemaining <= 0) {
             timeRemaining = 0;
             gameState = 'lost';
-            let loseMessages = ['Git Gud', 'Skill Issue!!!', 'Try Harder!!!', 'Be Better', 'Stormtrooper Aim!!!'];
+            let loseMessages = ['Git Gud', 'Skill Issue!!!', 'Try Harder!!!', 'Be Better', 'Stormtrooper Aim!!!','Go touch some grass', 'Put the frog down and take a break'];
             loseMessage = random(loseMessages);
         }
         
         if (score >= targetScore) {
             gameState = 'won';
-            let winMessages = ['Good Job!', 'You deserve a treat', 'GG', 'Better get 100% next time!', 'You Win!'];
+            let winMessages = ['Good Job!', 'You deserve a treat', 'GG', 'Better get 100% next time!', 'OMG You Won!?!', 'Frog Champion!'];
             winMessage = random(winMessages);
         }
     }
