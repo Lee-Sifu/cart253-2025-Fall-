@@ -190,15 +190,15 @@ function moveFly2() {
  }
 
 function drawFly() {
-if (fly2Active) {
    fill(fly.color);
    ellipse(fly.x, fly.y, fly.size); 
- }
 }
 
 function drawFly2() {
-fill(fly2.color);
-ellipse(fly2.x, fly2.y, fly2.size);
+if (fly2Active) {
+   fill(fly2.color);
+   ellipse(fly2.x, fly2.y, fly2.size);
+ }
 }
 
 function updateTongue() {
@@ -257,7 +257,7 @@ fly.y = random(50, 150);
 }
 
 function resetFly2() {
-if (random() < 0.3) {
+if (random() < 0.9) {
         fly2Active = true;
         fly2.x = 0;
         fly2.y = random(200, 300);
