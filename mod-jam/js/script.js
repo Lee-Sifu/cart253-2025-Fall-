@@ -1,8 +1,8 @@
 /**
- * Title of Project
+ * Mod Jam Frog Game
  * Jason Lee
  * 
- * This my frog game where you need to eat flies to score points and be alive.
+ * This my frog game where you need to eat flies to score points and advance levels.
  * 
  */
 
