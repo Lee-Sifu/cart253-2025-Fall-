@@ -68,7 +68,7 @@ resetFly2();
  * Here is all my functions in draw
 */
 function draw() {
-    background(200, 225, 255);
+    background(255, 225, 255);
     if (gameState === 'playing') {
     moveFrog();
     moveFly();
