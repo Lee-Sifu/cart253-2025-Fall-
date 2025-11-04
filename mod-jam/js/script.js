@@ -59,6 +59,7 @@ function setup() {
 createCanvas(500, 500);
 timeRemaining = timeLimit;
 resetFly();
+resetFly2();
 }
 
 
@@ -70,6 +71,7 @@ function draw() {
     if (gameState === 'playing') {
     moveFrog();
     moveFly();
+    moveFly2();
     drawFrog();
     drawFly();
     drawObstacles();
@@ -176,11 +178,16 @@ if (fly.x > width) {
 }
     }
 
+function moveFly2() {
+fly2.x += fly2.speed;
+if (fly2.x > width) {
+    resetFly2();
+}
+ }
+
 function drawFly() {
 fill(fly.color);
 ellipse(fly.x, fly.y, fly.size); 
-fill(fly2.color);
-ellipse(fly2.x, fly2.y, fly2.size);
 }
 
 function updateTongue() {
@@ -224,7 +231,7 @@ function checkEat() {
         resetFly();
     }
     if (d < fly2.size / 2 && tongue.state === 'extending') {
-        score++;
+        score+= 2;
         tongue.state = 'retracting';
         resetFly();
     }
@@ -234,6 +241,9 @@ function checkEat() {
 function resetFly() {
 fly.x = 0;
 fly.y = random(50, 150);
+}
+
+function resetFly2() {
 fly2.x = 0;
 fly2.y = random(200,300);
 }
@@ -278,6 +288,7 @@ function keyPressed() {
     tongue.length = 0;
     obstacles = [];
     resetFly();
+    resetFly2();
     }
      if (key === ' ' && gameState === 'won') {
         nextLevel();
