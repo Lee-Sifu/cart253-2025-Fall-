@@ -244,7 +244,7 @@ function checkEat() {
     if (fly2Active) {
     let d2 = dist(tongue.x, tongue.y, fly2.x, fly2.y);
     if (d2 < fly2.size / 2 && tongue.state === 'extending') {
-        score+= 2;
+        score+= 5;
         tongue.state = 'retracting';
         resetFly2();
     }
