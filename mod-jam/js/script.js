@@ -74,6 +74,7 @@ function draw() {
     moveFly2();
     drawFrog();
     drawFly();
+    drawFly2();
     drawObstacles();
     checkTongueObstacleCollision(); 
     updateTongue();
@@ -99,7 +100,7 @@ function nextLevel() {
         createObstacles();
         gameState = 'playing';
         resetFly();
-    
+        resetFly2();  
 }
 
 function createObstacles() {
@@ -190,6 +191,11 @@ fill(fly.color);
 ellipse(fly.x, fly.y, fly.size); 
 }
 
+function drawFly2() {
+    fill(fly2.color);
+    ellipse(fly2.x, fly2.y, fly2.size);
+}
+
 function updateTongue() {
     if (tongue.state === 'extending') {
         tongue.length += tongue.speed;
@@ -224,16 +230,17 @@ function mousePressed() {
 }
 
 function checkEat() {
-    let d = dist(tongue.x, tongue.y, fly.x, fly.y, fly2.x, fly2.y);
+    let d = dist(tongue.x, tongue.y, fly.x, fly.y);
     if (d < fly.size / 2 && tongue.state === 'extending') {
         score++;
         tongue.state = 'retracting';
         resetFly();
     }
-    if (d < fly2.size / 2 && tongue.state === 'extending') {
+    let d2 = dist(tongue.x, tongue.y, fly2.x, fly2.y);
+    if (d2 < fly2.size / 2 && tongue.state === 'extending') {
         score+= 2;
         tongue.state = 'retracting';
-        resetFly();
+        resetFly2();
     }
 
 }
