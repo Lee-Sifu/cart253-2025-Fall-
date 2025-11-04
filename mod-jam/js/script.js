@@ -36,6 +36,14 @@ const fly = {
     color: 'black'  
 }
 
+const fly2 = {
+    x: 100,
+    y: 100,
+    size: 25,
+    speed: 5,
+    color: 'red'
+}
+
 let score = 0;
 let targetScore = 5;
 let timeLimit = 15;
@@ -171,6 +179,8 @@ if (fly.x > width) {
 function drawFly() {
 fill(fly.color);
 ellipse(fly.x, fly.y, fly.size); 
+fill(fly2.color);
+ellipse(fly2.x, fly2.y, fly2.size);
 }
 
 function updateTongue() {
@@ -207,8 +217,13 @@ function mousePressed() {
 }
 
 function checkEat() {
-    let d = dist(tongue.x, tongue.y, fly.x, fly.y);
+    let d = dist(tongue.x, tongue.y, fly.x, fly.y, fly2.x, fly2.y);
     if (d < fly.size / 2 && tongue.state === 'extending') {
+        score++;
+        tongue.state = 'retracting';
+        resetFly();
+    }
+    if (d < fly2.size / 2 && tongue.state === 'extending') {
         score++;
         tongue.state = 'retracting';
         resetFly();
@@ -219,6 +234,8 @@ function checkEat() {
 function resetFly() {
 fly.x = 0;
 fly.y = random(50, 150);
+fly2.x = 0;
+fly2.y = random(200,300);
 }
 
 function displayScore() {
