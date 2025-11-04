@@ -54,6 +54,7 @@ let obstacles = [];
 let numObstacles = 0;
 let loseMessage = '';
 let winMessage = '';
+let fly2Active = false;
 
 function setup() {
 createCanvas(500, 500);
@@ -180,20 +181,24 @@ if (fly.x > width) {
     }
 
 function moveFly2() {
-fly2.x += fly2.speed;
-if (fly2.x > width) {
-    resetFly2();
+ if (fly2Active) {
+    fly2.x += fly2.speed;
+    if (fly2.x > width) {
+        resetFly2();
+     }
 }
  }
 
 function drawFly() {
-fill(fly.color);
-ellipse(fly.x, fly.y, fly.size); 
+if (fly2Active) {
+   fill(fly.color);
+   ellipse(fly.x, fly.y, fly.size); 
+ }
 }
 
 function drawFly2() {
-    fill(fly2.color);
-    ellipse(fly2.x, fly2.y, fly2.size);
+fill(fly2.color);
+ellipse(fly2.x, fly2.y, fly2.size);
 }
 
 function updateTongue() {
@@ -235,14 +240,15 @@ function checkEat() {
         score++;
         tongue.state = 'retracting';
         resetFly();
-    }
+    } 
+    if (fly2Active) {
     let d2 = dist(tongue.x, tongue.y, fly2.x, fly2.y);
     if (d2 < fly2.size / 2 && tongue.state === 'extending') {
         score+= 2;
         tongue.state = 'retracting';
         resetFly2();
     }
-
+ }
 }
 
 function resetFly() {
@@ -251,8 +257,14 @@ fly.y = random(50, 150);
 }
 
 function resetFly2() {
-fly2.x = 0;
-fly2.y = random(200,300);
+if (random() < 0.3) {
+        fly2Active = true;
+        fly2.x = 0;
+        fly2.y = random(200, 300);
+    } else {
+        fly2Active = false;
+        fly2.x = -100; 
+    }
 }
 
 function displayScore() {
