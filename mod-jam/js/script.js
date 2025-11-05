@@ -33,7 +33,7 @@ const fly = {
     y: 100,
     size: 25,
     speed: 3,
-    color: 'black' 
+    color: 'black',
     angle: 0,
 }
 
@@ -42,7 +42,7 @@ const fly2 = {
     y: 100,
     size: 25,
     speed: 5,
-    color: 'red'
+    color: 'red',
     angle: 0,
 }
 
