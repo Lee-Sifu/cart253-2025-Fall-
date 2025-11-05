@@ -59,6 +59,18 @@ let winMessage = '';
 let fly2Active = false;
 let gameOverTimer = 0;
 let showRestartMessage = false;
+let tongueSound;
+let eatSound;
+let flySound;
+let fly2Sound;
+
+// Here is my preload function
+function preload() {
+    flySound = loadSound('assets/sounds/fly.mp3');
+    fly2Sound = loadSound('assets/sounds/fly2.mp3');
+    eatSound = loadSound('assets/sounds/eat.mp3');
+    tongueSound = loadSound('assets/sounds/tongue.mp3');
+}
 
 // Here is my setup function
 function setup() {
