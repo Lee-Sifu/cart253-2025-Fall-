@@ -71,27 +71,30 @@ resetFly2();
 */
 function draw() {
     background(255, 225, 255);
+    
     if (gameState === 'instructions') {
         displayInstructions();
+    } else if (gameState === 'playing') {
+        moveFrog();
+        moveFly();
+        moveFly2();
+        drawFrog();
+        drawFly();
+        drawFly2();
+        drawObstacles();
+        checkTongueObstacleCollision(); 
+        updateTongue();
+        updateTimer();
+        drawTongue();
+        checkEat();
+        displayScore();
+    } else {
+        drawFrog();
+        drawFly();
+        drawObstacles();
+        displayScore();
     }
-    if (gameState === 'playing') {
-    moveFrog();
-    moveFly();
-    moveFly2();
-    drawFrog();
-    drawFly();
-    drawFly2();
-    drawObstacles();
-    checkTongueObstacleCollision(); 
-    updateTongue();
-    updateTimer();
-    drawTongue();
-    checkEat();
-} else {
-    drawFrog();
-    drawFly();
-    drawObstacles();
-
+    
     if (gameState !== 'instructions') {
         displayScore();
     }
