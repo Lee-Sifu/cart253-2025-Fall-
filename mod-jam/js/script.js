@@ -331,7 +331,7 @@ function drawTongue() {
 // Mouse pressed function to shoot tongue
 function mousePressed() {
      if (gameState === 'instructions') {
-        gameState = 'playing';
+       gameState = 'playing';
     }
     if (tongue.state === 'idle') {
         tongue.state = 'extending';
@@ -409,7 +409,8 @@ function resetFly2() {
     }
     if (gameState === 'playing') {
         playSound(fly2Sound);
-    } else {
+    }
+  } else {
         fly2Active = false;
         fly2.x = -100; 
     }
@@ -498,4 +499,3 @@ function keyPressed() {
         nextLevel();
     }
  }
-}
