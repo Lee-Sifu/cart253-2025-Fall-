@@ -399,6 +399,35 @@ function displayScore() {
     text('Time: ' + Math.ceil(timeRemaining) + 's', 10, 40);
 }
 
+// Function to draw speech bubble
+function drawSpeechBubble(message, x, y) {
+    // Measure text to size bubble
+    textSize(24);
+    let textW = textWidth(message);
+    let bubbleW = textW + 40;
+    let bubbleH = 60;
+    let bubbleX = x - bubbleW / 2;
+    let bubbleY = y - 120;
+    
+    // Draw bubble
+    fill(255);
+    stroke(0);
+    strokeWeight(2);
+    rect(bubbleX, bubbleY, bubbleW, bubbleH, 10);
+    
+    // Draw tail
+    triangle(x - 10, bubbleY + bubbleH, 
+             x + 10, bubbleY + bubbleH, 
+             x, bubbleY + bubbleH + 20);
+    
+    noStroke();
+    
+    // Draw text
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text(message, x, bubbleY + bubbleH / 2);
+}
+
 // Display game status messages
 function displayGameStatus() {
     fill(0);
@@ -413,9 +442,8 @@ function displayGameStatus() {
     } else if (gameState === 'lost') {
  
         // Show score and restart after delay
+        drawSpeechBubble(loseMessage, frog.x, frog.y);
         textAlign(CENTER, CENTER);
-        text(loseMessage, width / 2, height / 2);
-        textSize(24);
         text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
         
         if (showRestartMessage) {
