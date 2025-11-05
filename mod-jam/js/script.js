@@ -258,24 +258,24 @@ function checkEat() {
 }
 
 function resetFly() {
-  let edge = floor(random(2)); 
+  let edge = floor(random(4)); 
     
     if (edge === 0) { 
         fly.x = random(width);
         fly.y = 0;
-        fly.angle = random(PI/4, 3*PI/2); 
+        fly.angle = random(PI/4, 3*PI/4); 
     } else if (edge === 1) { 
         fly.x = width;
         fly.y = random(height);
-        fly.angle = random(3*PI/4, 5*PI/2); 
+        fly.angle = random(3*PI/4, 5*PI/4); 
     } else if (edge === 2) { 
         fly.x = random(width);
         fly.y = height;
-        fly.angle = random(-3*PI/4, -PI/2); 
+        fly.angle = random(-3*PI/4, -PI/4); 
     } else { 
         fly.x = 0;
         fly.y = random(height);
-        fly.angle = random(-PI/4, PI/2); 
+        fly.angle = random(-PI/4, PI/4); 
     }
 }
 
@@ -283,24 +283,24 @@ function resetFly2() {
   if (random() < 0.7) {
         fly2Active = true;
         
-        let edge = floor(random(2));
+        let edge = floor(random(4));
         
     if (edge === 0) { 
         fly2.x = random(width);
         fly2.y = 0;
-        fly2.angle = random(PI/4, 3*PI/2);
+        fly2.angle = random(PI/4, 3*PI/4);
     } else if (edge === 1) { 
         fly2.x = width;
         fly2.y = random(height);
-        fly2.angle = random(3*PI/4, 5*PI/2);
+        fly2.angle = random(3*PI/4, 5*PI/4);
     } else if (edge === 2) {
         fly2.x = random(width);
         fly2.y = height;
-        fly2.angle = random(-3*PI/4, -PI/2);
+        fly2.angle = random(-3*PI/4, -PI/4);
     } else { 
         fly2.x = 0;
         fly2.y = random(height);
-        fly2.angle = random(-PI/4, PI/2);
+        fly2.angle = random(-PI/4, PI/4);
     }
     } else {
         fly2Active = false;
