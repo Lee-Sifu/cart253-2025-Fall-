@@ -318,6 +318,7 @@ function drawTongue() {
         strokeWeight(5);
         line(frog.x, frog.y, tongue.x, tongue.y);
         noStroke();
+        tongueSound.play();
     }
 }
 
@@ -338,6 +339,7 @@ function checkEat() {
     if (d < fly.size / 2 && tongue.state === 'extending') {
         score++;
         tongue.state = 'retracting';
+        playSound(flySound);
         resetFly();
     } 
     if (fly2Active) {
@@ -345,6 +347,7 @@ function checkEat() {
     if (d2 < fly2.size / 2 && tongue.state === 'extending') {
         score+= 5;
         tongue.state = 'retracting';
+        playSound(fly2Sound);
         resetFly2();
     }
  }
@@ -397,6 +400,8 @@ function resetFly2() {
         fly2.y = random(height);
         fly2.angle = random(-PI/4, PI/4);
     }
+    if (gameState === 'playing') {
+        fly2Sound.play();
     } else {
         fly2Active = false;
         fly2.x = -100; 
@@ -485,5 +490,5 @@ function keyPressed() {
      if (key === ' ' && gameState === 'won') {
         nextLevel();
     }
+ }
 }
-    
