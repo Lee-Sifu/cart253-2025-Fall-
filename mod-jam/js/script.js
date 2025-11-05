@@ -173,6 +173,14 @@ function moveFrog() {
 function drawFrog() {
     fill(frog.color);
     ellipse(frog.x, frog.y, frog.size);
+
+    fill(255); 
+    ellipse(frog.x - 10, frog.y - 5, 15, 15); 
+    ellipse(frog.x + 10, frog.y - 5, 15, 15); 
+    
+    fill(0); 
+    ellipse(frog.x - 10, frog.y - 5, 5, 5); 
+    ellipse(frog.x + 10, frog.y - 5, 5, 5); 
 }
 
 function moveFly() {
