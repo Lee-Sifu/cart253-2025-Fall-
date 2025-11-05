@@ -126,7 +126,7 @@ function displayInstructions() {
     fill(0, 150, 0);
     text('Press any input to start!', width / 2, 440);
  }
-}
+
 
 function nextLevel() {
    
