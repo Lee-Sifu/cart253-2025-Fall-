@@ -33,7 +33,8 @@ const fly = {
     y: 100,
     size: 25,
     speed: 3,
-    color: 'black'  
+    color: 'black' 
+    angle: 0,
 }
 
 const fly2 = {
@@ -42,6 +43,7 @@ const fly2 = {
     size: 25,
     speed: 5,
     color: 'red'
+    angle: 0,
 }
 
 let score = 0;
@@ -174,20 +176,24 @@ function drawFrog() {
 }
 
 function moveFly() {
-fly.x += fly.speed;
-if (fly.x > width) {
+ fly.x += cos(fly.angle) * fly.speed;
+ fly.y += sin(fly.angle) * fly.speed;
+    
+ if (fly.x > width || fly.x < 0 || fly.y > height || fly.y < 0) {
     resetFly();
-}
     }
+}
 
 function moveFly2() {
  if (fly2Active) {
-    fly2.x += fly2.speed;
-    if (fly2.x > width) {
-        resetFly2();
-     }
+    fly2.x += cos(fly2.angle) * fly2.speed;
+    fly2.y += sin(fly2.angle) * fly2.speed;
+        
+ if (fly2.x > width || fly2.x < 0 || fly2.y > height || fly2.y < 0) {
+    resetFly2();
+    }
+  }
 }
- }
 
 function drawFly() {
    fill(fly.color);
@@ -252,15 +258,50 @@ function checkEat() {
 }
 
 function resetFly() {
-fly.x = 0;
-fly.y = random(50, 150);
+  let edge = floor(random(2)); 
+    
+    if (edge === 0) { 
+        fly.x = random(width);
+        fly.y = 0;
+        fly.angle = random(PI/4, 3*PI/2); 
+    } else if (edge === 1) { 
+        fly.x = width;
+        fly.y = random(height);
+        fly.angle = random(3*PI/4, 5*PI/2); 
+    } else if (edge === 2) { 
+        fly.x = random(width);
+        fly.y = height;
+        fly.angle = random(-3*PI/4, -PI/2); 
+    } else { 
+        fly.x = 0;
+        fly.y = random(height);
+        fly.angle = random(-PI/4, PI/2); 
+    }
 }
 
 function resetFly2() {
-if (random() < 0.7) {
+  if (random() < 0.7) {
         fly2Active = true;
+        
+        let edge = floor(random(2));
+        
+    if (edge === 0) { 
+        fly2.x = random(width);
+        fly2.y = 0;
+        fly2.angle = random(PI/4, 3*PI/2);
+    } else if (edge === 1) { 
+        fly2.x = width;
+        fly2.y = random(height);
+        fly2.angle = random(3*PI/4, 5*PI/2);
+    } else if (edge === 2) {
+        fly2.x = random(width);
+        fly2.y = height;
+        fly2.angle = random(-3*PI/4, -PI/2);
+    } else { 
         fly2.x = 0;
-        fly2.y = random(200, 300);
+        fly2.y = random(height);
+        fly2.angle = random(-PI/4, PI/2);
+    }
     } else {
         fly2Active = false;
         fly2.x = -100; 
