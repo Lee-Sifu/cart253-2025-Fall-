@@ -435,8 +435,7 @@ function displayGameStatus() {
     textAlign(RIGHT, TOP);
     if (gameState === 'won') {
         textAlign(CENTER, CENTER);
-        text(winMessage, width / 2, height / 2);
-        textSize(24);
+        drawSpeechBubble(winMessage, frog.x, frog.y);
         text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
         text('Press Spacebar to continue', width/2, height/2 + 80);
     } else if (gameState === 'lost') {
