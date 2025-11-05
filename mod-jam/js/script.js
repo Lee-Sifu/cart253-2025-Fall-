@@ -9,7 +9,7 @@
 "use strict";
 
 /**
- * 
+ Here is all my objects
 */
 const frog = {
     x: 250,
@@ -45,7 +45,7 @@ const fly2 = {
     color: 'red',
     angle: 0,
 }
-
+// Here is all my variables
 let score = 0;
 let targetScore = 5;
 let timeLimit = 15;
@@ -58,6 +58,7 @@ let loseMessage = '';
 let winMessage = '';
 let fly2Active = false;
 
+// Here is my setup function
 function setup() {
 createCanvas(500, 500);
 timeRemaining = timeLimit;
@@ -101,6 +102,7 @@ function draw() {
     displayGameStatus();
 }
 
+// Here is my instruction display function
 function displayInstructions() {
     fill(0);
     textSize(32);
@@ -127,7 +129,7 @@ function displayInstructions() {
     text('Press any input to start!', width / 2, 440);
  }
 
-
+// Here is my next level function
 function nextLevel() {
    
         level++;
@@ -141,6 +143,7 @@ function nextLevel() {
         resetFly2();  
 }
 
+// here is my obstacle functions
 function createObstacles() {
      obstacles = []; 
     numObstacles = (level - 1) * 2; 
@@ -156,6 +159,7 @@ function createObstacles() {
     }
 }
 
+// Draw obstacles
 function drawObstacles() {
    for (let obstacle of obstacles) {
         fill(obstacle.color);
@@ -163,6 +167,7 @@ function drawObstacles() {
     }
 }
 
+// check tongue colliosion with obstacles
 function checkTongueObstacleCollision() {
     for (let obstacle of obstacles) {
         if (tongue.x > obstacle.x && 
@@ -177,6 +182,7 @@ function checkTongueObstacleCollision() {
     }
 }
 
+// Here is my timer update function
 function updateTimer() { 
     if (gameState === 'playing') {
         timeRemaining -= 1/60;
@@ -196,6 +202,7 @@ function updateTimer() {
     }
 }
 
+// Here is my frog movement function
 function moveFrog() {
     if (keyIsDown(LEFT_ARROW) || keyIsDown(65) || keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
         if (gameState === 'instructions') {
@@ -210,6 +217,7 @@ function moveFrog() {
     }
 }
 
+// Here is my draw functions for my Frog
 function drawFrog() {
     fill(frog.color);
     ellipse(frog.x, frog.y, frog.size);
@@ -223,6 +231,7 @@ function drawFrog() {
     ellipse(frog.x + 10, frog.y - 5, 5, 5); 
 }
 
+// Here is my fly movement 
 function moveFly() {
  fly.x += cos(fly.angle) * fly.speed;
  fly.y += sin(fly.angle) * fly.speed;
@@ -232,6 +241,7 @@ function moveFly() {
     }
 }
 
+// Here is my second fly movement
 function moveFly2() {
  if (fly2Active) {
     fly2.x += cos(fly2.angle) * fly2.speed;
@@ -243,6 +253,7 @@ function moveFly2() {
   }
 }
 
+// Here is my draw functions for my flies
 function drawFly() {
    fill(fly.color);
    ellipse(fly.x, fly.y, fly.size); 
@@ -255,6 +266,7 @@ if (fly2Active) {
  }
 }
 
+// Here is my tongue functions
 function updateTongue() {
     if (tongue.state === 'extending') {
         tongue.length += tongue.speed;
@@ -272,6 +284,7 @@ function updateTongue() {
     tongue.y = frog.y + sin(tongue.angle) * tongue.length;
 }
 
+// Draw tongue
 function drawTongue() {
     if (tongue.state !== 'idle') {
         stroke('red');
@@ -281,6 +294,7 @@ function drawTongue() {
     }
 }
 
+// Mouse pressed function to shoot tongue
 function mousePressed() {
      if (gameState === 'instructions') {
         gameState = 'playing';
@@ -291,6 +305,7 @@ function mousePressed() {
     }
 }
 
+// Check if tongue eats fly
 function checkEat() {
     let d = dist(tongue.x, tongue.y, fly.x, fly.y);
     if (d < fly.size / 2 && tongue.state === 'extending') {
@@ -308,6 +323,7 @@ function checkEat() {
  }
 }
 
+// Reset fly position and angle
 function resetFly() {
   let edge = floor(random(4)); 
     
@@ -330,6 +346,7 @@ function resetFly() {
     }
 }
 
+// Reset second fly position and angle
 function resetFly2() {
   if (random() < 0.7) {
         fly2Active = true;
@@ -359,6 +376,7 @@ function resetFly2() {
     }
 }
 
+// Display score and timer
 function displayScore() {
     fill(0);
     textSize(24);
@@ -368,6 +386,7 @@ function displayScore() {
     text('Time: ' + Math.ceil(timeRemaining) + 's', 10, 40);
 }
 
+// Display game status messages
 function displayGameStatus() {
     fill(0);
     textSize(24);
@@ -387,6 +406,7 @@ function displayGameStatus() {
     }
 }
 
+// Key pressed function for restarting and next level
 function keyPressed() {
     if ((key === 'r' || key === 'R') && gameState === 'lost') {
     score = 0;
