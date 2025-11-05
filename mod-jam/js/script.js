@@ -72,7 +72,12 @@ resetFly2();
 */
 function draw() {
     background(255, 225, 255);
-    
+
+     if (gameState === 'instructions') {
+     if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(65) || keyIsDown(68)) {
+        gameState = 'playing';
+        }
+     }
     if (gameState === 'instructions') {
         displayInstructions();
     } else if (gameState === 'playing') {
@@ -100,7 +105,7 @@ function draw() {
         displayScore();
     }
     displayGameStatus();
-}
+ }
 
 // Here is my instruction display function
 function displayInstructions() {
@@ -204,11 +209,6 @@ function updateTimer() {
 
 // Here is my frog movement function
 function moveFrog() {
-    if (keyIsDown(LEFT_ARROW) || keyIsDown(65) || keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
-        if (gameState === 'instructions') {
-            gameState = 'playing';
-        }
-    }
     if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
         frog.x -= 5;
     }
