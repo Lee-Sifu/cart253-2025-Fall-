@@ -293,6 +293,13 @@ if (fly2Active) {
  }
 }
 
+ // Safe sound play function
+function playSound(sound) {
+    if (sound && sound.isLoaded()) {
+        sound.play();
+    }
+}
+
 // Here is my tongue functions
 function updateTongue() {
     if (tongue.state === 'extending') {
@@ -329,7 +336,7 @@ function mousePressed() {
     if (tongue.state === 'idle') {
         tongue.state = 'extending';
         tongue.angle = atan2(mouseY - frog.y, mouseX - frog.x);
-        tongueSound.play();
+        playSound(tongueSound);
     }
 }
 
@@ -339,7 +346,7 @@ function checkEat() {
     if (d < fly.size / 2 && tongue.state === 'extending') {
         score++;
         tongue.state = 'retracting';
-        eatSound.play();
+        playSound(eatSound);
         resetFly();
     } 
     if (fly2Active) {
@@ -347,7 +354,7 @@ function checkEat() {
     if (d2 < fly2.size / 2 && tongue.state === 'extending') {
         score+= 5;
         tongue.state = 'retracting';
-        eatSound.play();
+        playSound(eatSound);
         resetFly2();
     }
  }
@@ -401,7 +408,7 @@ function resetFly2() {
         fly2.angle = random(-PI/4, PI/4);
     }
     if (gameState === 'playing') {
-        fly2Sound.play();
+        playSound(fly2Sound);
     } else {
         fly2Active = false;
         fly2.x = -100; 
