@@ -66,10 +66,10 @@ let fly2Sound;
 
 // Here is my preload function
 function preload() {
-    flySound = loadSound('assets/sounds/fly.mp3');
-    fly2Sound = loadSound('assets/sounds/fly2.mp3');
-    eatSound = loadSound('assets/sounds/eat.mp3');
-    tongueSound = loadSound('assets/sounds/tongue.mp3');
+    flySound = loadSound('assets/sounds/flySound.mp3');
+    fly2Sound = loadSound('assets/sounds/fly2Sound.mp3');
+    eatSound = loadSound('assets/sounds/eatSound.mp3');
+    tongueSound = loadSound('assets/sounds/tongueSound.mp3');
 }
 
 // Here is my setup function
@@ -318,7 +318,6 @@ function drawTongue() {
         strokeWeight(5);
         line(frog.x, frog.y, tongue.x, tongue.y);
         noStroke();
-        tongueSound.play();
     }
 }
 
@@ -330,6 +329,7 @@ function mousePressed() {
     if (tongue.state === 'idle') {
         tongue.state = 'extending';
         tongue.angle = atan2(mouseY - frog.y, mouseX - frog.x);
+        tongueSound.play();
     }
 }
 
@@ -339,7 +339,7 @@ function checkEat() {
     if (d < fly.size / 2 && tongue.state === 'extending') {
         score++;
         tongue.state = 'retracting';
-        playSound(flySound);
+        eatSound.play();
         resetFly();
     } 
     if (fly2Active) {
@@ -347,7 +347,7 @@ function checkEat() {
     if (d2 < fly2.size / 2 && tongue.state === 'extending') {
         score+= 5;
         tongue.state = 'retracting';
-        playSound(fly2Sound);
+        eatSound.play();
         resetFly2();
     }
  }
