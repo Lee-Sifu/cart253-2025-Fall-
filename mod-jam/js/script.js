@@ -134,7 +134,7 @@ function displayInstructions() {
     
     textSize(22);
     fill(0, 150, 0);
-    text('Press any input to start!', width / 2, 440);
+    text('Use the Frogs control input to start!', width / 2, 440);
  }
 
 // Here is my next level function
