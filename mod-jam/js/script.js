@@ -57,6 +57,8 @@ let numObstacles = 0;
 let loseMessage = '';
 let winMessage = '';
 let fly2Active = false;
+let gameOverTimer = 0;
+let showRestartMessage = false;
 
 // Here is my setup function
 function setup() {
@@ -204,6 +206,12 @@ function updateTimer() {
             let winMessages = ['Good Job!', 'You deserve a treat', 'GG', 'Better get 100% next time!', 'OMG You Won!?!', 'Frog Champion!'];
             winMessage = random(winMessages);
         }
+    }
+}
+if (gameState === 'lost') {
+    gameOverTimer++;
+    if (gameOverTimer > 180) { 
+        showRestartMessage = true;
     }
 }
 
@@ -408,7 +416,7 @@ function displayGameStatus() {
 
 // Key pressed function for restarting and next level
 function keyPressed() {
-    if ((key === 'r' || key === 'R') && gameState === 'lost') {
+    if ((key === 'r' || key === 'R') && gameState === 'lost' && showRestartMessage) {
     score = 0;
     level = 1;
     targetScore = 5;
@@ -418,6 +426,8 @@ function keyPressed() {
     tongue.state = 'idle';
     tongue.length = 0;
     obstacles = [];
+    gameOverTimer = 0;
+    showRestartMessage = false;
     resetFly();
     resetFly2();
     }
