@@ -50,7 +50,7 @@ let score = 0;
 let targetScore = 5;
 let timeLimit = 15;
 let timeRemaining;
-let gameState = 'playing'; // playing, gameOver, won
+let gameState = 'instructions'; // playing, gameOver, won, instructions
 let level = 1;
 let obstacles = [];
 let numObstacles = 0;
@@ -71,6 +71,9 @@ resetFly2();
 */
 function draw() {
     background(255, 225, 255);
+    if (gameState === 'instructions') {
+        displayInstructions();
+    }
     if (gameState === 'playing') {
     moveFrog();
     moveFly();
@@ -88,9 +91,38 @@ function draw() {
     drawFrog();
     drawFly();
     drawObstacles();
-}
-    displayScore();
+
+    if (gameState !== 'instructions') {
+        displayScore();
+    }
     displayGameStatus();
+}
+
+function displayInstructions() {
+    fill(0);
+    textSize(32);
+    textAlign(CENTER, CENTER);
+    text('Frog Frog Go', width / 2, 80);
+    
+    textSize(20);
+    text('CONTROLS:', width / 2, 150);
+    
+    textSize(16);
+    textAlign(LEFT, TOP);
+    text('• Move Frog: LEFT/RIGHT Arrow or A/D keys', 50, 190);
+    text('• Shoot Tongue: Click Mouse', 50, 220);
+    
+    textAlign(CENTER, CENTER);
+    textSize(18);
+    text('GOAL: Eat flies to reach your daily meal target!', width / 2, 280);
+    text('Black flies = 1 point', width / 2, 310);
+    text('Red flies = 5 points', width / 2, 340);
+    text('Avoid obstacles - they block your tongue!', width / 2, 380);
+    
+    textSize(22);
+    fill(0, 150, 0);
+    text('Press any input to start!', width / 2, 440);
+ }
 }
 
 function nextLevel() {
@@ -162,6 +194,11 @@ function updateTimer() {
 }
 
 function moveFrog() {
+    if (keyIsDown(LEFT_ARROW) || keyIsDown(65) || keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
+        if (gameState === 'instructions') {
+            gameState = 'playing';
+        }
+    }
     if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
         frog.x -= 5;
     }
@@ -242,6 +279,9 @@ function drawTongue() {
 }
 
 function mousePressed() {
+     if (gameState === 'instructions') {
+        gameState = 'playing';
+    }
     if (tongue.state === 'idle') {
         tongue.state = 'extending';
         tongue.angle = atan2(mouseY - frog.y, mouseX - frog.x);
@@ -351,7 +391,7 @@ function keyPressed() {
     targetScore = 5;
     timeLimit = 15;
     timeRemaining = timeLimit;
-    gameState = 'playing';
+    gameState = 'instructions';
     tongue.state = 'idle';
     tongue.length = 0;
     obstacles = [];
