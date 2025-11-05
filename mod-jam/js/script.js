@@ -228,6 +228,8 @@ function moveFrog() {
     if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
         frog.x += 5;
     }
+    // Keep frog inside canvas boundaries
+    frog.x = constrain(frog.x, frog.size/2, width - frog.size/2);
 }
 
 // Here is my draw functions for my Frog
