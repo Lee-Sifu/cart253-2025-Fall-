@@ -197,6 +197,8 @@ function updateTimer() {
         if (timeRemaining <= 0) {
             timeRemaining = 0;
             gameState = 'lost';
+            gameOverTimer = 0;
+            showRestartMessage = false;
             let loseMessages = ['Git Gud', 'Skill Issue!!!', 'Try Harder!!!', 'Be Better', 'Stormtrooper Aim!!!','Go touch some grass', 'Put the frog down and take a break'];
             loseMessage = random(loseMessages);
         }
@@ -207,11 +209,13 @@ function updateTimer() {
             winMessage = random(winMessages);
         }
     }
-}
-if (gameState === 'lost') {
-    gameOverTimer++;
-    if (gameOverTimer > 180) { 
-        showRestartMessage = true;
+    
+    // Update game over timer for delay
+    if (gameState === 'lost') {
+        gameOverTimer++;
+        if (gameOverTimer > 180) { 
+            showRestartMessage = true;
+        }
     }
 }
 
@@ -406,14 +410,14 @@ function displayGameStatus() {
         text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
         text('Press Spacebar to continue', width/2, height/2 + 80);
     } else if (gameState === 'lost') {
-        // Draw speech bubble with lose message
-        drawSpeechBubble(loseMessage, frog.x, frog.y);
-        
+ 
         // Show score and restart after delay
         textAlign(CENTER, CENTER);
+        text(loseMessage, width / 2, height / 2);
+        textSize(24);
         text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
         
-        if (showRestartButton) {
+        if (showRestartMessage) {
             text('Press R to restart', width/2, height/2 + 80);
         }
     }
