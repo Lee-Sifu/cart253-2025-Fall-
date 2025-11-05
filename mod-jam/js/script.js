@@ -101,6 +101,7 @@ function draw() {
         drawFly();
         drawObstacles();
         displayScore();
+        updateTimer();
     }
     
     if (gameState !== 'instructions') {
