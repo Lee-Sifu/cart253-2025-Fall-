@@ -70,6 +70,7 @@ let winSoundPlayed = false;
 let loseSoundPlayed = false;
 
 // Here is my preload function
+// Loads all my sound files
 function preload() {
     flySound = loadSound('assets/sounds/flySound.mp3');
     fly2Sound = loadSound('assets/sounds/fly2Sound.mp3');
