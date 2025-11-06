@@ -15,7 +15,7 @@ With obstacles spawning it blocks your frog's tongue mid-extension, forcing stra
 In my array of win/lose messages, they are a mix of internet slangs and other funny/motivational messages compared to the usual "You win/Game Over" messages. I also added a speech bubble around the frog so it seems like its talking to players.
 I added free and open source sound effects to give more immersion with randomized pitch variation (0.9-1.1x) for tongue shots, eating, fly spawns, wins, and losses.
 I added an instruction screen but also added a functionality where the player has to press one of the frog's input to start. Also added a 3-second delay before showing the restart button to let players process their loss.
-Lastly I added optional key movements where you can use the A/D keys or Arrow keys compared to using the mouse.x position.
+Lastly I added optional key movements where you can use the A/D keys or Arrow keys compared to using the mouse.x position. As well as give players control over how they aim and shoot the frog's tongue.
 
 ## Screenshot(s)
 
