@@ -166,12 +166,14 @@ function nextLevel() {
 
 // Safe sound play function
 function playSound(sound) {
-    if (sound && sound.isLoaded()) {
+    if (gameState === 'playing' && sound && sound.isLoaded()) {
      if (sound.isPlaying()){
             sound.stop();
         }
         let volume = 0.5;
         sound.setVolume(volume);
+        let randomRate = random(0.9, 1.1);
+        sound.rate(randomRate);
         sound.play();
     }
 }
@@ -387,7 +389,7 @@ function resetFly() {
         fly.y = random(height);
         fly.angle = random(-PI/4, PI/4); 
     }
-     if (gameState === 'playing') {
+     if (gameState === 'playing' && !timeRemaining <= 0) {
         playSound(flySound);
     }
 }
@@ -416,7 +418,7 @@ function resetFly2() {
         fly2.y = random(height);
         fly2.angle = random(-PI/4, PI/4);
     }
-    if (gameState === 'playing') {
+    if (gameState === 'playing' && !timeRemaining <= 0) {
         playSound(fly2Sound);
     }
   } else {
