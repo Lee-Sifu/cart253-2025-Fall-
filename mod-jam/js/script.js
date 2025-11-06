@@ -64,6 +64,8 @@ let tongueSound;
 let eatSound;
 let flySound;
 let fly2Sound;
+let winSoundPlayed = false;
+let loseSoundPlayed = false;
 
 // Here is my preload function
 function preload() {
@@ -71,6 +73,8 @@ function preload() {
     fly2Sound = loadSound('assets/sounds/fly2Sound.mp3');
     eatSound = loadSound('assets/sounds/eatSound.mp3');
     tongueSound = loadSound('assets/sounds/tongueSound.mp3');
+    winSound = loadSound('assets/sounds/winSound.mp3');
+    loseSound = loadSound('assets/sounds/loseSound.mp3'); 
 }
 
 // Here is my setup function
@@ -227,12 +231,14 @@ function updateTimer() {
             gameState = 'lost';
             gameOverTimer = 0;
             showRestartMessage = false;
+            loseSoundPlayed = false;
             let loseMessages = ['Git Gud', 'Skill Issue!!!', 'Try Harder!!!', 'Be Better', 'Stormtrooper Aim!!!','Go touch some grass', 'Put the frog down and take a break'];
             loseMessage = random(loseMessages);
         }
         
         if (score >= targetScore) {
             gameState = 'won';
+            winSoundPlayed = false;
             let winMessages = ['Good Job!', 'You deserve a treat', 'GG', 'Better get 100% next time!', 'OMG You Won!?!', 'Frog Champion!'];
             winMessage = random(winMessages);
         }
@@ -476,12 +482,24 @@ function displayGameStatus() {
         drawSpeechBubble(winMessage, frog.x, frog.y);
         text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
         text('Press Spacebar to continue', width/2, height/2 + 80);
+        
+     if (!winSoundPlayed && winSound && winSound.isLoaded()) {
+            winSound.setVolume(0.9);
+            winSound.play();
+            winSoundPlayed = true;
+        }
     } else if (gameState === 'lost') {
  
         // Show score and restart after delay
         drawSpeechBubble(loseMessage, frog.x, frog.y);
         textAlign(CENTER, CENTER);
         text('Score: ' + score + ' / ' + targetScore, width/2, height/2 + 50);
+        
+        if (!loseSoundPlayed && loseSound && loseSound.isLoaded()) {
+            loseSound.setVolume(0.9);
+            loseSound.play();
+            loseSoundPlayed = true;
+        }
         
         if (showRestartMessage) {
             text('Press R to restart', width/2, height/2 + 80);
@@ -503,6 +521,8 @@ function keyPressed() {
     obstacles = [];
     gameOverTimer = 0;
     showRestartMessage = false;
+    winSoundPlayed = false;
+    loseSoundPlayed = false;
     resetFly();
     resetFly2();
     }
