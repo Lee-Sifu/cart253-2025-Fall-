@@ -9,7 +9,7 @@
 "use strict";
 
 /**
- These are my object literals for the frog, tongue, and flies
+ These are all my const for the frog, tongue, and flies
 */
 const frog = {
     x: 250,
