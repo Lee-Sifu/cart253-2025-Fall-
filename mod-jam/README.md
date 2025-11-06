@@ -9,7 +9,7 @@ Jason Lee
 My mod jam, Frog Frog Go, is a fast-paced arcade style game where you control a hungry frog trying to meet its daily meal quota before time runs out!
 I used the professor's original frogfrogfrog file as reference and added some of my own changes. One of the main things I did was add a timer for users to keep going, another fly that gives more points, level system that keeps people engaged, obstacles that spawn in every level for more difficulty and finally an array of messages whether you win or lose.
 For the timer, it creates urgency and increases with each level (starts at 15 seconds, +15s per level)
-For my second fly it adds a +5 point bonus so it gives players a sense of satisfaction.
+For my second fly it adds a +5 point bonus so it gives players a sense of satisfaction. Also both flies have random movement so they act like real flies.
 For my level system, the level increases the target score by 5 flies and spawns additional obstacles, keeping players engaged with escalating difficulty.
 With obstacles spawning it blocks your frog's tongue mid-extension, forcing strategic aiming and adding spatial puzzle elements.
 In my array of win/lose messages, they are a mix of internet slangs and other funny/motivational messages compared to the usual "You win/Game Over" messages. I also added a speech bubble around the frog so it seems like its talking to players.
