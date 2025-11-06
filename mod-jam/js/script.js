@@ -45,6 +45,7 @@ const fly2 = {
     color: 'red',
     angle: 0,
 }
+
 // Here is all my variables
 let score = 0;
 let targetScore = 5;
@@ -161,6 +162,18 @@ function nextLevel() {
         gameState = 'playing';
         resetFly();
         resetFly2();  
+}
+
+// Safe sound play function
+function playSound(sound) {
+    if (sound && sound.isLoaded()) {
+     if (sound.isPlaying()){
+            sound.stop();
+        }
+        let volume = 0.5;
+        sound.setVolume(volume);
+        sound.play();
+    }
 }
 
 // here is my obstacle functions
@@ -293,13 +306,6 @@ if (fly2Active) {
  }
 }
 
- // Safe sound play function
-function playSound(sound) {
-    if (sound && sound.isLoaded()) {
-        sound.play();
-    }
-}
-
 // Here is my tongue functions
 function updateTongue() {
     if (tongue.state === 'extending') {
@@ -380,6 +386,9 @@ function resetFly() {
         fly.x = 0;
         fly.y = random(height);
         fly.angle = random(-PI/4, PI/4); 
+    }
+     if (gameState === 'playing') {
+        playSound(flySound);
     }
 }
 
