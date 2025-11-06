@@ -148,9 +148,10 @@ function displayInstructions() {
     textSize(18);
     text('GOAL: Eat as many flies to reach your daily meal target!', width / 2, 280);
     text('But you won\'t be able to know how many you need per level', width / 2, 302);
-    text('Black flies = 1 point', width / 2, 330);
-    text('Red flies = 5 points', width / 2, 350);
-    text('Avoid obstacles - they block your tongue!', width / 2, 380);
+    text('Only the Frog tells you when your finished!', width / 2, 324);
+    text('Black flies = 1 point', width / 2, 350);
+    text('Red flies = 5 points', width / 2, 370);
+    text('Avoid obstacles - they block your tongue!', width / 2, 390);
     
     textSize(22);
     fill(0, 150, 0);
