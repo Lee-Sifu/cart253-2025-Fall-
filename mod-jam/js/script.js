@@ -166,7 +166,7 @@ function displayInstructions() {
 // Creating more obstacles
 // Resets score and flies for fresh start
 function nextLevel() {
-   
+
         level++;
         targetScore += 5;
         timeLimit += 15;
@@ -583,3 +583,4 @@ function keyPressed() {
         nextLevel();
     }
  }
+ 
