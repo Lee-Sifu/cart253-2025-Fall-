@@ -2,19 +2,19 @@ Frog will start off as small (when frog eat flies over time it will grow)
 
 Frog will change color over time (each color symbolises its evolution growth)
 
-5.Frog will have tongue control to eat flies. (tongue will have a certain length. Mouse function to move and activate tongue)
+1.Frog will have tongue control to eat flies. (tongue will have a certain length. Mouse function to move and activate tongue)
 
 More than one type of fly (good fly that nourishes the frog but bad fly will hurt frog)
 
 Add a score system (+1 for each good fly, -1 for each bad fly)
 
-3.Give players missions(ex. frog eats 5 flies at first. Then # of flies being eaten increase as player progresses)
+2.Give players missions(ex. frog eats 5 flies at first. Then # of flies being eaten increase as player progresses)
 
-4.Add levels (once frog finishes missions, a new canvas scene appears)
+3.Add levels (once frog finishes missions, a new canvas scene appears)
 
 Frog will return as small in each level (give players a fresh start after each level)
 
-2.Maybe add a timer to give players a push to complete their task
+4.Maybe add a timer to give players a push to complete their task
 
 Add a special fly that give bonus points (ex. +5)
 
@@ -22,7 +22,7 @@ Frog has life points (if frog dies, its game over. Bad fly hurts frog besides lo
 
 Frog might have a different mode (if frog eats a certain amount of flies within a certain time frame, it will have a special ability like slow-mo)
 
-1.Add score point visual (When frog eats, points show up around the frog)
+5.Add score point visual (When frog eats, points show up around the frog)
 
 Give frog a facial expression (If frog looses it shows a sad face or if frog wins it shows a happy face)
 
