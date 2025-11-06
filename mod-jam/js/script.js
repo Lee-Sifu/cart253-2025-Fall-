@@ -64,6 +64,8 @@ let tongueSound;
 let eatSound;
 let flySound;
 let fly2Sound;
+let winSound;
+let loseSound;
 let winSoundPlayed = false;
 let loseSoundPlayed = false;
 
