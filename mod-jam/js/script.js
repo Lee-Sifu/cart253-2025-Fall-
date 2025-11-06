@@ -9,7 +9,7 @@
 "use strict";
 
 /**
- Here is all my objects
+ These are my object literals for the frog, tongue, and flies
 */
 const frog = {
     x: 250,
@@ -89,7 +89,7 @@ resetFly2();
 
 
 /**
- * Here is all my functions in draw
+ * Here is all my functions in draw and gameState is used to determine what to display and update
 */
 function draw() {
     background(255, 225, 255);
@@ -116,13 +116,14 @@ function draw() {
         checkEat();
         displayScore();
     } else {
+    // Game over or won for static elements
         drawFrog();
         drawFly();
         drawObstacles();
         displayScore();
         updateTimer();
     }
-    
+    // Always show score unless on instruction screen
     if (gameState !== 'instructions') {
         displayScore();
     }
@@ -130,6 +131,7 @@ function draw() {
  }
 
 // Here is my instruction display function
+// Shows title, controls, goal, and prompts player to start
 function displayInstructions() {
     fill(0);
     textSize(32);
@@ -158,7 +160,11 @@ function displayInstructions() {
     text('Use the Frogs control input to start!', width / 2, 440);
  }
 
-// Here is my next level function
+// Here is my next level function.
+// Adding 5 more flies needed to target score
+// Adding 15 more seconds to time limit
+// Creating more obstacles
+// Resets score and flies for fresh start
 function nextLevel() {
    
         level++;
@@ -173,6 +179,10 @@ function nextLevel() {
 }
 
 // Safe sound play function
+// plays sound effects with randomized pitch
+// Only plays during active gameplay to avoid sound overlap issues
+// Stops any currently playing instance of the sound before playing again
+// Adds pitch variation (0.9-1.1x speed) to make repeated sounds less repetitive
 function playSound(sound) {
     if (gameState === 'playing' && sound && sound.isLoaded()) {
      if (sound.isPlaying()){
@@ -186,7 +196,10 @@ function playSound(sound) {
     }
 }
 
-// here is my obstacle functions
+// here is my obstacle functions* Creates obstacles based on current level
+// Number of obstacles = (level - 1) × 2
+// So level 1 has 0 obstacles, level 2 has 2, level 3 has 4, etc.
+// Each obstacle has random position and size
 function createObstacles() {
      obstacles = []; 
     numObstacles = (level - 1) * 2; 
@@ -203,6 +216,7 @@ function createObstacles() {
 }
 
 // Draw obstacles
+// Each obstacle is a rectangle
 function drawObstacles() {
    for (let obstacle of obstacles) {
         fill(obstacle.color);
@@ -211,6 +225,7 @@ function drawObstacles() {
 }
 
 // check tongue colliosion with obstacles
+// If tongue collides while extending, it retracts immediately
 function checkTongueObstacleCollision() {
     for (let obstacle of obstacles) {
         if (tongue.x > obstacle.x && 
@@ -226,10 +241,14 @@ function checkTongueObstacleCollision() {
 }
 
 // Here is my timer update function
+// Decreases time remaining
+// Checks for win/loss conditions
+// Shows array of win/lose messages
 function updateTimer() { 
     if (gameState === 'playing') {
         timeRemaining -= 1/60;
   
+        // Check for lose condition
         if (timeRemaining <= 0) {
             timeRemaining = 0;
             gameState = 'lost';
@@ -240,6 +259,7 @@ function updateTimer() {
             loseMessage = random(loseMessages);
         }
         
+        // Check for win condition
         if (score >= targetScore) {
             gameState = 'won';
             winSoundPlayed = false;
@@ -249,6 +269,7 @@ function updateTimer() {
     }
     
     // Update game over timer for delay
+    // Shows restart message after 3 seconds
     if (gameState === 'lost') {
         gameOverTimer++;
         if (gameOverTimer > 180) { 
@@ -258,6 +279,7 @@ function updateTimer() {
 }
 
 // Here is my frog movement function
+// 65 and 68 are A and D keys
 function moveFrog() {
     if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
         frog.x -= 5;
@@ -273,11 +295,11 @@ function moveFrog() {
 function drawFrog() {
     fill(frog.color);
     ellipse(frog.x, frog.y, frog.size);
-
+// Eyes
     fill(255); 
     ellipse(frog.x - 10, frog.y - 5, 15, 15); 
     ellipse(frog.x + 10, frog.y - 5, 15, 15); 
-    
+// Pupils
     fill(0); 
     ellipse(frog.x - 10, frog.y - 5, 5, 5); 
     ellipse(frog.x + 10, frog.y - 5, 5, 5); 
@@ -287,7 +309,7 @@ function drawFrog() {
 function moveFly() {
  fly.x += cos(fly.angle) * fly.speed;
  fly.y += sin(fly.angle) * fly.speed;
-    
+// Reset fly if it goes off screen
  if (fly.x > width || fly.x < 0 || fly.y > height || fly.y < 0) {
     resetFly();
     }
@@ -298,7 +320,7 @@ function moveFly2() {
  if (fly2Active) {
     fly2.x += cos(fly2.angle) * fly2.speed;
     fly2.y += sin(fly2.angle) * fly2.speed;
-        
+// Reset fly2 if it goes off screen    
  if (fly2.x > width || fly2.x < 0 || fly2.y > height || fly2.y < 0) {
     resetFly2();
     }
@@ -311,6 +333,7 @@ function drawFly() {
    ellipse(fly.x, fly.y, fly.size); 
 }
 
+// Here is my draw functions for my second fly
 function drawFly2() {
 if (fly2Active) {
    fill(fly2.color);
@@ -319,6 +342,10 @@ if (fly2Active) {
 }
 
 // Here is my tongue functions
+// Update tongue position and state
+// Extends and retracts tongue based on state
+// Calculates tongue end position using angle and length
+// Uses trigonometry (cosine and sine) to find x and y based on angle
 function updateTongue() {
     if (tongue.state === 'extending') {
         tongue.length += tongue.speed;
@@ -347,6 +374,10 @@ function drawTongue() {
 }
 
 // Mouse pressed function to shoot tongue
+// Shoots the tongue when mouse is clicked
+// If on instruction screen, clicking starts the game
+// If tongue is idle, calculates angle toward mouse position and starts extending
+// Uses atan2 to get angle from frog to mouse cursor
 function mousePressed() {
      if (gameState === 'instructions') {
        gameState = 'playing';
@@ -359,6 +390,7 @@ function mousePressed() {
 }
 
 // Check if tongue eats fly
+// If tongue is close enough to fly while extending, increments score, retracts tongue, plays sound, and resets fly position
 function checkEat() {
     let d = dist(tongue.x, tongue.y, fly.x, fly.y);
     if (d < fly.size / 2 && tongue.state === 'extending') {
@@ -379,6 +411,9 @@ function checkEat() {
 }
 
 // Reset fly position and angle
+// Spawns fly at random edge of canvas with random angle toward center
+// Plays fly spawn sound
+// Only plays sound during active gameplay
 function resetFly() {
   let edge = floor(random(4)); 
     
@@ -405,6 +440,9 @@ function resetFly() {
 }
 
 // Reset second fly position and angle
+// Spawns fly at random edge of canvas with random angle toward center
+// Plays fly spawn sound
+// Only plays sound during active gameplay
 function resetFly2() {
   if (random() < 0.7) {
         fly2Active = true;
@@ -438,6 +476,8 @@ function resetFly2() {
 }
 
 // Display score and timer
+// Shows level number, score, and time remaining
+// Math.ceil rounds time up to nearest whole second
 function displayScore() {
     fill(0);
     textSize(24);
@@ -477,6 +517,13 @@ function drawSpeechBubble(message, x, y) {
 }
 
 // Display game status messages
+// Shows random win message in speech bubble
+// Shows final score
+// Prompts to press spacebar to continue to next level
+// Plays win sound once
+// Shows random lose message in speech bubble
+// Shows final score
+// Plays lose sound once
 function displayGameStatus() {
     fill(0);
     textSize(24);
@@ -512,6 +559,8 @@ function displayGameStatus() {
 }
 
 // Key pressed function for restarting and next level
+// Press 'R' to restart after losing
+// Press spacebar to continue to next level after winning
 function keyPressed() {
     if ((key === 'r' || key === 'R') && gameState === 'lost' && showRestartMessage) {
     score = 0;
