@@ -441,7 +441,7 @@ function displayScore() {
     textSize(24);
     textAlign(LEFT, TOP);
     text('Level: ' + level, 10, 70);
-    text('Daily meals: ' + score + ' / ' + targetScore, 10, 10);
+    text('Daily meals: ' + score, 10, 10);
     text('Time: ' + Math.ceil(timeRemaining) + 's', 10, 40);
 }
 
