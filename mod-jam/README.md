@@ -7,9 +7,15 @@ Jason Lee
 ## Description
 
 My mod jam, Frog Frog Go, is a fast-paced arcade style game where you control a hungry frog trying to meet its daily meal quota before time runs out!
-Use the arrow keys or A/D to move your frog left and right across the screen, then click to shoot out your tongue and catch flies zooming across the canvas. Regular black flies are worth 1 point, but keep your eyes peeled for speedy red flies worth 5 points!
-As you progress through levels, the challenge ramps up you'll need to catch more flies in longer time windows while avoiding an increasing number of blue obstacles that blocks your tongue aim movement. Hit your goal and advance to the next level with encouraging words!
-With simple controls, escalating difficulty, randomized fly spawns, and funny win/lose messages, Frog Frog Go delivers that classic "just one more try" arcade experience. Can you keep your frog fed and continue non-stop?
+I used the professor's original frogfrogfrog file as reference and added some of my own changes. One of the main things I did was add a timer for users to keep going, another fly that gives more points, level system that keeps people engaged, obstacles that spawn in every level for more difficulty and finally an array of messages whether you win or lose.
+For the timer, it creates urgency and increases with each level (starts at 15 seconds, +15s per level)
+For my second fly it adds a +5 point bonus so it gives players a sense of satisfaction.
+For my level system, the level increases the target score by 5 flies and spawns additional obstacles, keeping players engaged with escalating difficulty.
+With obstacles spawning it blocks your frog's tongue mid-extension, forcing strategic aiming and adding spatial puzzle elements.
+In my array of win/lose messages, they are a mix of internet slangs and other funny/motivational messages compared to the usual "You win/Game Over" messages. I also added a speech bubble around the frog so it seems like its talking to players.
+I added free and open source sound effects to give more immersion with randomized pitch variation (0.9-1.1x) for tongue shots, eating, fly spawns, wins, and losses.
+I added an instruction screen but also added a functionality where the player has to press one of the frog's input to start. Also added a 3-second delay before showing the restart button to let players process their loss.
+Lastly I added optional key movements where you can use the A/D keys or Arrow keys compared to using the mouse.x position.
 
 ## Screenshot(s)
 
