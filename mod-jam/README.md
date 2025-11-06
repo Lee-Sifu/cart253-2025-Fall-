@@ -21,8 +21,9 @@ Lastly I added optional key movements where you can use the A/D keys or Arrow ke
 
 This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
 
-> ![Image of a clown face](./assets/images/clown.png)
-
+> ![Image of my frog game](./assets/images/Frog1.png)
+![Image of my frog game](./assets/images/Frog2.png)
+![Image of my frog game](./assets/images/Frog3.png)
 ## Attribution
 
 This bit should attribute any code, assets or other elements used taken from other sources. For example:
