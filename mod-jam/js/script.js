@@ -170,7 +170,7 @@ function playSound(sound) {
      if (sound.isPlaying()){
             sound.stop();
         }
-        let volume = 0.5;
+        let volume = 0.9;
         sound.setVolume(volume);
         let randomRate = random(0.9, 1.1);
         sound.rate(randomRate);
