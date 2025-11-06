@@ -6,7 +6,10 @@ Jason Lee
 
 ## Description
 
-The Frog game 
+My mod jam, Frog Frog Go, is a fast-paced arcade style game where you control a hungry frog trying to meet its daily meal quota before time runs out!
+Use the arrow keys or A/D to move your frog left and right across the screen, then click to shoot out your tongue and catch flies zooming across the canvas. Regular black flies are worth 1 point, but keep your eyes peeled for speedy red flies worth 5 points!
+As you progress through levels, the challenge ramps up you'll need to catch more flies in longer time windows while avoiding an increasing number of blue obstacles that blocks your tongue aim movement. Hit your goal and advance to the next level with encouraging words!
+With simple controls, escalating difficulty, randomized fly spawns, and funny win/lose messages, Frog Frog Go delivers that classic "just one more try" arcade experience. Can you keep your frog fed and continue non-stop?
 
 ## Screenshot(s)
 
