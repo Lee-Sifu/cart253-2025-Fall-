@@ -1,5 +1,5 @@
 /**
- * Terrible New Car
+ * Random Car Models
  * Jason Lee
  * 
  * A program to generate new car model names using dinosaurs.
