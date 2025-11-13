@@ -23,7 +23,8 @@ let carName = "Click to generate a car name.";
  * Load the car and dinosaur data
  */
 function preload() {
-
+carData = loadJSON("data/cars.json");
+dinosaurData = loadJSON("data/dinosaurs.json");
 }
 
 /**
