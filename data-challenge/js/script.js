@@ -18,8 +18,7 @@ let lang = "fr";
 
 // Starts with the instruction
 let carName = "Click to generate a car name.";
-//let dinosaurName = "";
-//let manufacturerName = "";
+
 
 /**
  * Load the car and dinosaur data
@@ -54,7 +53,7 @@ function draw() {
  * Generate a new car name
  */
 function mousePressed() {
-let manufacturer = random(carData.manufacturers);
-let dinosaur = random(dinosaurData.dinosaurs);
-carName = manufacturer + " " + dinosaur;
+ let manufacturer = random(carData.manufacturers);
+ let dinosaur = random(dinosaurData.dinosaurs);
+ carName = manufacturer + " " + dinosaur;
 }
