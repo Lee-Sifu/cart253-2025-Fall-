@@ -1,9 +1,9 @@
 /**
- * Title of Project
- * Author Name
+ * TBA
+ * Jason Lee
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * This the final jam for Cart 253
+ * 
  */
 
 "use strict";
