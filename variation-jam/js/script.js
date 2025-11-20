@@ -26,6 +26,14 @@ const ball = {
     speedY: -4
 };
 
+const ball2 = {
+    x:200,
+    y:200,
+    size: 20,
+    speedX: 3,
+    speedY: -3
+}
+
 /**  
  * Setup function to create canvas
  */
@@ -48,6 +56,7 @@ function draw() {
     // Draw current state
     drawPaddle(paddle);
     drawBall(ball);
+    drawBall(ball2);
 }
 
 function movePaddle(p) {
