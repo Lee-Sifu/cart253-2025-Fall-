@@ -19,7 +19,7 @@ const paddle = {
 };
 
 const ball = {
-    x: 250,
+    x: 500,
     y: 250,
     size: 15,
     speedX: 4,
@@ -59,19 +59,19 @@ function draw() {
     drawBall(ball2);
 }
 
-function movePaddle(p) {
+function movePaddle(paddle) {
     // Move the paddle with the mouse
-    p.x = mouseX - p.width / 2;
+    paddle.x = mouseX - paddle.width / 2;
 
     // Constrain the paddle to the canvas
-    p.x = constrain(p.x, 0, width - p.width);
+    paddle.x = constrain(paddle.x, 0, width - paddle.width);
 }
 
 function moveBall(ball) {
     // Move the ball
     ball.x += ball.speedX;
     ball.y += ball.speedY;
-    ball2.y += ball2.speedY;
+    ball2.y -= ball2.speedY;
 
     // Check for collision with walls
     if (ball.x <= 0 || ball.x + ball.size >= width) {
@@ -96,9 +96,15 @@ function moveBall(ball) {
         ball.y = height / 2;
         ball.speedY = -4; // Reset speed
     }
+    if (ball2.y > height) {
+        // Reset ball2 position
+        ball2.x = width / 2;
+        ball2.y = height / 2;
+        ball2.speedY = -3; // Reset speed
+    }
 }
 
-function drawPaddle(p) {
+function drawPaddle(paddle) {
     // Draw the paddle
     fill(255);
     rect(paddle.x, paddle.y, paddle.width, paddle.height);
