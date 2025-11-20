@@ -9,7 +9,7 @@
 "use strict";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ * Constants of both ball and paddle
 */
 const paddle = {
     x: 300,
@@ -26,13 +26,16 @@ const ball = {
     speedY: -4
 };
 
+/**  
+ * Setup function to create canvas
+ */
 function setup() {
 createCanvas(500, 500);
 }
 
 
 /**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
+ * All my functions being drawn in the canvas
 */
 function draw() {
     // Clear the canvas each frame so moving objects don't leave trails
