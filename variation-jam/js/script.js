@@ -38,7 +38,12 @@ const ball2 = {
  * Setup function to create canvas
  */
 function setup() {
-createCanvas(500, 500);
+    createCanvas(500, 500);
+    // Place ball2 at the top of the canvas (centered horizontally)
+    ball2.y = ball2.size / 2;
+    ball2.x = width / 2;
+    // Ensure ball2's vertical speed is positive so it moves downwards
+    ball2.speedY = Math.abs(ball2.speedY);
 }
 
 
@@ -71,6 +76,7 @@ function moveBall(ball) {
     // Move the ball
     ball.x += ball.speedX;
     ball.y += ball.speedY;
+    // Update ball2 using its velocity (positive speedY moves it down)
     ball2.y -= ball2.speedY;
 
     // Check for collision with walls
