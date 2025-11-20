@@ -11,6 +11,21 @@
 /**
  * OH LOOK I DIDN'T DESCRIBE SETUP!!
 */
+const paddle = {
+    x: 300,
+    y: 280,
+    width: 80,
+    height: 10
+};
+
+const ball = {
+    x: 250,
+    y: 250,
+    size: 15,
+    speedX: 4,
+    speedY: -4
+};
+
 function setup() {
 createCanvas(500, 500);
 background(100, 150, 250);
@@ -21,5 +36,52 @@ background(100, 150, 250);
  * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
 */
 function draw() {
+movePaddle(paddle);
+moveBall(ball);
+}
 
+function movePaddle(p) {
+    // Move the paddle with the mouse
+    p.x = mouseX - p.width / 2;
+
+    // Constrain the paddle to the canvas
+    p.x = constrain(p.x, 0, width - p.width);
+
+    // Draw the paddle
+    fill(255);
+    rect(p.x, p.y, p.width, p.height);
+}
+
+function moveBall(b) {
+    // Move the ball
+    b.x += b.speedX;
+    b.y += b.speedY;
+
+    // Check for collision with walls
+    if (b.x <= 0 || b.x + b.size >= width) {
+        b.speedX *= -1; // Reverse X direction
+    }
+    if (b.y <= 0) {
+        b.speedY *= -1; // Reverse Y direction
+    }
+
+    // Check for collision with paddle
+    if (b.y + b.size >= paddle.y &&
+        b.x + b.size >= paddle.x &&
+        b.x <= paddle.x + paddle.width) {
+        b.speedY *= -1; // Reverse Y direction
+        b.y = paddle.y - b.size; // Position ball above paddle
+    }
+
+    // Check for ball falling below the canvas
+    if (b.y > height) {
+        // Reset ball position
+        b.x = width / 2;
+        b.y = height / 2;
+        b.speedY = -4; // Reset speed
+    }
+
+    // Draw the ball
+    fill(255, 0, 0);
+    ellipse(b.x, b.y, b.size);
 }
