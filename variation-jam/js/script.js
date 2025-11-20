@@ -53,7 +53,7 @@ function setup() {
 function draw() {
     // Clear the canvas each frame so moving objects don't leave trails
     background(100, 150, 250);
-
+    
     // Update state
     movePaddle(paddle);
     moveBall(ball);
@@ -118,6 +118,8 @@ function drawPaddle(paddle) {
 
 function drawBall(ball) {
     // Draw the ball
+    push()
     fill(255, 0, 0);
     ellipse(ball.x, ball.y, ball.size);
+    pop()
 }
