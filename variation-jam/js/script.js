@@ -28,7 +28,6 @@ const ball = {
 
 function setup() {
 createCanvas(500, 500);
-background(100, 150, 250);
 }
 
 
@@ -36,10 +35,16 @@ background(100, 150, 250);
  * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
 */
 function draw() {
-movePaddle(paddle);
-moveBall(ball);
-drawPaddle(paddle);
-drawBall(ball);
+    // Clear the canvas each frame so moving objects don't leave trails
+    background(100, 150, 250);
+
+    // Update state
+    movePaddle(paddle);
+    moveBall(ball);
+
+    // Draw current state
+    drawPaddle(paddle);
+    drawBall(ball);
 }
 
 function movePaddle(p) {
@@ -48,10 +53,6 @@ function movePaddle(p) {
 
     // Constrain the paddle to the canvas
     p.x = constrain(p.x, 0, width - p.width);
-
-    // Draw the paddle
-    fill(255);
-    rect(p.x, p.y, p.width, p.height);
 }
 
 function moveBall(b) {
@@ -82,10 +83,6 @@ function moveBall(b) {
         b.y = height / 2;
         b.speedY = -4; // Reset speed
     }
-
-    // Draw the ball
-    fill(255, 0, 0);
-    ellipse(b.x, b.y, b.size);
 }
 
 function drawPaddle(p) {
