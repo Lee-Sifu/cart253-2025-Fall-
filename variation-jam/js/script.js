@@ -67,44 +67,45 @@ function movePaddle(p) {
     p.x = constrain(p.x, 0, width - p.width);
 }
 
-function moveBall(b) {
+function moveBall(ball) {
     // Move the ball
-    b.x += b.speedX;
-    b.y += b.speedY;
+    ball.x += ball.speedX;
+    ball.y += ball.speedY;
+    ball2.y += ball2.speedY;
 
     // Check for collision with walls
-    if (b.x <= 0 || b.x + b.size >= width) {
-        b.speedX *= -1; // Reverse X direction
+    if (ball.x <= 0 || ball.x + ball.size >= width) {
+        ball.speedX *= -1; // Reverse X direction
     }
-    if (b.y <= 0) {
-        b.speedY *= -1; // Reverse Y direction
+    if (ball.y <= 0) {
+        ball.speedY *= -1; // Reverse Y direction
     }
 
     // Check for collision with paddle
-    if (b.y + b.size >= paddle.y &&
-        b.x + b.size >= paddle.x &&
-        b.x <= paddle.x + paddle.width) {
-        b.speedY *= -1; // Reverse Y direction
-        b.y = paddle.y - b.size; // Position ball above paddle
+    if (ball.y + ball.size >= paddle.y &&
+        ball.x + ball.size >= paddle.x &&
+        ball.x <= paddle.x + paddle.width) {
+        ball.speedY *= -1; // Reverse Y direction
+        ball.y = paddle.y - ball.size; // Position ball above paddle
     }
 
     // Check for ball falling below the canvas
-    if (b.y > height) {
+    if (ball.y > height) {
         // Reset ball position
-        b.x = width / 2;
-        b.y = height / 2;
-        b.speedY = -4; // Reset speed
+        ball.x = width / 2;
+        ball.y = height / 2;
+        ball.speedY = -4; // Reset speed
     }
 }
 
 function drawPaddle(p) {
     // Draw the paddle
     fill(255);
-    rect(p.x, p.y, p.width, p.height);
+    rect(paddle.x, paddle.y, paddle.width, paddle.height);
 }
 
-function drawBall(b) {
+function drawBall(ball) {
     // Draw the ball
     fill(255, 0, 0);
-    ellipse(b.x, b.y, b.size);
+    ellipse(ball.x, ball.y, ball.size);
 }
