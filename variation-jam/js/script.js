@@ -38,6 +38,8 @@ background(100, 150, 250);
 function draw() {
 movePaddle(paddle);
 moveBall(ball);
+drawPaddle(paddle);
+drawBall(ball);
 }
 
 function movePaddle(p) {
@@ -81,6 +83,18 @@ function moveBall(b) {
         b.speedY = -4; // Reset speed
     }
 
+    // Draw the ball
+    fill(255, 0, 0);
+    ellipse(b.x, b.y, b.size);
+}
+
+function drawPaddle(p) {
+    // Draw the paddle
+    fill(255);
+    rect(p.x, p.y, p.width, p.height);
+}
+
+function drawBall(b) {
     // Draw the ball
     fill(255, 0, 0);
     ellipse(b.x, b.y, b.size);
