@@ -1,0 +1,13 @@
+Jason Lee  
+Pippin Barr  
+Cart 253-A  
+Nov 15, 2025
+
+During the mod jam vernissage, my peers who I had to write a response to had very good work. Matia, who’s mod jam concept presents a straightforward “broccoli vs. burgers” diet game in which the player controls a frog attempting to eat healthy food while avoiding junk. While the idea of it is good, the current design feels overly simplistic and could benefit from more depth or variation. The core loop of eating broccoli for \+1 point, accidentally consuming burgers for –1. A win/loss threshold of \+5 or –5 provides structure, though the limited range reduces strategic tension.
+
+I really like how the eyes are locked onto the food. As well as the sound effects he used when eating both food especially the hamburger’s sound effect choice indicating we as the players chose something wrong over broccoli. Overall, the game felt like one of those arcade games just like mine.
+
+When playing Olivia’s frog game, it was very fun trying to fill in the meter and I thought there might have been more once you max out. We both had a similar idea where we both made a black and red fly. For Olivia, she made the red flies an immediate game over feature where I made mine as a bonus feature. Another similarity we both made our special fly be faster to give that sense of difficulty. I found myself constantly trying to avoid those red flies during the mod jam vernissage. Lastly I really like the dead frog image in the game over screen. It clearly visually shows what happens when we eat the red ones. Olivia’s frog game felt similar to Matia’s game in terms of win/lose conditions.
+
+Lastly for Ash’s project, Save the World, Frog, presents a more layered and environmentally themed take on a frog-based survival game. The core idea of managing both health and pollution while dealing with toxic flies and morally questionable fairy-healing adds complexity, but it also risks overwhelming the player with conflicting consequences. This frog game surprised me of how much you need to balance your gameplay. Players needing to catch flies reduces pollution yet slowly poisons the frog, while eating fairies restores health but increases pollution, creating a constant push-and-pull that can feel more punishing than strategic depending on how quickly these values change. The added UI elements, like the pollution bar changing the pond’s color and the dynamic health bar, do provide strong visual feedback, and the sound effects and a stylized title screen shows attention to presentation. Overall, Ash’s project is imaginative and feature-rich.  
+Out of all three one thing I found in common was they all use the mouse.X position to move the frog where I went for a keyboard input control.  
