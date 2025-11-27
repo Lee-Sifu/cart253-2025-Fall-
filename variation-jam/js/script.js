@@ -34,6 +34,7 @@ const ball2 = {
     speedY: -3
 }
 let gameOver = false;
+let state = "menu";
 
 /**  
  * Setup function to create canvas
@@ -54,6 +55,20 @@ function setup() {
 function draw() {
     // Clear the canvas each frame so moving objects don't leave trails
     background(100, 150, 250);
+    switch (state) {
+        case "menu":
+            menuDraw();
+            break;
+        case "red-variation":
+            redDraw();
+            break
+        case "green-variation":
+            greenDraw();
+            break;
+        case "blue-variation":
+            blueDraw();
+            break;
+    }
 
      if (gameOver) {
         // Display game over screen
@@ -163,6 +178,20 @@ function drawBall2(ball2) {
 }
 
 function mousePressed() {
+    switch (state) {
+        case "menu":
+            menuMousePressed();
+            break;
+        case "red-variation":
+            redMousePressed();
+            break
+        case "green-variation":
+            greenMousePressed();
+            break;
+        case "blue-variation":
+            blueMousePressed();
+            break;
+    }
     // Restart game on click if game over
     if (gameOver) {
         gameOver = false;
@@ -176,5 +205,22 @@ function mousePressed() {
         ball2.y = ball2.size / 2;
         ball2.speedY = 3;
         ball2.speedX = 3;
+    }
+}
+
+function keyPressed(event) {
+     switch (state) {
+        case "menu":
+            menuKeyPressed(event);
+            break;
+        case "red-variation":
+            redKeyPressed(event);
+            break
+        case "green-variation":
+            greenKeyPressed(event);
+            break;
+        case "blue-variation":
+            blueKeyPressed(event);
+            break;
     }
 }
