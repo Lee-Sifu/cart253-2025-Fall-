@@ -33,6 +33,7 @@ const ball2 = {
     speedX: 3,
     speedY: -3
 }
+let gameOver = false;
 
 /**  
  * Setup function to create canvas
@@ -53,6 +54,17 @@ function setup() {
 function draw() {
     // Clear the canvas each frame so moving objects don't leave trails
     background(100, 150, 250);
+
+     if (gameOver) {
+        // Display game over screen
+        fill(255);
+        textSize(32);
+        textAlign(CENTER, CENTER);
+        text("GAME OVER", width / 2, height / 2);
+        textSize(16);
+        text("Click to restart", width / 2, height / 2 + 40);
+        return;
+    }
     
     // Update state
     movePaddle(paddle);
@@ -78,11 +90,9 @@ function movePaddle(paddle) {
 }
 
 function moveBall(ball) {
-    // Move the ball
+    // Move ball 1 (the one that respawns)
     ball.x += ball.speedX;
     ball.y += ball.speedY;
-    // Update ball2 using its velocity (positive speedY moves it down)
-    ball2.y -= ball2.speedY;
 
     // Check for collision with walls
     if (ball.x <= 0 || ball.x + ball.size >= width) {
@@ -113,6 +123,10 @@ function moveBall2(ball2) {
     if (ball2.y <= 0) {
         ball2.speedY *= -1; // Reverse Y direction
     } 
+     // Check if ball2 falls - GAME OVER!
+    if (ball2.y > height) {
+        gameOver = true;
+    }
 }
 
 function checkPaddleCollision(ball) {
@@ -146,4 +160,21 @@ function drawBall2(ball2) {
     fill(255, 255, 0);
     ellipse(ball2.x, ball2.y, ball2.size);
     pop();
+}
+
+function mousePressed() {
+    // Restart game on click if game over
+    if (gameOver) {
+        gameOver = false;
+        // Reset ball positions
+        ball.x = width / 2;
+        ball.y = height / 2;
+        ball.speedY = -4;
+        ball.speedX = 4;
+        
+        ball2.x = width / 2;
+        ball2.y = ball2.size / 2;
+        ball2.speedY = 3;
+        ball2.speedX = 3;
+    }
 }
