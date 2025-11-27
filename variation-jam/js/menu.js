@@ -28,18 +28,19 @@ function menuDraw() {
  */
 function menuKeyPressed(event) {
     switch (event.keyCode) {
-        case 82:
-            state = "1st variation";
+        // Listen for numeric keys 1, 2, 3 to match the menu text
+        case 49: // '1'
+            state = "pong variation";
             pongSetup();
             break;
 
-        case 71:
-            state = "2nd variation";
+        case 50: // '2'
+            state = "power pong variation";
             powerPongSetup();
             break;
 
-        case 66:
-            state = "3rd variation";
+        case 51: // '3'
+            state = "tennis pong variation";
             tennisPongSetup();
             break;
     }
@@ -50,6 +51,6 @@ function menuKeyPressed(event) {
  */
 function menuMousePressed() {
     // For now, clicking the mouse starts the 1st variation
-    state = "1st variation";
+    state = "pong variation";
     pongSetup();
 }

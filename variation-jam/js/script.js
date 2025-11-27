@@ -182,13 +182,13 @@ function mousePressed() {
         case "menu":
             menuMousePressed();
             break;
-        case "1st variation":
+        case "pong variation":
             pongMousePressed();
             break
-        case "2nd variation":
+        case "power pong variation":
             powerPongMousePressed();
             break;
-        case "3rd variation":
+        case "tennis pong variation":
             tennisPongMousePressed();
             break;
     }
