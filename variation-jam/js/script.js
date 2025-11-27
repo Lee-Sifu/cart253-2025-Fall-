@@ -72,7 +72,7 @@ function draw() {
 
      if (gameOver) {
         // Display game over screen
-        fill(255);
+        fill(255,0,0);
         textSize(32);
         textAlign(CENTER, CENTER);
         text("GAME OVER", width / 2, height / 2);
