@@ -5,9 +5,9 @@
  */
 
 const menuText = `
-(1) 1st variation
-(2) 2nd variation
-(3) 3rd variation`
+(1) pong variation
+(2) power pong variation
+(3) tennis pong variation`
 
 /**
  * Display the main menu
@@ -30,17 +30,17 @@ function menuKeyPressed(event) {
     switch (event.keyCode) {
         case 82:
             state = "1st variation";
-            redSetup();
+            pongSetup();
             break;
 
         case 71:
             state = "2nd variation";
-            greenSetup();
+            powerPongSetup();
             break;
 
         case 66:
             state = "3rd variation";
-            blueSetup();
+            tennisPongSetup();
             break;
     }
 }
@@ -51,5 +51,5 @@ function menuKeyPressed(event) {
 function menuMousePressed() {
     // For now, clicking the mouse starts the 1st variation
     state = "1st variation";
-    redSetup();
+    pongSetup();
 }

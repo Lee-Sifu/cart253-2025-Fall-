@@ -59,14 +59,14 @@ function draw() {
         case "menu":
             menuDraw();
             break;
-        case "1st variation":
-            redDraw();
+        case "pong variation":
+            pongDraw();
             break
-        case "2nd variation":
-            greenDraw();
+        case "power pong variation":
+            powerPongDraw();
             break;
-        case "3rd variation":
-            blueDraw();
+        case "tennis pong variation":
+            tennisPongDraw();
             break;
     }
 
@@ -183,13 +183,13 @@ function mousePressed() {
             menuMousePressed();
             break;
         case "1st variation":
-            redMousePressed();
+            pongMousePressed();
             break
         case "2nd variation":
-            greenMousePressed();
+            powerPongMousePressed();
             break;
         case "3rd variation":
-            blueMousePressed();
+            tennisPongMousePressed();
             break;
     }
     // Restart game on click if game over
@@ -213,14 +213,14 @@ function keyPressed(event) {
         case "menu":
             menuKeyPressed(event);
             break;
-        case "1st variation":
-            redKeyPressed(event);
+        case "pong variation":
+            pongKeyPressed(event);
             break
-        case "2nd variation":
-            greenKeyPressed(event);
+        case "power pong variation":
+            powerPongKeyPressed(event);
             break;
-        case "3rd variation":
-            blueKeyPressed(event);
+        case "tennis pong variation":
+            tennisPongKeyPressed(event);
             break;
     }
 }
