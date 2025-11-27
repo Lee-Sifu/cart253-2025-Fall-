@@ -59,13 +59,13 @@ function draw() {
         case "menu":
             menuDraw();
             break;
-        case "red-variation":
+        case "1st variation":
             redDraw();
             break
-        case "green-variation":
+        case "2nd variation":
             greenDraw();
             break;
-        case "blue-variation":
+        case "3rd variation":
             blueDraw();
             break;
     }
@@ -182,13 +182,13 @@ function mousePressed() {
         case "menu":
             menuMousePressed();
             break;
-        case "red-variation":
+        case "1st variation":
             redMousePressed();
             break
-        case "green-variation":
+        case "2nd variation":
             greenMousePressed();
             break;
-        case "blue-variation":
+        case "3rd variation":
             blueMousePressed();
             break;
     }
@@ -213,13 +213,13 @@ function keyPressed(event) {
         case "menu":
             menuKeyPressed(event);
             break;
-        case "red-variation":
+        case "1st variation":
             redKeyPressed(event);
             break
-        case "green-variation":
+        case "2nd variation":
             greenKeyPressed(event);
             break;
-        case "blue-variation":
+        case "3rd variation":
             blueKeyPressed(event);
             break;
     }

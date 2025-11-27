@@ -49,5 +49,7 @@ function menuKeyPressed(event) {
  * This will be called whenever the mouse is pressed while the menu is active
  */
 function menuMousePressed() {
-
+    // For now, clicking the mouse starts the 1st variation
+    state = "1st variation";
+    redSetup();
 }
