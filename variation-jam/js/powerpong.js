@@ -22,23 +22,24 @@ let lives = 3;
 let gameSpeed = 1;
 let gameOver = false;
 let spawnTimer = 0;
-let spawnInterval = 300; // Frames between power-ups
+let spawnInterval = 60; // Frames between power-ups
 let state = "menu";
 
-// constants
+if (frameCount % 600 === 0) {
+    gameSpeed += 0.5; // Increase speed every 10 seconds
+    spawnInterval = max(30, spawnInterval - 5); // Decrease spawn interval but not below 30 frames
+}
+
+// array to hold power-ups and obstacles
 let powerUps = [];
-let balls = [];
+let obstacles = [];
 
 /**  
  * Setup function to create canvas
  */
 function setup() {
     createCanvas(500, 500);
-    // Place ball2 at the top of the canvas (centered horizontally)
-    ball2.y = ball2.size / 2;
-    ball2.x = width / 2;
-    // Ensure ball2's vertical speed is positive so it moves downwards
-    ball2.speedY = Math.abs(ball2.speedY);
+    
 }
 
 
@@ -76,10 +77,12 @@ function draw() {
     
     // Update state
     movePaddle(paddle);
-    
-    // Check collisions
-    checkPaddleCollision();
-
+    // spawn obj
+    spawnObjects();
+    //update power pups
+    updatePowerUps();
+    //update obstacles
+    updateObstacles();
     // Draw current state
     drawPaddle(paddle);
 }
@@ -92,77 +95,10 @@ function movePaddle(paddle) {
     paddle.x = constrain(paddle.x, 0, width - paddle.width);
 }
 
-function moveBall(ball) {
-    // Move ball 1 (the one that respawns)
-    ball.x += ball.speedX;
-    ball.y += ball.speedY;
-
-    // Check for collision with walls
-    if (ball.x <= 0 || ball.x + ball.size >= width) {
-        ball.speedX *= -1; // Reverse X direction
-    }
-    if (ball.y <= 0) {
-        ball.speedY *= -1; // Reverse Y direction
-    }
-
-    // Check for ball falling below the canvas
-    if (ball.y > height) {
-        // Reset ball position
-        ball.x = width / 2;
-        ball.y = height / 2;
-        ball.speedY = -4; // Reset speed
-    }
-}
-
-function moveBall2(ball2) {
-    // Move ball 2 (the survival ball - must not fall!)
-    ball2.x += ball2.speedX;
-    ball2.y += ball2.speedY;  // ADD to move down
-
-    // Check for collision with walls
-    if (ball2.x <= 0 || ball2.x + ball2.size >= width) {
-        ball2.speedX *= -1; // Reverse X direction
-    }
-    if (ball2.y <= 0) {
-        ball2.speedY *= -1; // Reverse Y direction
-    } 
-     // Check if ball2 falls - GAME OVER!
-    if (ball2.y > height) {
-        gameOver = true;
-    }
-}
-
-function checkPaddleCollision(ball) {
-    // Check for collision with paddle
-    if (ball.y + ball.size >= paddle.y &&
-        ball.x + ball.size >= paddle.x &&
-        ball.x <= paddle.x + paddle.width &&
-        ball.y <= paddle.y + paddle.height) {
-        ball.speedY *= -1; // Reverse Y direction
-        ball.y = paddle.y - ball.size; // Position ball above paddle
-    }
-}
-
 function drawPaddle(paddle) {
     // Draw the paddle
     fill(255);
     rect(paddle.x, paddle.y, paddle.width, paddle.height);
-}
-
-function drawBall(ball) {
-    // Draw the ball
-    push()
-    fill(255, 0, 0);
-    ellipse(ball.x, ball.y, ball.size);
-    pop()
-}
-
-function drawBall2(ball2) {
-    // Draw ball 2 (yellow - survival ball)
-    push();
-    fill(255, 255, 0);
-    ellipse(ball2.x, ball2.y, ball2.size);
-    pop();
 }
 
 function mousePressed() {
@@ -184,15 +120,7 @@ function mousePressed() {
     if (gameOver) {
         gameOver = false;
         // Reset ball positions
-        ball.x = width / 2;
-        ball.y = height / 2;
-        ball.speedY = -4;
-        ball.speedX = 4;
         
-        ball2.x = width / 2;
-        ball2.y = ball2.size / 2;
-        ball2.speedY = 3;
-        ball2.speedX = 3;
     }
 }
 
