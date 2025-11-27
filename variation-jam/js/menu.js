@@ -5,9 +5,9 @@
  */
 
 const menuText = `
-(R) Red variation
-(G) Green variation
-(B) Blue variation`
+(1) 1st variation
+(2) 2nd variation
+(3) 3rd variation`
 
 /**
  * Display the main menu
@@ -29,17 +29,17 @@ function menuDraw() {
 function menuKeyPressed(event) {
     switch (event.keyCode) {
         case 82:
-            state = "red-variation";
+            state = "1st variation";
             redSetup();
             break;
 
         case 71:
-            state = "green-variation";
+            state = "2nd variation";
             greenSetup();
             break;
 
         case 66:
-            state = "blue-variation";
+            state = "3rd variation";
             blueSetup();
             break;
     }
