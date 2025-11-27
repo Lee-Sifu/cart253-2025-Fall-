@@ -57,11 +57,16 @@ function draw() {
     // Update state
     movePaddle(paddle);
     moveBall(ball);
+    moveBall2(ball2);
+    
+    // Check collisions
+    checkPaddleCollision(ball);
+    checkPaddleCollision(ball2);
 
     // Draw current state
     drawPaddle(paddle);
     drawBall(ball);
-    drawBall(ball2);
+    drawBall2(ball2);
 }
 
 function movePaddle(paddle) {
@@ -87,14 +92,6 @@ function moveBall(ball) {
         ball.speedY *= -1; // Reverse Y direction
     }
 
-    // Check for collision with paddle
-    if (ball.y + ball.size >= paddle.y &&
-        ball.x + ball.size >= paddle.x &&
-        ball.x <= paddle.x + paddle.width) {
-        ball.speedY *= -1; // Reverse Y direction
-        ball.y = paddle.y - ball.size; // Position ball above paddle
-    }
-
     // Check for ball falling below the canvas
     if (ball.y > height) {
         // Reset ball position
@@ -102,11 +99,30 @@ function moveBall(ball) {
         ball.y = height / 2;
         ball.speedY = -4; // Reset speed
     }
-    if (ball2.y > height) {
-        // Reset ball2 position
-        ball2.x = width / 2;
-        ball2.y = height / 2;
-        ball2.speedY = -3; // Reset speed
+}
+
+function moveBall2(ball2) {
+    // Move ball 2 (the survival ball - must not fall!)
+    ball2.x += ball2.speedX;
+    ball2.y += ball2.speedY;  // ADD to move down
+
+    // Check for collision with walls
+    if (ball2.x <= 0 || ball2.x + ball2.size >= width) {
+        ball2.speedX *= -1; // Reverse X direction
+    }
+    if (ball2.y <= 0) {
+        ball2.speedY *= -1; // Reverse Y direction
+    } 
+}
+
+function checkPaddleCollision(ball) {
+    // Check for collision with paddle
+    if (ball.y + ball.size >= paddle.y &&
+        ball.x + ball.size >= paddle.x &&
+        ball.x <= paddle.x + paddle.width &&
+        ball.y <= paddle.y + paddle.height) {
+        ball.speedY *= -1; // Reverse Y direction
+        ball.y = paddle.y - ball.size; // Position ball above paddle
     }
 }
 
@@ -122,4 +138,12 @@ function drawBall(ball) {
     fill(255, 0, 0);
     ellipse(ball.x, ball.y, ball.size);
     pop()
+}
+
+function drawBall2(ball2) {
+    // Draw ball 2 (yellow - survival ball)
+    push();
+    fill(255, 255, 0);
+    ellipse(ball2.x, ball2.y, ball2.size);
+    pop();
 }
