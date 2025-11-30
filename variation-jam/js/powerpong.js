@@ -1,108 +1,77 @@
 /**
- * TBA
- * Jason Lee
- * 
- * This the final jam for Cart 253
- * 
+ * Power Pong Variation
+ * Catch power-ups, avoid obstacles!
  */
 
 "use strict";
 
-/**
- * Constants of both ball and paddle
-*/
-const paddle = {
+// Power pong specific variables
+const powerPongPaddle = {
     x: 300,
-    y: 280,
+    y: 450,
     width: 90,
     height: 10
 };
-let score = 0;
-let lives = 3;
-let gameSpeed = 1;
-let gameOver = false;
-let spawnTimer = 0;
-let spawnInterval = 60; // Frames between power-ups
-let state = "menu";
 
-if (frameCount % 600 === 0) {
-    gameSpeed += 0.5; // Increase speed every 10 seconds
-    spawnInterval = max(30, spawnInterval - 5); // Decrease spawn interval but not below 30 frames
-}
-
-// array to hold power-ups and obstacles
+let powerPongScore = 0;
+let powerPongLives = 3;
+let powerPongGameSpeed = 1;
+let powerPongSpawnTimer = 0;
+let powerPongSpawnInterval = 60;
 let powerUps = [];
 let obstacles = [];
 
-/**  
- * Setup function to create canvas
+/**
+ * Setup/reset the power pong variation
  */
-function setup() {
-    createCanvas(500, 500);
-    
+function powerPongSetup() {
+    powerPongPaddle.x = 300;
+    powerPongPaddle.y = 450;
+    powerPongScore = 0;
+    powerPongLives = 3;
+    gameOver = false;
+    powerPongGameSpeed = 1;
+    powerPongSpawnTimer = 0;
+    powerPongSpawnInterval = 60;
+    powerUps = [];
+    obstacles = [];
 }
-
 
 /**
- * All my functions being drawn in the canvas
-*/
-function draw() {
-    // Clear the canvas each frame so moving objects don't leave trails
-    background(100, 150, 250);
-    switch (state) {
-        case "menu":
-            menuDraw();
-            break;
-        case "pong variation":
-            pongDraw();
-            break
-        case "power pong variation":
-            powerPongDraw();
-            break;
-        case "tennis pong variation":
-            tennisPongDraw();
-            break;
-    }
-
-     if (gameOver) {
-        // Display game over screen
-        fill(255,0,0);
-        textSize(32);
-        textAlign(CENTER, CENTER);
-        text("GAME OVER", width / 2, height / 2);
-        textSize(16);
-        text("Click to restart", width / 2, height / 2 + 40);
-        return;
-    }
-    // UI
-    displayUI();
-    // Draw power-ups and obstacles
+ * Draw function for power pong variation
+ */
+function powerPongDraw() {
+    // Display UI
+    displayPowerPongUI();
+    
+    // Update and draw power-ups and obstacles
     drawPowerUps();
     drawObstacles();
+    
     // Update state
-    movePaddle(paddle);
-    // spawn obj
-    spawnObjects();
-    //update power pups
+    movePowerPongPaddle();
+    spawnPowerPongObjects();
     updatePowerUps();
-    //update obstacles
     updateObstacles();
-    // Draw current state
-    drawPaddle(paddle);
+    
+    // Draw paddle
+    drawPowerPongPaddle();
+    
+    // Increase difficulty over time
+    if (frameCount % 600 === 0) {
+        powerPongGameSpeed += 0.1;
+        powerPongSpawnInterval = max(30, powerPongSpawnInterval - 5);
+    }
 }
 
-function movePaddle(paddle) {
-    // Move the paddle with the mouse
-    paddle.x = mouseX - paddle.width / 2;
-
-    // Constrain the paddle to the canvas
-    paddle.x = constrain(paddle.x, 0, width - paddle.width);
+function movePowerPongPaddle() {
+    powerPongPaddle.x = mouseX - powerPongPaddle.width / 2;
+    powerPongPaddle.x = constrain(powerPongPaddle.x, 0, width - powerPongPaddle.width);
 }
 
-function drawPaddle(paddle) {
-    // Draw the paddle
+function drawPowerPongPaddle() {
     fill(255);
-    rect(paddle.x, paddle.y, paddle.width, paddle.height);
+    rect(powerPongPaddle.x, powerPongPaddle.y, powerPongPaddle.width, powerPongPaddle.height);
 }
 
 function drawPowerUps() {
@@ -118,32 +87,30 @@ function drawPowerUps() {
     }
 }
 
-
 function drawObstacles() {
     for (let obstacle of obstacles) {
         push();
         fill(255, 0, 0);
-        // Draw as a spiky circle
         ellipse(obstacle.x, obstacle.y, obstacle.size);
         // Add spikes
         stroke(200, 0, 0);
         strokeWeight(2);
         for (let angle = 0; angle < 360; angle += 45) {
-            let x1 = obstacle.x + cos(angle) * (obstacle.size / 2);
-            let y1 = obstacle.y + sin(angle) * (obstacle.size / 2);
-            let x2 = obstacle.x + cos(angle) * (obstacle.size / 2 + 5);
-            let y2 = obstacle.y + sin(angle) * (obstacle.size / 2 + 5);
+            let x1 = obstacle.x + cos(radians(angle)) * (obstacle.size / 2);
+            let y1 = obstacle.y + sin(radians(angle)) * (obstacle.size / 2);
+            let x2 = obstacle.x + cos(radians(angle)) * (obstacle.size / 2 + 5);
+            let y2 = obstacle.y + sin(radians(angle)) * (obstacle.size / 2 + 5);
             line(x1, y1, x2, y2);
         }
         pop();
     }
 }
 
-function spawnObjects() {
-    spawnTimer++;
+function spawnPowerPongObjects() {
+    powerPongSpawnTimer++;
     
-    if (spawnTimer >= spawnInterval) {
-        spawnTimer = 0;
+    if (powerPongSpawnTimer >= powerPongSpawnInterval) {
+        powerPongSpawnTimer = 0;
         
         // Randomly spawn either a power-up or obstacle
         if (random() > 0.4) {
@@ -152,7 +119,7 @@ function spawnObjects() {
                 x: random(20, width - 20),
                 y: -20,
                 size: 20,
-                speed: 2 * gameSpeed
+                speed: 2 * powerPongGameSpeed
             });
         } else {
             // Spawn obstacle (40% chance)
@@ -160,7 +127,7 @@ function spawnObjects() {
                 x: random(20, width - 20),
                 y: -20,
                 size: 18,
-                speed: 2.5 * gameSpeed
+                speed: 2.5 * powerPongGameSpeed
             });
         }
     }
@@ -172,8 +139,8 @@ function updatePowerUps() {
         powerUp.y += powerUp.speed;
         
         // Check collision with paddle
-        if (checkCollision(powerUp, paddle)) {
-            score += 10;
+        if (checkPowerPongCollision(powerUp, powerPongPaddle)) {
+            powerPongScore += 10;
             powerUps.splice(i, 1);
             continue;
         }
@@ -184,99 +151,43 @@ function updatePowerUps() {
         }
     }
 }
+
 function updateObstacles() {
     for (let i = obstacles.length - 1; i >= 0; i--) {
         let obstacle = obstacles[i];
         obstacle.y += obstacle.speed;
+        
         // Check collision with paddle
-        if (checkCollision(obstacle, paddle)) {
-            lives -= 1; 
+        if (checkPowerPongCollision(obstacle, powerPongPaddle)) {
+            powerPongLives -= 1;
             obstacles.splice(i, 1);
-            if (lives <= 0) {
+            if (powerPongLives <= 0) {
                 gameOver = true;
             }
             continue;
         }
+        
         // Remove if off screen
         if (obstacle.y > height + 20) {
             obstacles.splice(i, 1);
         }
     }
 }
-function checkCollision(obj, paddle) {
-    return obj.y + obj.size >= paddle.y &&
-           obj.x + obj.size >= paddle.x &&
-           obj.x <= paddle.x + paddle.width &&
-           obj.y <= paddle.y + paddle.height;
+
+function checkPowerPongCollision(obj, paddle) {
+    return obj.y + obj.size / 2 >= paddle.y &&
+           obj.x + obj.size / 2 >= paddle.x &&
+           obj.x - obj.size / 2 <= paddle.x + paddle.width &&
+           obj.y - obj.size / 2 <= paddle.y + paddle.height;
 }
 
-function displayUI() {
+function displayPowerPongUI() {
+    push();
     fill(255);
     textSize(20);
     textAlign(LEFT);
-    text("Score: " + score, 10, 30);
-    text("Lives: " + lives, 10, 55);
-    text("Speed: " + nf(gameSpeed, 1, 1) + "x", 10, 80);
-}
-
-function displayGameOver() {
-    fill(255);
-    textSize(48);
-    textAlign(CENTER, CENTER);
-    text("GAME OVER", width / 2, height / 2 - 40);
-    textSize(24);
-    text("Final Score: " + score, width / 2, height / 2 + 20);
-    textSize(16);
-    text("Click to restart", width / 2, height / 2 + 60);
-}
-
-function mousePressed() {
-    switch (state) {
-        case "menu":
-            menuMousePressed();
-            break;
-        case "pong variation":
-            pongMousePressed();
-            break
-        case "power pong variation":
-            powerPongMousePressed();
-            break;
-        case "tennis pong variation":
-            tennisPongMousePressed();
-            break;
-    }
-    // Restart game on click if game over
-    if (gameOver) {
-        // Reset game state
-        resetGame();
-        
-    }
-}
-
-function resetGame() {
-    score = 0;
-    lives = 3;
-    gameOver = false;
-    gameSpeed = 1;
-    spawnTimer = 0;
-    spawnInterval = 60;
-    powerUps = [];
-    obstacles = [];
-}
-
-function keyPressed(event) {
-     switch (state) {
-        case "menu":
-            menuKeyPressed(event);
-            break;
-        case "pong variation":
-            pongKeyPressed(event);
-            break
-        case "power pong variation":
-            powerPongKeyPressed(event);
-            break;
-        case "tennis pong variation":
-            tennisPongKeyPressed(event);
-            break;
-    }
+    text("Score: " + powerPongScore, 10, 30);
+    text("Lives: " + powerPongLives, 10, 55);
+    text("Speed: " + nf(powerPongGameSpeed, 1, 1) + "x", 10, 80);
+    pop();
 }
