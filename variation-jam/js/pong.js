@@ -1,226 +1,175 @@
 /**
- * TBA
- * Jason Lee
- * 
- * This the final jam for Cart 253
- * 
+ * Pong Variation
+ * Two ball pong - keep the yellow ball alive!
  */
 
 "use strict";
 
-/**
- * Constants of both ball and paddle
-*/
-const paddle = {
+// Pong variation specific variables
+const pongPaddle = {
     x: 300,
     y: 280,
     width: 80,
     height: 10
 };
 
-const ball = {
-    x: 500,
+const pongBall = {
+    x: 250,
     y: 250,
     size: 15,
     speedX: 4,
     speedY: -4
 };
 
-const ball2 = {
-    x:200,
-    y:200,
+const pongBall2 = {
+    x: 250,
+    y: 50,
     size: 20,
     speedX: 3,
-    speedY: -3
-}
-let gameOver = false;
-let state = "menu";
-
-/**  
- * Setup function to create canvas
- */
-function setup() {
-    createCanvas(500, 500);
-    // Place ball2 at the top of the canvas (centered horizontally)
-    ball2.y = ball2.size / 2;
-    ball2.x = width / 2;
-    // Ensure ball2's vertical speed is positive so it moves downwards
-    ball2.speedY = Math.abs(ball2.speedY);
-}
-
+    speedY: 3
+};
 
 /**
- * All my functions being drawn in the canvas
-*/
-function draw() {
-    // Clear the canvas each frame so moving objects don't leave trails
-    background(100, 150, 250);
-    switch (state) {
-        case "menu":
-            menuDraw();
-            break;
-        case "pong variation":
-            pongDraw();
-            break
-        case "power pong variation":
-            powerPongDraw();
-            break;
-        case "tennis pong variation":
-            tennisPongDraw();
-            break;
-    }
-
-     if (gameOver) {
-        // Display game over screen
-        fill(255,0,0);
-        textSize(32);
-        textAlign(CENTER, CENTER);
-        text("GAME OVER", width / 2, height / 2);
-        textSize(16);
-        text("Click to restart", width / 2, height / 2 + 40);
-        return;
-    }
+ * Setup/reset the pong variation
+ */
+function pongSetup() {
+    // Reset paddle position
+    pongPaddle.x = 300;
+    pongPaddle.y = 280;
     
+    // Reset ball 1 (red - respawning ball)
+    pongBall.x = width / 2;
+    pongBall.y = height / 2;
+    pongBall.speedY = -4;
+    pongBall.speedX = 4;
+    
+    // Reset ball 2 (yellow - survival ball)
+    pongBall2.x = width / 2;
+    pongBall2.y = pongBall2.size / 2;
+    pongBall2.speedY = 3;
+    pongBall2.speedX = 3;
+    
+    gameOver = false;
+}
+
+/**
+ * Draw function for pong variation
+ */
+function pongDraw() {
     // Update state
-    movePaddle(paddle);
-    moveBall(ball);
-    moveBall2(ball2);
+    movePongPaddle();
+    movePongBall();
+    movePongBall2();
     
     // Check collisions
-    checkPaddleCollision(ball);
-    checkPaddleCollision(ball2);
+    checkPongPaddleCollision(pongBall);
+    checkPongPaddleCollision(pongBall2);
 
     // Draw current state
-    drawPaddle(paddle);
-    drawBall(ball);
-    drawBall2(ball2);
+    drawPongPaddle();
+    drawPongBall();
+    drawPongBall2();
+    
+    // Draw instructions
+    drawPongInstructions();
 }
 
-function movePaddle(paddle) {
+function movePongPaddle() {
     // Move the paddle with the mouse
-    paddle.x = mouseX - paddle.width / 2;
-
+    pongPaddle.x = mouseX - pongPaddle.width / 2;
     // Constrain the paddle to the canvas
-    paddle.x = constrain(paddle.x, 0, width - paddle.width);
+    pongPaddle.x = constrain(pongPaddle.x, 0, width - pongPaddle.width);
 }
 
-function moveBall(ball) {
+function movePongBall() {
     // Move ball 1 (the one that respawns)
-    ball.x += ball.speedX;
-    ball.y += ball.speedY;
+    pongBall.x += pongBall.speedX;
+    pongBall.y += pongBall.speedY;
 
     // Check for collision with walls
-    if (ball.x <= 0 || ball.x + ball.size >= width) {
-        ball.speedX *= -1; // Reverse X direction
+    if (pongBall.x <= 0 || pongBall.x + pongBall.size >= width) {
+        pongBall.speedX *= -1;
     }
-    if (ball.y <= 0) {
-        ball.speedY *= -1; // Reverse Y direction
+    if (pongBall.y <= 0) {
+        pongBall.speedY *= -1;
     }
 
-    // Check for ball falling below the canvas
-    if (ball.y > height) {
-        // Reset ball position
-        ball.x = width / 2;
-        ball.y = height / 2;
-        ball.speedY = -4; // Reset speed
+    // Check for ball falling below the canvas - respawn it
+    if (pongBall.y > height) {
+        pongBall.x = width / 2;
+        pongBall.y = height / 2;
+        pongBall.speedY = -4;
     }
 }
 
-function moveBall2(ball2) {
+function movePongBall2() {
     // Move ball 2 (the survival ball - must not fall!)
-    ball2.x += ball2.speedX;
-    ball2.y += ball2.speedY;  // ADD to move down
+    pongBall2.x += pongBall2.speedX;
+    pongBall2.y += pongBall2.speedY;
 
     // Check for collision with walls
-    if (ball2.x <= 0 || ball2.x + ball2.size >= width) {
-        ball2.speedX *= -1; // Reverse X direction
+    if (pongBall2.x <= 0 || pongBall2.x + pongBall2.size >= width) {
+        pongBall2.speedX *= -1;
     }
-    if (ball2.y <= 0) {
-        ball2.speedY *= -1; // Reverse Y direction
-    } 
-     // Check if ball2 falls - GAME OVER!
-    if (ball2.y > height) {
+    if (pongBall2.y <= 0) {
+        pongBall2.speedY *= -1;
+    }
+    
+    // Check if ball2 falls - GAME OVER!
+    if (pongBall2.y > height) {
         gameOver = true;
     }
 }
 
-function checkPaddleCollision(ball) {
+function checkPongPaddleCollision(ball) {
     // Check for collision with paddle
-    if (ball.y + ball.size >= paddle.y &&
-        ball.x + ball.size >= paddle.x &&
-        ball.x <= paddle.x + paddle.width &&
-        ball.y <= paddle.y + paddle.height) {
-        ball.speedY *= -1; // Reverse Y direction
-        ball.y = paddle.y - ball.size; // Position ball above paddle
+    if (ball.y + ball.size >= pongPaddle.y &&
+        ball.x + ball.size >= pongPaddle.x &&
+        ball.x <= pongPaddle.x + pongPaddle.width &&
+        ball.y <= pongPaddle.y + pongPaddle.height) {
+        ball.speedY *= -1;
+        ball.y = pongPaddle.y - ball.size;
     }
 }
 
-function drawPaddle(paddle) {
-    // Draw the paddle
+function drawPongPaddle() {
     fill(255);
-    rect(paddle.x, paddle.y, paddle.width, paddle.height);
+    rect(pongPaddle.x, pongPaddle.y, pongPaddle.width, pongPaddle.height);
 }
 
-function drawBall(ball) {
-    // Draw the ball
-    push()
-    fill(255, 0, 0);
-    ellipse(ball.x, ball.y, ball.size);
-    pop()
-}
-
-function drawBall2(ball2) {
-    // Draw ball 2 (yellow - survival ball)
+function drawPongBall() {
     push();
-    fill(255, 255, 0);
-    ellipse(ball2.x, ball2.y, ball2.size);
+    fill(255, 0, 0);
+    ellipse(pongBall.x, pongBall.y, pongBall.size);
     pop();
 }
 
-function mousePressed() {
-    switch (state) {
-        case "menu":
-            menuMousePressed();
-            break;
-        case "pong variation":
-            pongMousePressed();
-            break
-        case "power pong variation":
-            powerPongMousePressed();
-            break;
-        case "tennis pong variation":
-            tennisPongMousePressed();
-            break;
-    }
-    // Restart game on click if game over
-    if (gameOver) {
-        gameOver = false;
-        // Reset ball positions
-        ball.x = width / 2;
-        ball.y = height / 2;
-        ball.speedY = -4;
-        ball.speedX = 4;
-        
-        ball2.x = width / 2;
-        ball2.y = ball2.size / 2;
-        ball2.speedY = 3;
-        ball2.speedX = 3;
-    }
+function drawPongBall2() {
+    push();
+    fill(255, 255, 0);
+    ellipse(pongBall2.x, pongBall2.y, pongBall2.size);
+    pop();
 }
 
-function keyPressed(event) {
-     switch (state) {
-        case "menu":
-            menuKeyPressed(event);
-            break;
-        case "pong variation":
-            pongKeyPressed(event);
-            break
-        case "power pong variation":
-            powerPongKeyPressed(event);
-            break;
-        case "tennis pong variation":
-            tennisPongKeyPressed(event);
-            break;
-    }
+function drawPongInstructions() {
+    push();
+    fill(255);
+    textSize(14);
+    textAlign(LEFT);
+    text("Keep the YELLOW ball alive!", 10, 20);
+    pop();
+}
+
+/**
+ * Handle key presses for pong variation
+ */
+function pongKeyPressed(event) {
+    // Can add pong-specific controls here
+}
+
+/**
+ * Handle mouse presses for pong variation
+ */
+function pongMousePressed() {
+    // Can add pong-specific mouse controls here
 }
