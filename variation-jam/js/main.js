@@ -43,7 +43,7 @@ function draw() {
                 powerPongDraw();
             }
             break;
-        case "tennis pong variation":
+        case "break pong variation":
             if (gameOver) {
                 displayGameOver("Break Pong");
             } else {

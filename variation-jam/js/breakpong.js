@@ -42,3 +42,88 @@ function breakPongSetup() {
     
     createBricks();
 }
+
+function createBricks() {
+    bricks = [];
+    const rows = 5;
+    const cols = 8;
+    const brickWidth = 50;
+    const brickHeight = 20;
+    const offsetX = (width - cols * brickWidth) / 2;
+    const offsetY = 50;
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            bricks.push({
+                x: offsetX + c * brickWidth,
+                y: offsetY + r * brickHeight,
+                width: brickWidth - 2,
+                height: brickHeight - 2,
+                destroyed: false
+            });
+        }
+    }
+}
+
+function breakPongDraw() {
+    // Update state
+    moveBreakPaddle();
+    moveBreakBall();
+    updateBricks();
+    updateBreakPowerUps();
+    drawBreakPong();
+}
+
+function moveBreakPaddle() {
+    breakPaddle.x = mouseX - breakPaddle.width / 2;
+    breakPaddle.x = constrain(breakPaddle.x, 0, width - breakPaddle.width);
+}
+
+function drawBreakPong() {
+    // Draw paddle
+    fill(255);
+    rect(breakPaddle.x, breakPaddle.y, breakPaddle.width, breakPaddle.height);
+    // Draw ball
+    fill(255, 0, 0);
+    ellipse(breakBall.x, breakBall.y, breakBall.size);
+    // Draw bricks
+    for (let brick of bricks) {
+        if (!brick.destroyed) {
+            fill(0, 0, 255);
+            rect(brick.x, brick.y, brick.width, brick.height);
+        }
+    }
+    // Draw score
+    fill(255);
+    textSize(16);
+    textAlign(LEFT, TOP);
+    text(`Score: ${breakScore}`, 10, 10);
+}
+function moveBreakBall() {
+    if (breakBall.stuck) {
+        breakBall.x = breakPaddle.x + breakPaddle.width / 2;
+        breakBall.y = breakPaddle.y - breakBall.size / 2;
+        return;
+    }
+    breakBall.x += breakBall.speedX;
+    breakBall.y += breakBall.speedY;
+
+    // Check for collision with walls
+    if (breakBall.x <= 0 || breakBall.x + breakBall.size >= width) {
+        breakBall.speedX *= -1;
+    }
+    if (breakBall.y <= 0) {
+        breakBall.speedY *= -1;
+    }
+    // Check for collision with paddle
+    if (breakBall.y + breakBall.size >= breakPaddle.y &&
+        breakBall.x + breakBall.size >= breakPaddle.x &&
+        breakBall.x <= breakPaddle.x + breakPaddle.width &&
+        breakBall.y <= breakPaddle.y + breakPaddle.height) {
+        breakBall.speedY *= -1;
+        breakBall.y = breakPaddle.y - breakBall.size;
+    }
+    // Check if ball falls - GAME OVER!
+    if (breakBall.y > height) {
+        gameOver = true;
+    }
+}
