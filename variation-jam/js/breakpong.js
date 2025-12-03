@@ -24,9 +24,9 @@ let breakLevel = 1;
 
 function breakPongSetup() {
     // Reset paddle position
-    breakPaddle.x = width / 2 - breakPaddle.width / 2;
-    breakPaddle.y = 450;
-    breakPaddle.width = 100;
+    breakPongPaddle.x = width / 2 - breakPongPaddle.width / 2;
+    breakPongPaddle.y = 450;
+    breakPongPaddle.width = 100;
     
     breakBall.x = width / 2;
     breakBall.y = 400;
@@ -74,14 +74,14 @@ function breakPongDraw() {
 }
 
 function moveBreakPaddle() {
-    breakPaddle.x = mouseX - breakPaddle.width / 2;
-    breakPaddle.x = constrain(breakPaddle.x, 0, width - breakPaddle.width);
+    breakPongPaddle.x = mouseX - breakPongPaddle.width / 2;
+    breakPongPaddle.x = constrain(breakPongPaddle.x, 0, width - breakPongPaddle.width);
 }
 
 function drawBreakPong() {
     // Draw paddle
     fill(255);
-    rect(breakPaddle.x, breakPaddle.y, breakPaddle.width, breakPaddle.height);
+    rect(breakPongPaddle.x, breakPongPaddle.y, breakPongPaddle.width, breakPongPaddle.height);
     // Draw ball
     fill(255, 0, 0);
     ellipse(breakBall.x, breakBall.y, breakBall.size);
@@ -100,8 +100,8 @@ function drawBreakPong() {
 }
 function moveBreakBall() {
     if (breakBall.stuck) {
-        breakBall.x = breakPaddle.x + breakPaddle.width / 2;
-        breakBall.y = breakPaddle.y - breakBall.size / 2;
+        breakBall.x = breakPongPaddle.x + breakPongPaddle.width / 2;
+        breakBall.y = breakPongPaddle.y - breakBall.size / 2;
         return;
     }
     breakBall.x += breakBall.speedX;
@@ -115,15 +115,52 @@ function moveBreakBall() {
         breakBall.speedY *= -1;
     }
     // Check for collision with paddle
-    if (breakBall.y + breakBall.size >= breakPaddle.y &&
-        breakBall.x + breakBall.size >= breakPaddle.x &&
-        breakBall.x <= breakPaddle.x + breakPaddle.width &&
-        breakBall.y <= breakPaddle.y + breakPaddle.height) {
+    if (breakBall.y + breakBall.size >= breakPongPaddle.y &&
+        breakBall.x + breakBall.size >= breakPongPaddle.x &&
+        breakBall.x <= breakPongPaddle.x + breakPongPaddle.width &&
+        breakBall.y <= breakPongPaddle.y + breakPongPaddle.height) {
         breakBall.speedY *= -1;
-        breakBall.y = breakPaddle.y - breakBall.size;
+        breakBall.y = breakPongPaddle.y - breakBall.size;
     }
     // Check if ball falls - GAME OVER!
     if (breakBall.y > height) {
+        gameOver = true;
+    }
+}
+
+function updateBricks() {
+    for (let brick of bricks) {
+        if (!brick.destroyed &&
+            breakBall.y + breakBall.size >= brick.y &&
+            breakBall.x + breakBall.size >= brick.x &&
+            breakBall.x <= brick.x + brick.width &&
+            breakBall.y <= brick.y + brick.height) {
+            brick.destroyed = true;
+            breakBall.speedY *= -1;
+            breakScore += 10;
+        }
+    }
+}
+function updateBreakPowerUps() {
+    // Placeholder for power-up logic
+}   
+
+function breakPongMousePressed() {
+    if (breakBall.stuck) {
+        breakBall.stuck = false;
+    }
+}
+
+function breakPongKeyPressed(event) {
+    if (event.keyCode === 32) { // Spacebar to launch ball
+        if (breakBall.stuck) {
+            breakBall.stuck = false;
+        }
+    }
+}
+
+function breakPongKeyPressed(event) {
+    if (event.keyCode === 27) { // ESC to return to menu
         gameOver = true;
     }
 }
