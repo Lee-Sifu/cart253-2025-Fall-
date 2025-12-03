@@ -1,6 +1,6 @@
 // Third variant of pong game: Break Pong
 "use strict";
-
+console.log("breakpong.js loaded");
 // Break pong specific variables
 const breakPongPaddle = {
     x: 300,
@@ -13,7 +13,8 @@ const breakBall = {
     y: 250,
     size: 15,
     speedX: 4,
-    speedY: -4
+    speedY: -4,
+    stuck: true,
 }; 
 // Additional variables for breakout mechanics
 let breakBalls = [];
@@ -157,9 +158,6 @@ function breakPongKeyPressed(event) {
             breakBall.stuck = false;
         }
     }
-}
-
-function breakPongKeyPressed(event) {
     if (event.keyCode === 27) { // ESC to return to menu
         gameOver = true;
     }
