@@ -1,7 +1,7 @@
-// Third variant of pong game: Tennis Pong
+// Third variant of pong game: Break Pong
 "use strict";
 
-// Tennis pong specific variables
+// Break pong specific variables
 const breakPongPaddle = {
     x: 300,
     y: 280,
@@ -16,28 +16,28 @@ const breakBall = {
     speedY: -4
 }; 
 // Additional variables for breakout mechanics
-let breakoutBalls = [];
+let breakBalls = [];
 let bricks = [];
-let breakoutPowerUps = [];
-let breakoutScore = 0;
-let breakoutLevel = 1;
+let breakPowerUps = [];
+let breakScore = 0;
+let breakLevel = 1;
 
 function breakPongSetup() {
     // Reset paddle position
-    breakoutPaddle.x = width / 2 - breakoutPaddle.width / 2;
-    breakoutPaddle.y = 450;
-    breakoutPaddle.width = 100;
+    breakPaddle.x = width / 2 - breakPaddle.width / 2;
+    breakPaddle.y = 450;
+    breakPaddle.width = 100;
     
-    breakoutBall.x = width / 2;
-    breakoutBall.y = 400;
-    breakoutBall.speedX = 3;
-    breakoutBall.speedY = -3;
-    breakoutBall.stuck = true;
+    breakBall.x = width / 2;
+    breakBall.y = 400;
+    breakBall.speedX = 3;
+    breakBall.speedY = -3;
+    breakBall.stuck = true;
     
-    breakoutBalls = [];
-    breakoutPowerUps = [];
-    breakoutScore = 0;
-    breakoutLevel = 1;
+    breakBalls = [];
+    breakPowerUps = [];
+    breakScore = 0;
+    breakLevel = 1;
     gameOver = false;
     
     createBricks();
