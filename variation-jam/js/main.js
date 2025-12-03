@@ -45,9 +45,9 @@ function draw() {
             break;
         case "tennis pong variation":
             if (gameOver) {
-                displayGameOver("Tennis Pong");
+                displayGameOver("Break Pong");
             } else {
-                tennisPongDraw();
+                breakPongDraw();
             }
             break;
     }
@@ -86,8 +86,8 @@ function mousePressed() {
         case "power pong variation":
             powerPongMousePressed();
             break;
-        case "tennis pong variation":
-            tennisPongMousePressed();
+        case "break pong variation":
+            breakPongMousePressed();
             break;
     }
 }
@@ -106,8 +106,8 @@ function keyPressed(event) {
         case "power pong variation":
             powerPongKeyPressed(event);
             break;
-        case "tennis pong variation":
-            tennisPongKeyPressed(event);
+        case "break pong variation":
+            breakPongKeyPressed(event);
             break;
     }
 }

@@ -7,7 +7,7 @@
 const menuText = `
 (1) pong variation
 (2) power pong variation
-(3) tennis pong variation`
+(3) break pong variation`
 
 /**
  * Display the main menu
@@ -40,8 +40,8 @@ function menuKeyPressed(event) {
             break;
 
         case 51: // '3'
-            state = "tennis pong variation";
-            tennisPongSetup();
+            state = "break pong variation";
+            breakPongSetup();
             break;
     }
 }
