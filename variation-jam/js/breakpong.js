@@ -103,6 +103,14 @@ function drawBreakPong() {
     textSize(16);
     textAlign(LEFT, TOP);
     text(`Score: ${breakScore}`, 10, 10);
+    // Show "Level Complete" message briefly when ball is stuck
+    if (breakBall.stuck && breakLevel > 1) {
+        fill(255, 255, 0);
+        textSize(24);
+        textAlign(CENTER, CENTER);
+        text(`Level ${breakLevel - 1} Complete!`, width / 2, height / 2 - 50);
+        text(`Click to start Level ${breakLevel}`, width / 2, height / 2 - 20);
+    }
 }
 function moveBreakBall() {
     if (breakBall.stuck) {
