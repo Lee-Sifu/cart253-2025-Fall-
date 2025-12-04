@@ -42,7 +42,6 @@ function breakPongSetup() {
     breakBall.stuck = true;
     
     breakBalls = [];
-    breakPowerUps = [];
     breakScore = 0;
     breakLevel = 1;
     gameOver = false;
@@ -80,7 +79,6 @@ function breakPongDraw() {
     moveBreakPaddle();
     moveBreakBall();
     updateBricks();
-    updateBreakPowerUps();
     drawBreakPong();
 }
 
@@ -189,9 +187,6 @@ function updateBricks() {
     }
     checkLevelComplete();
 }
-function updateBreakPowerUps() {
-    // Placeholder for power-up logic
-}   
 
 function breakPongMousePressed() {
     if (breakBall.stuck) {
