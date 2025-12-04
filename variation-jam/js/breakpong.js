@@ -35,13 +35,13 @@ function breakPongSetup() {
     breakPongPaddle.x = width / 2 - breakPongPaddle.width / 2;
     breakPongPaddle.y = 450;
     breakPongPaddle.width = 100;
-    
+    // Reset ball position
     breakBall.x = width / 2;
     breakBall.y = 400;
     breakBall.speedX = 3;
     breakBall.speedY = -3;
     breakBall.stuck = true;
-    
+    // Reset other variables
     breakBalls = [];
     breakScore = 0;
     breakLevel = 1;
@@ -55,13 +55,14 @@ function createBricks() {
     bricks = [];
     // Add more rows as levels progress
     const rows = Math.min(5 + Math.floor(breakLevel / 2), 10); // Max 10 rows
-    const cols = 8;
-    const brickWidth = 50;
-    const brickHeight = 20;
-    const offsetX = (width - cols * brickWidth) / 2;
-    const offsetY = 50;
-    for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
+    const cols = 8; // Fixed number of columns
+    const brickWidth = 50; // Fixed brick width
+    const brickHeight = 20; // Fixed brick height
+    const offsetX = (width - cols * brickWidth) / 2; // Center bricks
+    const offsetY = 50; // Start 50px from top
+    for (let r = 0; r < rows; r++) { // For each row
+        for (let c = 0; c < cols; c++) { // For each column
+             // Randomly skip some bricks for variety
             const skipChance = breakLevel > 3 ? 0.5 : 0; // 50% of gaps on harder levels
             if (Math.random() > skipChance) {
             bricks.push({
