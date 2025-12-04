@@ -169,9 +169,3 @@ function pongKeyPressed(event) {
     }
 }
 
-/**
- * Handle mouse presses for pong variation
- */
-function pongMousePressed() {
-    // Can add pong-specific mouse controls here
-}
