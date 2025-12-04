@@ -46,7 +46,8 @@ function breakPongSetup() {
 
 function createBricks() {
     bricks = [];
-    const rows = 5;
+    // Add more rows as levels progress
+    const rows = Math.min(5 + Math.floor(breakLevel / 2), 10); // Max 10 rows
     const cols = 8;
     const brickWidth = 50;
     const brickHeight = 20;
