@@ -13,21 +13,7 @@ const pongPaddle = {
     height: 10
 };
 
-const pongBall = {
-    x: 250,
-    y: 250,
-    size: 15,
-    speedX: 4,
-    speedY: -4
-};
-
-const pongBall2 = {
-    x: 250,
-    y: 50,
-    size: 20,
-    speedX: 3,
-    speedY: 3
-};
+let pongBalls = [];
 
 /**
  * Setup/reset the pong variation
@@ -37,21 +23,30 @@ function pongSetup() {
     pongPaddle.x = 300;
     pongPaddle.y = 280;
     
-    // Reset ball 1 (red - respawning ball)
-    pongBall.x = width / 2;
-    pongBall.y = height / 2;
-    pongBall.speedY = -4;
-    pongBall.speedX = 4;
-    
-    // Reset ball 2 (yellow - survival ball)
-    pongBall2.x = width / 2;
-    pongBall2.y = pongBall2.size / 2;
-    pongBall2.speedY = 3;
-    pongBall2.speedX = 3;
-    
-    gameOver = false;
-}
+    pongBalls = [];
 
+     // Ball 1 (red)
+    pongBalls.push({
+        x: width / 2,
+        y: height / 2,
+        size: 15,
+        speedX: 4,
+        speedY: -4,
+        color: [255, 0, 0], // Red
+    });
+    
+    // Ball 2 (yellow)
+    pongBalls.push({
+        x: width / 2,
+        y: 50,
+        size: 20,
+        speedX: 3,
+        speedY: 3,
+        color: [255, 255, 0], // Yellow
+    });
+}
+    gameOver = false;
+    
 /**
  * Draw function for pong variation
  */
