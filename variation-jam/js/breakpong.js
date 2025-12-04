@@ -55,6 +55,8 @@ function createBricks() {
     const offsetY = 50;
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
+            const skipChance = breakLevel > 3 ? 0.5 : 0; // % of gaps on harder levels
+            if (Math.random() > skipChance) {
             bricks.push({
                 x: offsetX + c * brickWidth,
                 y: offsetY + r * brickHeight,
@@ -64,6 +66,7 @@ function createBricks() {
             });
         }
     }
+ }
 }
 
 function breakPongDraw() {
