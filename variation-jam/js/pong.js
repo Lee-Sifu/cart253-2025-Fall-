@@ -14,6 +14,7 @@ const pongPaddle = {
 };
 
 let pongBalls = [];
+let ballRespawn = random() > 0.5; // Randomly decide which ball can respawn
 
 /**
  * Setup/reset the pong variation
@@ -24,7 +25,7 @@ function pongSetup() {
     pongPaddle.y = 280;
     
     pongBalls = [];
-
+   
      // Ball 1 (red)
     pongBalls.push({
         x: width / 2,
@@ -33,7 +34,7 @@ function pongSetup() {
         speedX: 4,
         speedY: -4,
         color: [255, 0, 0], // Red
-        canRespawn: false,
+        canRespawn: ballRespawn,
     });
     
     // Ball 2 (yellow)
@@ -44,10 +45,11 @@ function pongSetup() {
         speedX: 3,
         speedY: 3,
         color: [255, 255, 0], // Yellow
-        canRespawn: !true,
+        canRespawn: !ballRespawn,
     });
+     gameOver = false;
 }
-    gameOver = false;
+
 
 /**
  * Draw function for pong variation
@@ -57,9 +59,6 @@ function pongDraw() {
     movePongPaddle();
     updatePongBalls();
     
-    // Check collisions
-    checkPongPaddleCollision(pongBalls);
-
     // Draw current state
     drawPongPaddle();
     drawPongBalls();
@@ -92,6 +91,18 @@ function updatePongBalls() {
         }
         // Check for collision with paddle
         checkPongPaddleCollision(ball);
+          // Check if ball falls below canvas
+        if (ball.y > height) {
+            if (ball.canRespawn) {
+                // Respawn the ball
+                ball.x = width / 2;
+                ball.y = height / 2;
+                ball.speedY = -4;
+            } else {
+                // Game over for non-respawning balls
+                gameOver = true;
+            }
+        }
     }
 }
 
@@ -113,8 +124,10 @@ function drawPongPaddle() {
 
 function drawPongBalls() {
     for (let ball of pongBalls) {
-        fill(ball.color);
-        ellipse(ball.x, ball.y, ball.size); 
+        push();
+        fill(ball.color[0], ball.color[1], ball.color[2]);
+        ellipse(ball.x, ball.y, ball.size);
+        pop(); 
     }
 }
 
