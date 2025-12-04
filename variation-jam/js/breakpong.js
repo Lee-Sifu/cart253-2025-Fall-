@@ -55,7 +55,7 @@ function createBricks() {
     const offsetY = 50;
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
-            const skipChance = breakLevel > 3 ? 0.5 : 0; // % of gaps on harder levels
+            const skipChance = breakLevel > 3 ? 0.5 : 0; // 50% of gaps on harder levels
             if (Math.random() > skipChance) {
             bricks.push({
                 x: offsetX + c * brickWidth,
@@ -93,7 +93,9 @@ function drawBreakPong() {
     // Draw bricks
     for (let brick of bricks) {
         if (!brick.destroyed) {
-            fill(0, 0, 255);
+             // Color bricks based on level for variety
+            const hue = (breakLevel * 30) % 360;
+            fill(hue, 80, 200); // HSB color mode, or use RGB
             rect(brick.x, brick.y, brick.width, brick.height);
         }
     }
