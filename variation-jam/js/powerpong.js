@@ -191,7 +191,7 @@ function displayPowerPongUI() {
     fill(255);
     textSize(20);
     textAlign(LEFT);
-    text("Score: " + powerPongScore, 10, 30);
+    text("Nutrients: " + powerPongScore, 10, 30);
     text("Lives: " + powerPongLives, 10, 55);
     text("Speed: " + nf(powerPongGameSpeed, 1, 1) + "x", 10, 80);
     pop();
