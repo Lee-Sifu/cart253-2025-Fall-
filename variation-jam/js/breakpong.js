@@ -94,7 +94,6 @@ function drawBreakPong() {
         }
     }
     // Level and score display
-    breakLevel++;
     fill(255);
     textSize(16);
     textAlign(RIGHT, TOP);
@@ -135,6 +134,27 @@ function moveBreakBall() {
     }
 }
 
+function nextLevel() {
+        breakLevel++;
+        createBricks();
+        breakBall.stuck = true;
+        breakBall.x = width / 2;
+        breakBall.y = 400;
+        breakBall.speedX += 1;
+        breakBall.speedY = -Math.abs(breakBall.speedY) - 1;  
+         // Gradually increase difficulty
+    const speedIncrease = 0.5; // Adjust this for difficulty
+    breakBall.speedX = (breakBall.speedX > 0 ? 1 : -1) * (Math.abs(breakBall.speedX) + speedIncrease);
+    breakBall.speedY = -Math.abs(breakBall.speedY) - speedIncrease; 
+}
+
+function checkLevelComplete() {
+    const allDestroyed = bricks.every(brick => brick.destroyed);
+    if (allDestroyed) {
+        nextLevel();
+    }
+}
+
 function updateBricks() {
     for (let brick of bricks) {
         if (!brick.destroyed &&
@@ -147,6 +167,7 @@ function updateBricks() {
             breakScore += 10;
         }
     }
+    checkLevelComplete();
 }
 function updateBreakPowerUps() {
     // Placeholder for power-up logic
