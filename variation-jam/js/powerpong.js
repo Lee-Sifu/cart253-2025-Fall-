@@ -70,11 +70,14 @@ function movePowerPongPaddle() {
 }
 
 function drawPowerPongPaddle() {
+    push();
      // Calculate hue based on score (changes every 100 points)
-    const hue = (floor(powerPongScore / 100) * 60) % 360;
+    const hue = (Math.floor(powerPongScore / 100) * 60) % 360;
     colorMode(HSB, 360, 100, 100);  // Set HSB color mode
-    fill(hue, 80, 90);
+    noStroke();
+    fill(hue, 100, 100);
     rect(powerPongPaddle.x, powerPongPaddle.y, powerPongPaddle.width, powerPongPaddle.height);
+    pop();
 }
 
 function drawPowerUps() {
