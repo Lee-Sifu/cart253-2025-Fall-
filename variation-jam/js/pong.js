@@ -65,14 +65,14 @@ function pongDraw() {
     // Draw instructions
     drawPongInstructions();
 }
-
+// Move the pong paddle with the mouse
 function movePongPaddle() {
     // Move the paddle with the mouse
     pongPaddle.x = mouseX - pongPaddle.width / 2;
     // Constrain the paddle to the canvas
     pongPaddle.x = constrain(pongPaddle.x, 0, width - pongPaddle.width);
 }
-
+// Update all pong balls
 function updatePongBalls() {
     for (let i = pongBalls.length - 1; i >= 0; i--) {
         let ball = pongBalls[i];
@@ -104,7 +104,7 @@ function updatePongBalls() {
         }
     }
 }
-
+// Check for collision between ball and paddle
 function checkPongPaddleCollision(ball) {
     // Check for collision with paddle
     if (ball.y + ball.size >= pongPaddle.y &&
@@ -115,12 +115,12 @@ function checkPongPaddleCollision(ball) {
         ball.y = pongPaddle.y - ball.size;
     }
 }
-
+// Draw the pong paddle
 function drawPongPaddle() {
     fill(255);
     rect(pongPaddle.x, pongPaddle.y, pongPaddle.width, pongPaddle.height);
 }
-
+// Draw all pong balls
 function drawPongBalls() {
     for (let ball of pongBalls) {
         push();
@@ -129,13 +129,13 @@ function drawPongBalls() {
         pop(); 
     }
 }
-
+// Draw instructions
 function drawPongInstructions() {
     push();
     fill(255);
     textSize(14);
     textAlign(LEFT);
-    text("Keep the YELLOW ball alive!", 10, 20);
+    text("Keep both balls alive or find which one respawns!", 10, 20);
     pop();
 }
 

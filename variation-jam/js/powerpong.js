@@ -63,12 +63,12 @@ function powerPongDraw() {
         powerPongSpawnInterval = max(30, powerPongSpawnInterval - 5);
     }
 }
-
+// Move the power pong paddle with the mouse
 function movePowerPongPaddle() {
     powerPongPaddle.x = mouseX - powerPongPaddle.width / 2;
     powerPongPaddle.x = constrain(powerPongPaddle.x, 0, width - powerPongPaddle.width);
 }
-
+// Draw the power pong paddle with color changing based on score
 function drawPowerPongPaddle() {
     push();
      // Calculate hue based on score (changes every 100 points)
@@ -78,7 +78,7 @@ function drawPowerPongPaddle() {
     rect(powerPongPaddle.x, powerPongPaddle.y, powerPongPaddle.width, powerPongPaddle.height);
     pop();
 }
-
+// Draw all power-ups
 function drawPowerUps() {
     for (let powerUp of powerUps) {
         push();
@@ -91,7 +91,7 @@ function drawPowerUps() {
         pop();
     }
 }
-
+// Draw all obstacles
 function drawObstacles() {
     for (let obstacle of obstacles) {
         push();
@@ -110,7 +110,7 @@ function drawObstacles() {
         pop();
     }
 }
-
+// Spawn power-ups and obstacles at intervals
 function spawnPowerPongObjects() {
     powerPongSpawnTimer++;
     
@@ -137,7 +137,7 @@ function spawnPowerPongObjects() {
         }
     }
 }
-
+// Update positions and check collisions for power-ups
 function updatePowerUps() {
     for (let i = powerUps.length - 1; i >= 0; i--) {
         let powerUp = powerUps[i];
@@ -156,7 +156,7 @@ function updatePowerUps() {
         }
     }
 }
-
+// Update positions and check collisions for obstacles
 function updateObstacles() {
     for (let i = obstacles.length - 1; i >= 0; i--) {
         let obstacle = obstacles[i];
@@ -178,14 +178,14 @@ function updateObstacles() {
         }
     }
 }
-
+// Check collision between object and paddle
 function checkPowerPongCollision(obj, paddle) {
     return obj.y + obj.size / 2 >= paddle.y &&
            obj.x + obj.size / 2 >= paddle.x &&
            obj.x - obj.size / 2 <= paddle.x + paddle.width &&
            obj.y - obj.size / 2 <= paddle.y + paddle.height;
 }
-
+// Display power pong UI
 function displayPowerPongUI() {
     push();
     fill(255);
@@ -196,7 +196,7 @@ function displayPowerPongUI() {
     text("Speed: " + nf(powerPongGameSpeed, 1, 1) + "x", 10, 80);
     pop();
 }
-
+// Listen to keyboard for power pong
 function powerPongKeyPressed(event) {
     if (event.keyCode === 27) {// 'ESC' key to return to munu
         gameOver = true;

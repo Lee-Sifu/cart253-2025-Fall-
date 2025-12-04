@@ -29,6 +29,7 @@ let breakPowerUps = [];
 let breakScore = 0;
 let breakLevel = 1;
 
+// Setup/reset the break pong variation
 function breakPongSetup() {
     // Reset paddle position
     breakPongPaddle.x = width / 2 - breakPongPaddle.width / 2;
@@ -49,6 +50,7 @@ function breakPongSetup() {
     createBricks();
 }
 
+// Create bricks for the current level
 function createBricks() {
     bricks = [];
     // Add more rows as levels progress
@@ -74,6 +76,7 @@ function createBricks() {
  }
 }
 
+// Draw function for break pong variation
 function breakPongDraw() {
     // Update state
     moveBreakPaddle();
@@ -82,11 +85,13 @@ function breakPongDraw() {
     drawBreakPong();
 }
 
+// Move the break pong paddle with the mouse
 function moveBreakPaddle() {
     breakPongPaddle.x = mouseX - breakPongPaddle.width / 2;
     breakPongPaddle.x = constrain(breakPongPaddle.x, 0, width - breakPongPaddle.width);
 }
 
+// Draw current state of break pong
 function drawBreakPong() {
     // Draw paddle
     fill(255);
@@ -122,6 +127,8 @@ function drawBreakPong() {
         text(`Click to start Level ${breakLevel}`, width / 2, height / 2 - 20);
     }
 }
+
+// Move the break pong ball
 function moveBreakBall() {
     if (breakBall.stuck) {
         breakBall.x = breakPongPaddle.x + breakPongPaddle.width / 2;
@@ -152,6 +159,7 @@ function moveBreakBall() {
     }
 }
 
+// Proceed to next level
 function nextLevel() {
         breakLevel++;
         createBricks();
@@ -166,6 +174,7 @@ function nextLevel() {
     breakBall.speedY = -Math.abs(breakBall.speedY) - speedIncrease; 
 }
 
+// Check if all bricks are destroyed to complete level
 function checkLevelComplete() {
     const allDestroyed = bricks.every(brick => brick.destroyed);
     if (allDestroyed) {
@@ -173,6 +182,7 @@ function checkLevelComplete() {
     }
 }
 
+// Update bricks and check for collisions
 function updateBricks() {
     for (let brick of bricks) {
         if (!brick.destroyed &&
@@ -188,12 +198,14 @@ function updateBricks() {
     checkLevelComplete();
 }
 
+// Mouse pressed for break pong
 function breakPongMousePressed() {
     if (breakBall.stuck) {
         breakBall.stuck = false;
     }
 }
 
+// Listen to keyboard for break pong
 function breakPongKeyPressed(event) {
     if (event.keyCode === 32) { // Spacebar to launch ball
         if (breakBall.stuck) {
