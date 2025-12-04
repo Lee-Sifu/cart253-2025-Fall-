@@ -164,7 +164,9 @@ function drawPongInstructions() {
  * Handle key presses for pong variation
  */
 function pongKeyPressed(event) {
-    // Can add pong-specific controls here
+    if (event.keyCode === 27) {// 'ESC' key to return to munu
+        gameOver = true;
+    }
 }
 
 /**

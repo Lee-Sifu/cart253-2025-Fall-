@@ -191,3 +191,9 @@ function displayPowerPongUI() {
     text("Speed: " + nf(powerPongGameSpeed, 1, 1) + "x", 10, 80);
     pop();
 }
+
+function powerPongKeyPressed(event) {
+    if (event.keyCode === 27) {// 'ESC' key to return to munu
+        gameOver = true;
+    }
+}
