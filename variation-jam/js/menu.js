@@ -7,7 +7,8 @@
 const menuText = `
 (1) pong variation
 (2) power pong variation
-(3) break pong variation`
+(3) break pong variation
+ "ESC" to quit to menu at any time`
 
 /**
  * Display the main menu

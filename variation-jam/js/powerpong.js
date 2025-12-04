@@ -1,6 +1,6 @@
 /**
  * Power Pong Variation
- * Catch power-ups, avoid obstacles!
+ * Catch power-ups, avoid falling obstacles!
  */
 
 "use strict";
@@ -56,6 +56,9 @@ function powerPongDraw() {
     
     // Draw paddle
     drawPowerPongPaddle();
+
+    // draw instructions
+    powerPongInstructions();
     
     // Increase difficulty over time
     if (frameCount % 600 === 0) {
@@ -78,6 +81,7 @@ function drawPowerPongPaddle() {
     rect(powerPongPaddle.x, powerPongPaddle.y, powerPongPaddle.width, powerPongPaddle.height);
     pop();
 }
+
 // Draw all power-ups
 function drawPowerUps() {
     for (let powerUp of powerUps) {
@@ -196,6 +200,17 @@ function displayPowerPongUI() {
     text("Speed: " + nf(powerPongGameSpeed, 1, 1) + "x", 10, 80);
     pop();
 }
+
+function powerPongInstructions() {
+    push();
+    fill(255);
+    textSize(14);
+    textAlign(LEFT);
+    text("Catch yellow power-ups to feed the paddle!", 10, 100);
+    text("Avoid red obstacles to keep your lives!", 10, 120);
+    pop();
+}
+
 // Listen to keyboard for power pong
 function powerPongKeyPressed(event) {
     if (event.keyCode === 27) {// 'ESC' key to return to munu
