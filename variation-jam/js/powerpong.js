@@ -127,7 +127,7 @@ function spawnPowerPongObjects() {
                 x: random(20, width - 20),
                 y: -20,
                 size: 18,
-                speed: 2.5 * powerPongGameSpeed
+                speed: 4 * powerPongGameSpeed
             });
         }
     }
