@@ -33,6 +33,7 @@ function pongSetup() {
         speedX: 4,
         speedY: -4,
         color: [255, 0, 0], // Red
+        canRespawn: false,
     });
     
     // Ball 2 (yellow)
@@ -43,27 +44,25 @@ function pongSetup() {
         speedX: 3,
         speedY: 3,
         color: [255, 255, 0], // Yellow
+        canRespawn: !true,
     });
 }
     gameOver = false;
-    
+
 /**
  * Draw function for pong variation
  */
 function pongDraw() {
     // Update state
     movePongPaddle();
-    movePongBall();
-    movePongBall2();
+    updatePongBalls();
     
     // Check collisions
-    checkPongPaddleCollision(pongBall);
-    checkPongPaddleCollision(pongBall2);
+    checkPongPaddleCollision(pongBalls);
 
     // Draw current state
     drawPongPaddle();
-    drawPongBall();
-    drawPongBall2();
+    drawPongBalls();
     
     // Draw instructions
     drawPongInstructions();
@@ -76,43 +75,23 @@ function movePongPaddle() {
     pongPaddle.x = constrain(pongPaddle.x, 0, width - pongPaddle.width);
 }
 
-function movePongBall() {
-    // Move ball 1 (the one that respawns)
-    pongBall.x += pongBall.speedX;
-    pongBall.y += pongBall.speedY;
+function updatePongBalls() {
+    for (let i = pongBalls.length - 1; i >= 0; i--) {
+        let ball = pongBalls[i];
+        
+        // Move ball
+        ball.x += ball.speedX;
+        ball.y += ball.speedY;
 
-    // Check for collision with walls
-    if (pongBall.x <= 0 || pongBall.x + pongBall.size >= width) {
-        pongBall.speedX *= -1;
-    }
-    if (pongBall.y <= 0) {
-        pongBall.speedY *= -1;
-    }
-
-    // Check for ball falling below the canvas - respawn it
-    if (pongBall.y > height) {
-        pongBall.x = width / 2;
-        pongBall.y = height / 2;
-        pongBall.speedY = -4;
-    }
-}
-
-function movePongBall2() {
-    // Move ball 2 (the survival ball - must not fall!)
-    pongBall2.x += pongBall2.speedX;
-    pongBall2.y += pongBall2.speedY;
-
-    // Check for collision with walls
-    if (pongBall2.x <= 0 || pongBall2.x + pongBall2.size >= width) {
-        pongBall2.speedX *= -1;
-    }
-    if (pongBall2.y <= 0) {
-        pongBall2.speedY *= -1;
-    }
-    
-    // Check if ball2 falls - GAME OVER!
-    if (pongBall2.y > height) {
-        gameOver = true;
+        // Check for collision with walls
+        if (ball.x <= 0 || ball.x + ball.size >= width) {
+            ball.speedX *= -1;
+        }
+        if (ball.y <= 0) {
+            ball.speedY *= -1;
+        }
+        // Check for collision with paddle
+        checkPongPaddleCollision(ball);
     }
 }
 
@@ -132,18 +111,11 @@ function drawPongPaddle() {
     rect(pongPaddle.x, pongPaddle.y, pongPaddle.width, pongPaddle.height);
 }
 
-function drawPongBall() {
-    push();
-    fill(255, 0, 0);
-    ellipse(pongBall.x, pongBall.y, pongBall.size);
-    pop();
-}
-
-function drawPongBall2() {
-    push();
-    fill(255, 255, 0);
-    ellipse(pongBall2.x, pongBall2.y, pongBall2.size);
-    pop();
+function drawPongBalls() {
+    for (let ball of pongBalls) {
+        fill(ball.color);
+        ellipse(ball.x, ball.y, ball.size); 
+    }
 }
 
 function drawPongInstructions() {
