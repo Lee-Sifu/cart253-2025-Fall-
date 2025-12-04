@@ -1,6 +1,12 @@
-// Third variant of pong game: Break Pong
+/**
+ * Final Jam - Pong Variations
+ * Jason Lee
+ * 
+ * Third variant of pong game: Break Pong
+ * 
+ *///
 "use strict";
-console.log("breakpong.js loaded");
+
 // Break pong specific variables
 const breakPongPaddle = {
     x: 300,
