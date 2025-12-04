@@ -14,7 +14,6 @@ const pongPaddle = {
 };
 
 let pongBalls = [];
-let ballRespawn = random() > 0.5; // Randomly decide which ball can respawn
 
 /**
  * Setup/reset the pong variation
@@ -25,7 +24,7 @@ function pongSetup() {
     pongPaddle.y = 280;
     
     pongBalls = [];
-   
+    let ballRespawn = random() > 0.5; // Randomly decide which ball can respawn
      // Ball 1 (red)
     pongBalls.push({
         x: width / 2,
@@ -125,7 +124,7 @@ function drawPongPaddle() {
 function drawPongBalls() {
     for (let ball of pongBalls) {
         push();
-        fill(ball.color[0], ball.color[1], ball.color[2]);
+        fill(ball.color);
         ellipse(ball.x, ball.y, ball.size);
         pop(); 
     }
