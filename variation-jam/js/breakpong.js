@@ -93,6 +93,12 @@ function drawBreakPong() {
             rect(brick.x, brick.y, brick.width, brick.height);
         }
     }
+    // Level and score display
+    breakLevel++;
+    fill(255);
+    textSize(16);
+    textAlign(RIGHT, TOP);
+    text(`Level: ${breakLevel}`, width - 10, 10);
     // Draw score
     fill(255);
     textSize(16);
