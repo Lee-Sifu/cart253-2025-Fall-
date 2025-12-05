@@ -201,6 +201,7 @@ function displayPowerPongUI() {
     pop();
 }
 
+// Draw power pong instructions
 function powerPongInstructions() {
     push();
     fill(255);
