@@ -1,6 +1,7 @@
 /**
  * Pong Variation
- * Two ball pong - Both balls have randonmized functions!
+ * Two ball pong - Both balls have randonmized functions! One ball can respawn, the other cannot.
+ * Keep both balls in play as long as possible!
  */
 
 "use strict";

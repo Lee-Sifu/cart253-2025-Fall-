@@ -25,7 +25,6 @@ const breakBall = {
 // Additional variables for breakout mechanics
 let breakBalls = [];
 let bricks = [];
-let breakPowerUps = [];
 let breakScore = 0;
 let breakLevel = 1;
 
