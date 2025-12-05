@@ -1,18 +1,16 @@
-# TITLE OF PROJECT
+# All Pong Star
 
-AUTHOR NAME
+Jason Lee
 
 [View this project online](URL_FOR_THE_RUNNING_PROJECT)
 
 ## Description
 
-This description should help the reader understand what the program is, anything they should know to be able to experience it (controls, special features, etc.), and what the desired user experience is. For example:
-
-> *The Mayor of Clown Town* is a simulator experience that allows the user to control a small town populated entirely by clowns.
-
-> The experience is controlled via the mouse, with left click selecting a clown and bringing up a menu of options such as "slip of banana peel" or "get into impossible capacious clown-car."
-
-> The project is meant to give the user a sense of what it would be the mayor of a town of clowns, eventually getting the sense that clowns are not taking their civic duties seriously.
+"All Pong Star" is game where you can choose between number 1 to 3 to accesss a pong like game. All three variants are simple and fun experiences base off of Pong but have different surprises. 
+My first variant, Pong variant is a two-ball challenge game where each time you play the balls have a randomize function to either respawn or end the game. All while keeping the two balls alive simultaneously to test your reflexes.
+My second variant, Power Pong variant is a action-packed falling object game where your paddle must catch yellow power-ups (nutrients) while dodging red obstacles with dangerous spikes. Rack up points by collecting nutrients, but be careful the hitting obstacles costs you lives! The game progressively increases in difficulty with faster spawn rates and movement speed, creating an increasingly intense survival challenge.
+Finally my third variant, Break Pong is a classic breakout-style game with progressive difficulty. Destroy all the colored bricks on each level by bouncing the ball off your paddle. As you advance through levels, the ball increases in speed, more bricks spawn each level with after level 3 bricks will spawn at random positions and bricks changes color each level symbolizing your progression.
+One of the things I would of added if I had more time would be sounds to give my variant jam some immersion and maybe adding more stuff to all three variants. 
 
 ## Screenshot(s)
 
