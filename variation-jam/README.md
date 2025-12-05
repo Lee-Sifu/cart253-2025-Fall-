@@ -2,7 +2,7 @@
 
 Jason Lee
 
-[View this project online](URL_FOR_THE_RUNNING_PROJECT)
+[View this project online](https://lee-sifu.github.io/cart253-2025-Fall-/variation-jam/)
 
 ## Description
 
@@ -16,15 +16,19 @@ One of the things I would of added if I had more time would be sounds to give my
 
 This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
 
-> ![Image of a clown face](./assets/images/clown.png)
+> ![Image of a menu](./assets/images/Menu.png)
+> ![Image of Pong 1](./assets/images/PongVariant.png)
+> ![Image of Pong 2](./assets/images/PowerPong.png)
+> ![Image of Pong 3](./assets/images/BreakPong.png)
+> ![Image of game over](./assets/images/GameOver.png)
 
 ## Attribution
 
 This bit should attribute any code, assets or other elements used taken from other sources. For example:
 
 > - This project uses [p5.js](https://p5js.org).
-> - The clown image is a capture of the clown from the Apple emoji character set.
-> - The barking sound effect is "single dog bark 1" by crazymonke9 from freesound.org: https://freesound.org/people/crazymonke9/sounds/418107/
+> - This project uses the teacher's menu variation file.
+> - Pong was my inspiration for this variation jam. 
 
 ## License
 
