@@ -4,6 +4,7 @@
  * This keeps the stuff the menu needs to do *separate* from the rest of the program.
  */
 
+// Menu text to display
 const menuText = `
 (1) pong variation
 (2) power pong variation
