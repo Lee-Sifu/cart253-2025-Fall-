@@ -5,7 +5,7 @@
  * Main file for Cart 253 Final Jam
  * keeps my project organized by separating each game into its own file
  * while maintaining a central coordinator that ties everything together.
- * This prrevents code duplication and makes it easier to manage shared resources. 
+ * This prevents code duplication and makes it easier to manage shared resources. 
  */
 
 "use strict";
