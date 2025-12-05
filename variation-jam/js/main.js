@@ -67,7 +67,7 @@ function displayGameOver(gameName) {
 }
 
 /**
- * Mouse pressed
+ * Mouse pressed to return to menu from game over
  */
 function mousePressed() {
     if (gameOver) {
@@ -93,7 +93,7 @@ function mousePressed() {
 }
 
 /**
- * Key pressed 
+ * Key pressed to route to appropriate variation
  */
 function keyPressed(event) {
     switch (state) {
