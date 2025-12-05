@@ -26,7 +26,7 @@ function menuDraw() {
 }
 
 /**
- * Listen to the keyboard
+ * Handle key presses in the menu
  */
 function menuKeyPressed(event) {
     switch (event.keyCode) {

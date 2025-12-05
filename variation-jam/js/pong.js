@@ -1,6 +1,6 @@
 /**
  * Pong Variation
- * Two ball pong - keep the yellow ball alive!
+ * Two ball pong - Both balls have randonmized functions!
  */
 
 "use strict";

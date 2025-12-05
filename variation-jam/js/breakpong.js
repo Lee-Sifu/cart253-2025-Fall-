@@ -84,6 +84,7 @@ function breakPongDraw() {
     moveBreakBall();
     updateBricks();
     drawBreakPong();
+    breakPongInstructions();
 }
 
 // Move the break pong paddle with the mouse
@@ -204,6 +205,14 @@ function breakPongMousePressed() {
     if (breakBall.stuck) {
         breakBall.stuck = false;
     }
+}
+
+// Draw break pong instructions
+function breakPongInstructions() {
+    fill(255);
+    textSize(14);
+    textAlign(LEFT, BOTTOM);
+    text(`Break Pong: Use mouse to move paddle. right-click/space bar to launch ball.`, 10, height - 10);
 }
 
 // Listen to keyboard for break pong
